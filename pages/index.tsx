@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
-import { TempComponent } from "../src/components/TempComponent";
+import React from "react";
+
+import { TempComponent } from "@/components/TempComponent";
 
 const Home: NextPage = () => {
   return <TempComponent />;
