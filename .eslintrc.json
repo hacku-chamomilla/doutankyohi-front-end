@@ -9,11 +9,12 @@
     "plugin:import/warnings",
     "eslint:recommended"
   ],
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "prettier/prettier": [
       "error",
       {
+        "tabWidth": 2,
         "semi": true
       }
     ],
