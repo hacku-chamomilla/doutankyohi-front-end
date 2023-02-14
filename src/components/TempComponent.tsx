@@ -1,5 +1,12 @@
+import { Card, CardBody, Text } from "@chakra-ui/react";
 import React from "react";
 
 export const TempComponent = () => {
-  return <p>Hello Next.js!</p>;
+  return (
+    <Card>
+      <CardBody>
+        <Text>Hello Next.js</Text>
+      </CardBody>
+    </Card>
+  );
 };
