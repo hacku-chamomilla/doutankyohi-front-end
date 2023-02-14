@@ -26,29 +26,28 @@
       "error",
       {
         "groups": [
-          "builtin",
-          "external",
-          "internal",
-          ["sibling", "parent"],
-          "object"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "builtin",
-            "position": "before"
-          },
-          {
-            "pattern": ".*/src/components/**",
-            "group": "internal",
-            "position": "before"
-          }
+          "builtin", // 組み込みモジュール
+          "external", // yarn add したパッケージ
+          "internal" // 自作モジュール
         ],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "pathGroupsExcludedImportTypes": ["react", "next", "next/**"],
+        "pathGroups": [
+          {
+            "pattern": "@chakra-ui/react",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "@/components/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ]
       }
     ],
     "no-console": "warn",
