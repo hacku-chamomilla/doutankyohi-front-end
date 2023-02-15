@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
-import { Button, ButtonGroup, Input, Text } from "@chakra-ui/react";
+import { Input, Text } from "@chakra-ui/react";
 
-import { HSpacer, VSpacer } from "@/components/common/Spacer";
-
+import { VSpacer } from "@/components/common/Spacer";
 type Props = {
   title: string;
   placeholder: string;
+  setText: Dispatch<SetStateAction<string>>;
 };
 
 export const CustomInput = ({ title, placeholder }: Props) => {
