@@ -62,7 +62,10 @@ const Component: NextPage = () => {
           <Heading size="lg">CustomInput</Heading>
           <Card variant="filled">
             <CardBody>
-              <CustomInput title={"あいことばを入力してください"} />
+              <CustomInput
+                title={"あいことばを入力してください"}
+                placeholder={"ぎゃんぶる"}
+              />
             </CardBody>
           </Card>
 
