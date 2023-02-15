@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { Input, Text } from "@chakra-ui/react";
 
@@ -6,12 +6,11 @@ import { VSpacer } from "@/components/common/Spacer";
 type Props = {
   title: string;
   placeholder: string;
+  text: string;
   setText: Dispatch<SetStateAction<string>>;
 };
 
-export const CustomInput = ({ title, placeholder }: Props) => {
-  const [text, setText] = useState("");
-
+export const CustomInput = ({ title, placeholder, text, setText }: Props) => {
   return (
     <>
       <Text fontSize="xl">{title}</Text>
@@ -22,7 +21,6 @@ export const CustomInput = ({ title, placeholder }: Props) => {
         size="lg"
         onChange={(event) => setText(event.target.value)}
       />
-      <p>{text}</p>
     </>
   );
 };
