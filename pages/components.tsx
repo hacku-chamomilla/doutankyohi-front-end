@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
+import { CustomInput } from "@/components/CustomInput";
 import { TempComponent } from "@/components/TempComponent";
 
 const Component: NextPage = () => {
@@ -53,6 +54,18 @@ const Component: NextPage = () => {
                   Box B
                 </Box>
               </HStack>
+            </CardBody>
+          </Card>
+
+          {/* CustomInput */}
+          <VSpacer size={8} />
+          <Heading size="lg">CustomInput</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <CustomInput
+                title={"あいことばを入力してください"}
+                placeholder={"ぎゃんぶる"}
+              />
             </CardBody>
           </Card>
 
