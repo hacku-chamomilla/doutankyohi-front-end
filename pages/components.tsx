@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -16,6 +16,7 @@ import { CustomInput } from "@/components/CustomInput";
 import { TempComponent } from "@/components/TempComponent";
 
 const Component: NextPage = () => {
+  const [text, setText] = useState("");
   return (
     <>
       <VStack>
@@ -65,7 +66,10 @@ const Component: NextPage = () => {
               <CustomInput
                 title={"あいことばを入力してください"}
                 placeholder={"ぎゃんぶる"}
+                text={text}
+                setText={setText}
               />
+              <p>{text}</p>
             </CardBody>
           </Card>
 
