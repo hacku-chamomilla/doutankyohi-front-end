@@ -4,20 +4,19 @@ import React from "react";
 
 import { Button } from "@chakra-ui/react";
 
-const Home: NextPage = () => {
+const StartGame: NextPage = () => {
   const router = useRouter();
-
   return (
     <>
       <Button
         onClick={() => {
-          router.push("/start-game");
+          router.push("/");
         }}
       >
-        To Start Game Page
+        To Home
       </Button>
     </>
   );
 };
 
-export default Home;
+export default StartGame;
