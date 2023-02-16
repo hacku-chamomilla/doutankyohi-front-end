@@ -87,7 +87,10 @@ const Component: NextPage = () => {
           <Heading size="lg">MemberList</Heading>
           <Card variant="filled">
             <CardBody>
-              <MemberList title={"参加者リスト"} memberName={exampleNameList} />
+              <MemberList
+                title={"参加者リスト"}
+                memberNameList={exampleNameList}
+              />
             </CardBody>
           </Card>
 

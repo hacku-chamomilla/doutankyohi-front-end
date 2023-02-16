@@ -6,18 +6,22 @@ import { VSpacer } from "@/components/common/Spacer";
 
 type Props = {
   title: string;
-  memberName: Array<string>;
+  memberNameList: Array<string>;
 };
 
-export const MemberList = ({ title, memberName }: Props) => {
-  const nameList = memberName.map((member) => <li key={member}>{member}</li>);
-
+export const MemberList = ({ title, memberNameList }: Props) => {
   return (
     <>
       <Text fontSize="xl">{title}</Text>
       <VSpacer size={8} />
       <UnorderedList>
-        <ListItem fontSize="2xl">{nameList}</ListItem>
+        {memberNameList.map((memberName, i) => {
+          return (
+            <ListItem key={i} fontSize="2x1">
+              {memberName}
+            </ListItem>
+          );
+        })}
       </UnorderedList>
     </>
   );
