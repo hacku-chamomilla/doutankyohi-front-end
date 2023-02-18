@@ -14,9 +14,18 @@ import {
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { MemberList } from "@/components/MemberList";
 import { TempComponent } from "@/components/TempComponent";
 const Component: NextPage = () => {
   const [text, setText] = useState("");
+  const exampleNameList = [
+    "ふかむーる",
+    "ふかみん",
+    "ふかむー",
+    "ふかめも",
+    "KJ",
+  ];
+
   const exampleHintList = [
     { text: "フルハウス", isSelect: false },
     { text: "トランプ", isSelect: false },
@@ -79,6 +88,18 @@ const Component: NextPage = () => {
                 setText={setText}
               />
               <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/*MemberList*/}
+          <VSpacer size={8} />
+          <Heading size="lg">MemberList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <MemberList
+                title={"参加者リスト"}
+                memberNameList={exampleNameList}
+              />
             </CardBody>
           </Card>
 
