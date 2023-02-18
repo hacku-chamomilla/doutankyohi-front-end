@@ -13,10 +13,19 @@ import {
 
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
+import { DeleteHintList } from "@/components/DeleteHintList";
 import { TempComponent } from "@/components/TempComponent";
-
 const Component: NextPage = () => {
   const [text, setText] = useState("");
+  const exampleHintList = [
+    { text: "フルハウス", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "オールイン", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "ストレート", isSelect: false },
+  ];
+  /*作業用*/
+  console.log(exampleHintList);
   return (
     <>
       <VStack>
@@ -70,6 +79,15 @@ const Component: NextPage = () => {
                 setText={setText}
               />
               <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/* ###/###/### */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
             </CardBody>
           </Card>
 

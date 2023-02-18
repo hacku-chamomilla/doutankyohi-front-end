@@ -1,6 +1,16 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import { Input, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarGroup,
+  Editable,
+  EditableInput,
+  EditablePreview,
+  EditableTextarea,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 type Props = {
