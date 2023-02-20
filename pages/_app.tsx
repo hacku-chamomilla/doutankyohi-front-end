@@ -1,12 +1,14 @@
 import type { AppProps } from "next/app";
 import React from "react";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <Container maxW="container.md">
+        <Component {...pageProps} />
+      </Container>
     </ChakraProvider>
   );
 }
