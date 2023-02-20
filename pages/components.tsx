@@ -12,15 +12,16 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+import { CustomInput } from "@/components/common/CustomInput";
+import { CustomTitleText } from "@/components/common/CustomTitleText";
+import { NNAndIcon } from "@/components/common/NNAndIcon";
+import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
-import { CustomInput } from "@/components/CustomInput";
-import { CustomTitleText } from "@/components/CustomTitleText";
-import { avatarList } from "@/components/data/AvatarList";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
-import { NNAndIcon } from "@/components/NNAndIcon";
-import { PageBackIcon } from "@/components/PageBackIcon";
-import { TempComponent } from "@/components/TempComponent";
+
+import { avatarList } from "@/data/AvatarList";
+
 const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
@@ -49,6 +50,30 @@ const Component: NextPage = () => {
           <Heading size="lg" textAlign="center">
             Components Mock Storybook
           </Heading>
+
+          {/* common/CustomInput */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/CustomInput</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <CustomInput
+                title={"あいことばを入力してください"}
+                placeholder={"ぎゃんぶる"}
+                text={text}
+                setText={setText}
+              />
+              <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/* common/CustomTitleText */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/CustomTitleText</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <CustomTitleText title="お題" text="ポーカー" />
+            </CardBody>
+          </Card>
 
           {/*  common/Spacer/VSpacer  */}
           <VSpacer size={8} />
@@ -82,18 +107,32 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* CustomInput */}
+          {/* common/NNAndIcon */}
           <VSpacer size={8} />
-          <Heading size="lg">CustomInput</Heading>
+          <Heading size="lg">common/NNAndIcon</Heading>
           <Card variant="filled">
             <CardBody>
-              <CustomInput
-                title={"あいことばを入力してください"}
-                placeholder={"ぎゃんぶる"}
-                text={text}
-                setText={setText}
+              <NNAndIcon
+                title={"ニックネーム"}
+                subtitle={"アイコン選択"}
+                nickname={nickname}
+                placeholder={"ふかまる"}
+                avatarList={avatarList}
+                avatarIndex={avatarIndex}
+                setNickname={setNickname}
+                setAvatarIndex={setAvatarIndex}
               />
-              <p>{text}</p>
+            </CardBody>
+            <text>名前:{nickname}</text>
+            <text>Index:{avatarIndex}</text>
+          </Card>
+
+          {/* common/PageBackIcon */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/PageBackIcon</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <PageBackIcon pass={"/"} />
             </CardBody>
           </Card>
 
@@ -115,7 +154,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/*MemberList*/}
+          {/* MemberList */}
           <VSpacer size={8} />
           <Heading size="lg">MemberList</Heading>
           <Card variant="filled">
@@ -127,52 +166,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/*NNAndIcon*/}
-          <VSpacer size={8} />
-          <Heading size="lg">NNAndIcon</Heading>
-
-          <Card variant="filled">
-            <CardBody>
-              <NNAndIcon
-                title={"ニックネーム"}
-                subtitle={"アイコン選択"}
-                nickname={nickname}
-                placeholder={"ふかまる"}
-                avatarList={avatarList}
-                avatarIndex={avatarIndex}
-                setNickname={setNickname}
-                setAvatarIndex={setAvatarIndex}
-              />
-            </CardBody>
-            <text>名前:{nickname}</text>
-            <text>Index:{avatarIndex}</text>
-          </Card>
-
-          {/* PageBackIcon */}
-          <VSpacer size={8} />
-          <Heading size="lg">PageBackIcon</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <PageBackIcon pass={"/"} />
-            </CardBody>
-          </Card>
-
-          {/* TempComponent */}
-          <VSpacer size={8} />
-          <Heading size="lg">TempComponent</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <TempComponent />
-            </CardBody>
-          </Card>
-          {/*CustomTitleText*/}
-          <VSpacer size={8} />
-          <Heading size="lg">CustomTitleText</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <CustomTitleText title="お題" text="ポーカー" />
-            </CardBody>
-          </Card>
+          <VSpacer size={12} />
 
           {/* --------------------*/}
 
