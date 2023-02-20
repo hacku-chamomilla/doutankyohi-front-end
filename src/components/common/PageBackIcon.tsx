@@ -1,7 +1,7 @@
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React from "react";
 
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 
 type Props = {

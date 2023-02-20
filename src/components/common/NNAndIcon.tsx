@@ -43,10 +43,9 @@ export const NNAndIcon = ({
       <HStack>
         {avatarList.map((avatar, i) => {
           return (
-            <>
+            <div key={i}>
               {avatarIndex === i ? (
                 <Avatar
-                  key={i}
                   src={avatar}
                   onClick={() => setAvatarIndex(i)}
                   _hover={{ cursor: "pointer" }}
@@ -54,13 +53,9 @@ export const NNAndIcon = ({
                   borderColor="blue"
                 />
               ) : (
-                <Avatar
-                  key={i}
-                  src={avatar}
-                  onClick={() => setAvatarIndex(i)}
-                />
+                <Avatar src={avatar} onClick={() => setAvatarIndex(i)} />
               )}
-            </>
+            </div>
           );
         })}
       </HStack>

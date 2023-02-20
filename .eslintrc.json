@@ -38,7 +38,7 @@
         "pathGroupsExcludedImportTypes": ["react", "next", "next/**"],
         "pathGroups": [
           {
-            "pattern": "@chakra-ui/react",
+            "pattern": "@chakra-ui/*",
             "group": "external",
             "position": "after"
           },
