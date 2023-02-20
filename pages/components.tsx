@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import {
   Box,
+  Button,
   Card,
   CardBody,
   Container,
@@ -33,8 +34,7 @@ const Component: NextPage = () => {
     { text: "トランプ", isSelect: false },
     { text: "ストレート", isSelect: false },
   ];
-  /*作業用*/
-  console.log(exampleHintList);
+
   return (
     <>
       <VStack>
@@ -109,6 +109,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <DeleteHintList hintList={exampleHintList} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
             </CardBody>
           </Card>
 
