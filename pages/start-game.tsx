@@ -1,26 +1,18 @@
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { Button, Center, IconButton, VStack } from "@chakra-ui/react";
+import { Button, Center, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
+import { PageBackIcon } from "@/components/PageBackIcon";
 
 const StartGame: NextPage = () => {
   const router = useRouter();
   return (
     <>
       <VSpacer size={4} />
-      <IconButton
-        colorScheme="gray"
-        icon={<ArrowBackIcon />}
-        isRound={true}
-        aria-label={"homeBack"}
-        onClick={() => {
-          router.push("/");
-        }}
-      />
+      <PageBackIcon pass={"/"} />
       <VSpacer size={40} />
 
       <Center>
