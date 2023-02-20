@@ -4,8 +4,8 @@ import React from "react";
 
 import { Button, Center, VStack } from "@chakra-ui/react";
 
+import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { PageBackIcon } from "@/components/PageBackIcon";
 
 const StartGame: NextPage = () => {
   const router = useRouter();
