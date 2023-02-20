@@ -14,11 +14,16 @@ import {
 
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
+import { avatarList } from "@/components/data/AvatarList";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
+import { NNAndIcon } from "@/components/NNAndIcon";
 import { TempComponent } from "@/components/TempComponent";
+
 const Component: NextPage = () => {
   const [text, setText] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [avatarIndex, setAvatarIndex] = useState(0);
   const exampleNameList = [
     "ふかむーる",
     "ふかみん",
@@ -103,7 +108,28 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* DeleteHiniList */}
+          {/*NNAndIcon*/}
+          <VSpacer size={8} />
+          <Heading size="lg">NNAndIcon</Heading>
+
+          <Card variant="filled">
+            <CardBody>
+              <NNAndIcon
+                title={"ニックネーム"}
+                subtitle={"アイコン選択"}
+                nickname={nickname}
+                placeholder={"ふかまる"}
+                avatarList={avatarList}
+                avatarIndex={avatarIndex}
+                setNickname={setNickname}
+                setAvatarIndex={setAvatarIndex}
+              />
+            </CardBody>
+            <text>名前:{nickname}</text>
+            <text>Index:{avatarIndex}</text>
+          </Card>
+
+          {/* DeleteHintList */}
           <VSpacer size={8} />
           <Heading size="lg">DeleteHintList</Heading>
           <Card variant="filled">
