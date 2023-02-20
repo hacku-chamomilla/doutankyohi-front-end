@@ -3,15 +3,15 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 
-import { Button, IconButton } from "@chakra-ui/react";
+import { Button, Center, IconButton, VStack } from "@chakra-ui/react";
 
-import { HSpacer, VSpacer } from "@/components/common/Spacer";
+import { VSpacer } from "@/components/common/Spacer";
 
 const StartGame: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <HSpacer size={2} />
+      <VSpacer size={4} />
       <IconButton
         colorScheme="gray"
         icon={<ArrowBackIcon />}
@@ -22,30 +22,32 @@ const StartGame: NextPage = () => {
         }}
       />
       <VSpacer size={40} />
-      <HSpacer size={12} />
-      <Button
-        w="30%"
-        colorScheme="blue"
-        color={"white"}
-        onClick={() => {
-          router.push("/create-room");
-        }}
-      >
-        ルーム作成
-      </Button>
 
-      <VSpacer size={12} />
-      <HSpacer size={12} />
-      <Button
-        w="30%"
-        colorScheme="blue"
-        color={"white"}
-        onClick={() => {
-          router.push("/join-room");
-        }}
-      >
-        ルームに参加
-      </Button>
+      <Center>
+        <VStack>
+          <Button
+            colorScheme="blue"
+            color={"white"}
+            minW={64}
+            onClick={() => {
+              router.push("/create-room");
+            }}
+          >
+            ルーム作成
+          </Button>
+          <VSpacer size={12} />
+          <Button
+            colorScheme="blue"
+            color={"white"}
+            minW={64}
+            onClick={() => {
+              router.push("/join-room");
+            }}
+          >
+            ルームに参加
+          </Button>{" "}
+        </VStack>
+      </Center>
     </>
   );
 };
