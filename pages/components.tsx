@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import {
   Box,
+  Button,
   Card,
   CardBody,
   Container,
@@ -14,17 +15,30 @@ import {
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
 import { CustomTitleText } from "@/components/CustomTitleText";
+import { avatarList } from "@/components/data/AvatarList";
+import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
+import { NNAndIcon } from "@/components/NNAndIcon";
 import { TempComponent } from "@/components/TempComponent";
 
 const Component: NextPage = () => {
   const [text, setText] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [avatarIndex, setAvatarIndex] = useState(0);
   const exampleNameList = [
     "ふかむーる",
     "ふかみん",
     "ふかむー",
     "ふかめも",
     "KJ",
+  ];
+
+  const exampleHintList = [
+    { text: "フルハウス", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "オールイン", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "ストレート", isSelect: false },
   ];
 
   return (
@@ -92,6 +106,45 @@ const Component: NextPage = () => {
                 title={"参加者リスト"}
                 memberNameList={exampleNameList}
               />
+            </CardBody>
+          </Card>
+
+          {/*NNAndIcon*/}
+          <VSpacer size={8} />
+          <Heading size="lg">NNAndIcon</Heading>
+
+          <Card variant="filled">
+            <CardBody>
+              <NNAndIcon
+                title={"ニックネーム"}
+                subtitle={"アイコン選択"}
+                nickname={nickname}
+                placeholder={"ふかまる"}
+                avatarList={avatarList}
+                avatarIndex={avatarIndex}
+                setNickname={setNickname}
+                setAvatarIndex={setAvatarIndex}
+              />
+            </CardBody>
+            <text>名前:{nickname}</text>
+            <text>Index:{avatarIndex}</text>
+          </Card>
+
+          {/* DeleteHintList */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
             </CardBody>
           </Card>
 
