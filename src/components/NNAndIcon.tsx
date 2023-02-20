@@ -1,62 +1,42 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import {
-  Avatar,
-  Button,
-  HStack,
-  IconButton,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text,
-} from "@chakra-ui/react";
+import { Avatar, HStack, Input, Text } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
 type Props = {
   title: string;
   subtitle: string;
-  nickName: string;
+  nickname: string;
   placeholder: string;
   avatarList: string[];
+  avatarIndex: number;
   setAvatarIndex: Dispatch<SetStateAction<number>>;
-  setNickName: Dispatch<SetStateAction<string>>;
+  setNickname: Dispatch<SetStateAction<string>>;
 };
 
 export const NNAndIcon = ({
   title,
   subtitle,
-  nickName,
+  nickname,
   placeholder,
-  setNickName,
+  setNickname,
   avatarList,
+  avatarIndex,
   setAvatarIndex,
 }: Props) => {
   return (
     <>
       <Text fontSize="24">{title}</Text>
       <VSpacer size={2} />
-      <InputGroup>
-        <Input
-          w="100%"
-          value={nickName}
-          outlineColor="blue"
-          placeholder={placeholder}
-          size="lg"
-          onChange={(event) => setNickName(event.target.value)}
-        />
-        <InputRightElement height="100%" width="10%">
-          <Button
-            h="100%"
-            w="100%"
-            textColor={"black"}
-            colorScheme="blue"
-            variant="solid"
-          >
-            決定
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+      <Input
+        w="50%"
+        value={nickname}
+        outlineColor="blue"
+        placeholder={placeholder}
+        size="lg"
+        onChange={(event) => setNickname(event.target.value)}
+      />
       <VSpacer size={8} />
       <Text fontSize="24">{subtitle}</Text>
       <VSpacer size={2} />
@@ -64,11 +44,22 @@ export const NNAndIcon = ({
         {avatarList.map((avatar, i) => {
           return (
             <>
-              <IconButton
-                aria-label="Avatar"
-                icon={<Avatar key={i} src={avatar} />}
-                onClick={() => setAvatarIndex(i)}
-              />
+              {avatarIndex === i ? (
+                <Avatar
+                  key={i}
+                  src={avatar}
+                  onClick={() => setAvatarIndex(i)}
+                  _hover={{ cursor: "pointer" }}
+                  borderWidth={3}
+                  borderColor="blue"
+                />
+              ) : (
+                <Avatar
+                  key={i}
+                  src={avatar}
+                  onClick={() => setAvatarIndex(i)}
+                />
+              )}
             </>
           );
         })}
