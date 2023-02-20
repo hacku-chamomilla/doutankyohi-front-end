@@ -22,7 +22,7 @@ import { TempComponent } from "@/components/TempComponent";
 
 const Component: NextPage = () => {
   const [text, setText] = useState("");
-  const [nickname, nicknameText] = useState("");
+  const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
   const exampleNameList = [
     "ふかむーる",
@@ -121,7 +121,7 @@ const Component: NextPage = () => {
                 placeholder={"ふかまる"}
                 avatarList={avatarList}
                 avatarIndex={avatarIndex}
-                setNickname={nicknameText}
+                setNickname={setNickname}
                 setAvatarIndex={setAvatarIndex}
               />
             </CardBody>
