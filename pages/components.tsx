@@ -17,6 +17,7 @@ import { CustomInput } from "@/components/CustomInput";
 import { CustomTitleText } from "@/components/CustomTitleText";
 import { avatarList } from "@/components/data/AvatarList";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { Wait } from "@/components/game/Wait";
 import { MemberList } from "@/components/MemberList";
 import { NNAndIcon } from "@/components/NNAndIcon";
 import { TempComponent } from "@/components/TempComponent";
@@ -162,6 +163,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <CustomTitleText title="お題" text="ポーカー" />
+            </CardBody>
+          </Card>
+
+          {/* Wait */}
+          <VSpacer size={8} />
+          <Heading size="lg">Wait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Wait />
             </CardBody>
           </Card>
 
