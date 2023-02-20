@@ -14,6 +14,7 @@ import {
 
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
+import { CustomTitleText } from "@/components/CustomTitleText";
 import { avatarList } from "@/components/data/AvatarList";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
@@ -153,6 +154,14 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <TempComponent />
+            </CardBody>
+          </Card>
+          {/*CustomTitleText*/}
+          <VSpacer size={8} />
+          <Heading size="lg">CustomTitleText</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <CustomTitleText title="お題" text="ポーカー" />
             </CardBody>
           </Card>
 
