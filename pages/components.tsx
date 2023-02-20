@@ -19,8 +19,8 @@ import { avatarList } from "@/components/data/AvatarList";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
 import { NNAndIcon } from "@/components/NNAndIcon";
-import { PageBackIcon } from "@/components/PageBackIcon";
 import { TempComponent } from "@/components/TempComponent";
+
 const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
@@ -97,24 +97,6 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* DeleteHintList */}
-          <VSpacer size={8} />
-          <Heading size="lg">DeleteHintList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <DeleteHintList hintList={exampleHintList} />
-              <Button
-                colorScheme="blue"
-                onClick={() => {
-                  // eslint-disable-next-line no-console
-                  console.log(exampleHintList);
-                }}
-              >
-                チェックされているものをコンソールで確認
-              </Button>
-            </CardBody>
-          </Card>
-
           {/*MemberList*/}
           <VSpacer size={8} />
           <Heading size="lg">MemberList</Heading>
@@ -148,12 +130,21 @@ const Component: NextPage = () => {
             <text>Index:{avatarIndex}</text>
           </Card>
 
-          {/* PageBackIcon */}
+          {/* DeleteHintList */}
           <VSpacer size={8} />
-          <Heading size="lg">PageBackIcon</Heading>
+          <Heading size="lg">DeleteHintList</Heading>
           <Card variant="filled">
             <CardBody>
-              <PageBackIcon pass={"/"} />
+              <DeleteHintList hintList={exampleHintList} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
             </CardBody>
           </Card>
 
