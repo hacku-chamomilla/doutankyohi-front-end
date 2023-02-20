@@ -103,7 +103,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* ###/###/### */}
+          {/* DeleteHiniList */}
           <VSpacer size={8} />
           <Heading size="lg">DeleteHintList</Heading>
           <Card variant="filled">
