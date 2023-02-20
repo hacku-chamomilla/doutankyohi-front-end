@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import {
   Box,
+  Button,
   Card,
   CardBody,
   Container,
@@ -13,9 +14,9 @@ import {
 
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
+import { DeleteHintList } from "@/components/DeleteHintList";
 import { MemberList } from "@/components/MemberList";
 import { TempComponent } from "@/components/TempComponent";
-
 const Component: NextPage = () => {
   const [text, setText] = useState("");
   const exampleNameList = [
@@ -24,6 +25,14 @@ const Component: NextPage = () => {
     "ふかむー",
     "ふかめも",
     "KJ",
+  ];
+
+  const exampleHintList = [
+    { text: "フルハウス", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "オールイン", isSelect: false },
+    { text: "トランプ", isSelect: false },
+    { text: "ストレート", isSelect: false },
   ];
 
   return (
@@ -91,6 +100,24 @@ const Component: NextPage = () => {
                 title={"参加者リスト"}
                 memberNameList={exampleNameList}
               />
+            </CardBody>
+          </Card>
+
+          {/* DeleteHiniList */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
             </CardBody>
           </Card>
 
