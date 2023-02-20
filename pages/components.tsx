@@ -15,6 +15,7 @@ import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { CustomInput } from "@/components/CustomInput";
 import { MemberList } from "@/components/MemberList";
 import { TempComponent } from "@/components/TempComponent";
+import { WordOut } from "@/components/WordOut";
 
 const Component: NextPage = () => {
   const [text, setText] = useState("");
@@ -100,6 +101,14 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <TempComponent />
+            </CardBody>
+          </Card>
+          {/* WordOut */}
+          <VSpacer size={8} />
+          <Heading size="lg">WordOut</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <WordOut title="お題" text="ポーカー" />
             </CardBody>
           </Card>
 
