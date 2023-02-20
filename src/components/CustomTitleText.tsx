@@ -6,7 +6,7 @@ type Props = {
   title: string;
   text: string;
 };
-export const WordOut = ({ title, text }: Props) => {
+export const CustomTitleText = ({ title, text }: Props) => {
   return (
     <HStack spacing="40px">
       <Text fontSize="lg">{title}</Text>
