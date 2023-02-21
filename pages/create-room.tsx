@@ -23,8 +23,9 @@ const CreateRoom: NextPage = () => {
         <VStack>
           <Text fontSize={40}>ルームの作成</Text>
           <VSpacer size={8} />
-          <Text fontSize={20}>「ルームの作成」を押すと,</Text>
-          <Text fontSize={20}>ルームIDが自動で生成されます</Text>
+          <Text fontSize={20} whiteSpace="pre-line">
+            {"「ルームの作成」を押すと,\nルームIDが自動で生成されます"}
+          </Text>
           <VSpacer size={8} />
           <NNAndIcon
             title={"ニックネーム"}
@@ -43,7 +44,7 @@ const CreateRoom: NextPage = () => {
             minW={64}
             onClick={() => {
               router.push({
-                pathname: "/game",
+                pathname: "/wait",
                 query: {
                   username: nickname,
                   avatarIcon: avatarIndex,
