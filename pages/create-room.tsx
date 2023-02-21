@@ -4,10 +4,11 @@ import React, { useState } from "react";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
+import { NNAndIcon } from "@/components/common/NNAndIcon";
+import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { avatarList } from "@/components/data/AvatarList";
-import { NNAndIcon } from "@/components/NNAndIcon";
-import { PageBackIcon } from "@/components/PageBackIcon";
+
+import { avatarList } from "@/data/AvatarList";
 
 const CreateRoom: NextPage = () => {
   const router = useRouter();
