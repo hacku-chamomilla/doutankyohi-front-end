@@ -54,6 +54,7 @@ const CreateRoom: NextPage = () => {
           >
             ルーム作成
           </Button>
+          <VSpacer size={24} />
         </VStack>
       </Center>
     </>
