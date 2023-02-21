@@ -155,7 +155,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* ThinkingTheme */}
+          {/* game/ThinkingTheme */}
           <VSpacer size={8} />
           <Heading size="lg">ThinkingTheme</Heading>
           <Card variant="filled">
