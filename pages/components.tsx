@@ -19,6 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
@@ -140,6 +141,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <PageBackIcon pass={"/"} />
+            </CardBody>
+          </Card>
+
+          {/* game/JudgeAnswer */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/JudgeAnswer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <JudgeAnswer />
             </CardBody>
           </Card>
 
