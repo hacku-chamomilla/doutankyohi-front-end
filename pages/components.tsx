@@ -20,6 +20,7 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
+import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
@@ -148,6 +149,15 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/DiscussJudgeAns */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/DiscussJudgeAns</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DiscussJudgeAns hintList={[]} />
+            </CardBody>
+          </Card>
+
           {/* game/DeleteHintOtherMasterUI */}
           <VSpacer size={8} />
           <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
@@ -251,7 +261,7 @@ const Component: NextPage = () => {
           {/* --------------------*/}
           {/* メモ */}
           {/* ###/###/### の部分には components 以降のパスを記入する */}
-          {/* コンポーネントの配置順番はファイルのは位置順が嬉しい (性善説) */}
+          {/* コンポーネントの配置順番はファイルの位置順が嬉しい (性善説) */}
 
           {/* コード */}
           {/* ###/###/### */}
