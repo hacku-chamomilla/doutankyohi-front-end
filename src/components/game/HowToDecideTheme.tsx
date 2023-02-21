@@ -38,6 +38,7 @@ export const HowToDecideTheme = () => {
             size="lg"
             minW={48}
             onClick={() => {
+              // eslint-disable-next-line no-console
               console.log(`HowToTheme: value=${value}`); // TODO: 以下の TODO 実装時に削除する
               // TODO: テーマの選択方法を POST する実装を追加する
             }}
