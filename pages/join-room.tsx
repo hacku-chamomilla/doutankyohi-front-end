@@ -44,11 +44,12 @@ const JoinRoom: NextPage = () => {
             colorScheme="linkedin"
             minW={64}
             onClick={() => {
-              router.push("/game");
+              router.push("/wait");
             }}
           >
             参加する
           </Button>
+          <VSpacer size={8} />
         </VStack>
       </Center>
     </>
