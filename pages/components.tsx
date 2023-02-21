@@ -18,6 +18,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { InputHint } from "@/components/game/InputHint";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -133,6 +134,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <PageBackIcon pass={"/"} />
+            </CardBody>
+          </Card>
+
+          {/* game/InputHint */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputHint</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputHint />
             </CardBody>
           </Card>
 
