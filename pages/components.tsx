@@ -19,6 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { Answer } from "@/components/game/answer";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
@@ -53,7 +54,11 @@ const Component: NextPage = () => {
     { text: "トランプ", avatarIndex: 3, isSelect: false },
     { text: "ストレート", avatarIndex: 4, isSelect: false },
   ];
-
+  const exampleAnswerHintList = [
+    { text: "ジャッカル", isDelete: true },
+    { text: "ジャッカル", isDelete: true },
+    { text: "かいぎしつ", isDelete: false },
+  ];
   return (
     <>
       <VStack>
@@ -229,6 +234,16 @@ const Component: NextPage = () => {
               >
                 チェックされているものをコンソールで確認
               </Button>
+            </CardBody>
+          </Card>
+
+          {/* game/answer */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/answer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Answer hintList={exampleAnswerHintList} />
+              <VSpacer size={8} />
             </CardBody>
           </Card>
 

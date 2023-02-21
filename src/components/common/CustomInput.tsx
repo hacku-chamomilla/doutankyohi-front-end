@@ -14,7 +14,7 @@ export const CustomInput = ({ title, placeholder, text, setText }: Props) => {
   return (
     <>
       <Text fontSize="xl">{title}</Text>
-      <VSpacer size={8} />
+      <VSpacer size={4} />
       <Input
         value={text}
         placeholder={placeholder}
