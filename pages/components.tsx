@@ -19,6 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { InputTheme } from "@/components/game/InputTheme";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
@@ -189,6 +190,15 @@ const Component: NextPage = () => {
                 title={"参加者リスト"}
                 memberNameList={exampleNameList}
               />
+            </CardBody>
+          </Card>
+
+          {/* game/InputTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputTheme />
             </CardBody>
           </Card>
 
