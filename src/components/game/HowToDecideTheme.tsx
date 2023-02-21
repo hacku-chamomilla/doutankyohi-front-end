@@ -20,7 +20,7 @@ export const HowToDecideTheme = () => {
           <VSpacer size={8} />
           <Text fontSize="xl">あなたはヒントを考える人です！</Text>
           <VSpacer size={12} />
-          <Text fontSize="xl">お題をどうやって決めるかを選んでください</Text>
+          <Text fontSize="xl">お題の決定方法</Text>
           <VSpacer size={12} />
           <RadioGroup onChange={setValue} value={value}>
             <VStack>
