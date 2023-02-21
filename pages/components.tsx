@@ -19,6 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
@@ -171,9 +172,19 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/DeleteHintOtherMasterUI */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintOtherMasterUI hintList={exampleHintList} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
           {/* game/ThinkingTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">ThinkingTheme</Heading>
+          <Heading size="lg">game/ThinkingTheme</Heading>
           <Card variant="filled">
             <CardBody>
               <ThinkingTheme />
