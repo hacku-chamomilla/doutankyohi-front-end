@@ -1,8 +1,8 @@
-import { QuestionOutlineIcon } from "@chakra-ui/icons";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 
+import { QuestionOutlineIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
