@@ -14,7 +14,7 @@ export const DiscussJudgeAns = ({ theme, answer }: Props) => {
   return (
     <>
       <Center>
-        <Text fontSize={24}>解答者の答えが正解か話し合おう!</Text>
+        <Text fontSize={24}>回答者の答えが正解か話し合おう!</Text>
       </Center>
       <VSpacer size={12} />
       <VStack>
