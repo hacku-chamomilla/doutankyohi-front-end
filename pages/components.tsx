@@ -19,8 +19,13 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
+import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
+import { InputHint } from "@/components/game/InputHint";
+import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
+import { Wait } from "@/components/game/Wait";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -82,6 +87,35 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* common/NNAndIcon */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/NNAndIcon</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <NNAndIcon
+                title={"ニックネーム"}
+                subtitle={"アイコン選択"}
+                nickname={nickname}
+                placeholder={"ふかまる"}
+                avatarList={avatarList}
+                avatarIndex={avatarIndex}
+                setNickname={setNickname}
+                setAvatarIndex={setAvatarIndex}
+              />
+            </CardBody>
+            <Text>名前:{nickname}</Text>
+            <Text>Index:{avatarIndex}</Text>
+          </Card>
+
+          {/* common/PageBackIcon */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/PageBackIcon</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <PageBackIcon pass={"/"} />
+            </CardBody>
+          </Card>
+
           {/*  common/Spacer/VSpacer  */}
           <VSpacer size={8} />
           <Heading size="lg">common/Spacer/VSpacer</Heading>
@@ -114,32 +148,40 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* common/NNAndIcon */}
+          {/* game/DeleteHintOtherMasterUI */}
           <VSpacer size={8} />
-          <Heading size="lg">common/NNAndIcon</Heading>
+          <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
           <Card variant="filled">
             <CardBody>
-              <NNAndIcon
-                title={"ニックネーム"}
-                subtitle={"アイコン選択"}
-                nickname={nickname}
-                placeholder={"ふかまる"}
-                avatarList={avatarList}
-                avatarIndex={avatarIndex}
-                setNickname={setNickname}
-                setAvatarIndex={setAvatarIndex}
-              />
+              <DeleteHintOtherMasterUI hintList={exampleHintList} />
+              <VSpacer size={8} />
             </CardBody>
-            <Text>名前:{nickname}</Text>
-            <Text>Index:{avatarIndex}</Text>
           </Card>
 
-          {/* common/PageBackIcon */}
+          {/* game/HowToDecideTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">common/PageBackIcon</Heading>
+          <Heading size="lg">game/HowToDecideTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <PageBackIcon pass={"/"} />
+              <HowToDecideTheme />
+            </CardBody>
+          </Card>
+
+          {/* game/JudgeAnswer */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/JudgeAnswer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <JudgeAnswer />
+            </CardBody>
+          </Card>
+
+          {/* game/InputHint */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputHint</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputHint />
             </CardBody>
           </Card>
 
@@ -151,6 +193,25 @@ const Component: NextPage = () => {
               <SelectDuplicateHint />
             </CardBody>
           </Card>
+
+          {/* game/ThinkingTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/ThinkingTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ThinkingTheme />
+            </CardBody>
+          </Card>
+
+          {/* game/Wait */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Wait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Wait />
+            </CardBody>
+          </Card>
+          <VSpacer size={12} />
 
           {/* DeleteHintList */}
           <VSpacer size={8} />
@@ -171,15 +232,6 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/ThinkingTheme */}
-          <VSpacer size={8} />
-          <Heading size="lg">ThinkingTheme</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <ThinkingTheme />
-            </CardBody>
-          </Card>
-
           {/* MemberList */}
           <VSpacer size={8} />
           <Heading size="lg">MemberList</Heading>
@@ -191,8 +243,6 @@ const Component: NextPage = () => {
               />
             </CardBody>
           </Card>
-
-          <VSpacer size={12} />
 
           {/* --------------------*/}
 
