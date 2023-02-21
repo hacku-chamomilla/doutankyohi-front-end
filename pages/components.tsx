@@ -9,6 +9,7 @@ import {
   Container,
   Heading,
   HStack,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 
@@ -18,6 +19,8 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
+import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -35,11 +38,15 @@ const Component: NextPage = () => {
   ];
 
   const exampleHintList = [
-    { text: "フルハウス", isSelect: false },
-    { text: "トランプ", isSelect: false },
-    { text: "オールイン", isSelect: false },
-    { text: "トランプ", isSelect: false },
-    { text: "ストレート", isSelect: false },
+    {
+      text: "フルハウス",
+      avatarIndex: 0,
+      isSelect: false,
+    },
+    { text: "トランプ", avatarIndex: 1, isSelect: false },
+    { text: "オールイン", avatarIndex: 2, isSelect: false },
+    { text: "トランプ", avatarIndex: 3, isSelect: false },
+    { text: "ストレート", avatarIndex: 4, isSelect: false },
   ];
 
   return (
@@ -123,8 +130,8 @@ const Component: NextPage = () => {
                 setAvatarIndex={setAvatarIndex}
               />
             </CardBody>
-            <text>名前:{nickname}</text>
-            <text>Index:{avatarIndex}</text>
+            <Text>名前:{nickname}</Text>
+            <Text>Index:{avatarIndex}</Text>
           </Card>
 
           {/* common/PageBackIcon */}
@@ -136,12 +143,22 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/SelectDuplicateHint */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/SelectDuplicateHint</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <SelectDuplicateHint />
+            </CardBody>
+          </Card>
+
           {/* DeleteHintList */}
           <VSpacer size={8} />
           <Heading size="lg">DeleteHintList</Heading>
           <Card variant="filled">
             <CardBody>
               <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
               <Button
                 colorScheme="blue"
                 onClick={() => {
@@ -151,6 +168,15 @@ const Component: NextPage = () => {
               >
                 チェックされているものをコンソールで確認
               </Button>
+            </CardBody>
+          </Card>
+
+          {/* game/ThinkingTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">ThinkingTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ThinkingTheme />
             </CardBody>
           </Card>
 
