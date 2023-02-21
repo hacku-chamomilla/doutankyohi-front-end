@@ -35,11 +35,15 @@ const Component: NextPage = () => {
   ];
 
   const exampleHintList = [
-    { text: "フルハウス", isSelect: false },
-    { text: "トランプ", isSelect: false },
-    { text: "オールイン", isSelect: false },
-    { text: "トランプ", isSelect: false },
-    { text: "ストレート", isSelect: false },
+    {
+      text: "フルハウス",
+      avatarIndex: 0,
+      isSelect: false,
+    },
+    { text: "トランプ", avatarIndex: 1, isSelect: false },
+    { text: "オールイン", avatarIndex: 2, isSelect: false },
+    { text: "トランプ", avatarIndex: 3, isSelect: false },
+    { text: "ストレート", avatarIndex: 4, isSelect: false },
   ];
 
   return (
