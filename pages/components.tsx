@@ -18,7 +18,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
-import { HowToDecideTheme } from "@/components/game/HoeToDecideTheme";
+import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
