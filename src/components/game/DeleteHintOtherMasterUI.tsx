@@ -19,10 +19,10 @@ export const DeleteHintOtherMasterUI = ({ hintList }: Props) => {
       <Text fontSize={24}>被ったヒントを見つけましょう</Text>
       <VSpacer size={20} />
       <VStack spacing={4} align="stretch">
-        {hintList.map((hint) => {
+        {hintList.map((hint, i) => {
           return (
             <>
-              <Card>
+              <Card key={i}>
                 <CardBody>
                   <HStack>
                     <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
