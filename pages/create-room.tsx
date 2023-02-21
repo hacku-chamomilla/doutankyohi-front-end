@@ -48,8 +48,13 @@ const CreateRoom: NextPage = () => {
         }
       })
       .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error(err);
+        router.push({
+          pathname: "/http-error",
+          query: {
+            message: err.message,
+            name: err.name,
+          },
+        });
       });
   };
 
