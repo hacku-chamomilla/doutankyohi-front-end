@@ -9,6 +9,7 @@ import {
   Container,
   Heading,
   HStack,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 
@@ -128,8 +129,8 @@ const Component: NextPage = () => {
                 setAvatarIndex={setAvatarIndex}
               />
             </CardBody>
-            <text>名前:{nickname}</text>
-            <text>Index:{avatarIndex}</text>
+            <Text>名前:{nickname}</Text>
+            <Text>Index:{avatarIndex}</Text>
           </Card>
 
           {/* common/PageBackIcon */}
@@ -156,6 +157,7 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
               <Button
                 colorScheme="blue"
                 onClick={() => {
