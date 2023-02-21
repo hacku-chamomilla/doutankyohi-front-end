@@ -1,17 +1,17 @@
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import type { NextPage } from "next";
 import React from "react";
 
-import { Button, Center, IconButton, VStack } from "@chakra-ui/react";
+import { Button, Center, VStack } from "@chakra-ui/react";
 
+import { CustomTitleText } from "@/components/common/CustomTitleText";
+import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { CustomTitleText } from "@/components/CustomTitleText";
 import { MemberList } from "@/components/MemberList";
 
 const Wait: NextPage = () => {
   return (
     <>
-      <IconButton aria-label="Search database" icon={<ArrowBackIcon />} />
+      <PageBackIcon pass={"/create-room"} />
       <Center>
         <VStack>
           <VSpacer size={20} />
