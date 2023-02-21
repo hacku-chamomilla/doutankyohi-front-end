@@ -42,7 +42,14 @@ const CreateRoom: NextPage = () => {
             color={"white"}
             minW={64}
             onClick={() => {
-              router.push("/game");
+              router.push({
+                pathname: "/game",
+                query: {
+                  username: nickname,
+                  avatarIcon: avatarIndex,
+                  isRoomCreate: true,
+                },
+              });
             }}
           >
             ルーム作成
