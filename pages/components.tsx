@@ -18,6 +18,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -151,6 +152,15 @@ const Component: NextPage = () => {
               >
                 チェックされているものをコンソールで確認
               </Button>
+            </CardBody>
+          </Card>
+
+          {/* ThinkingTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">ThinkingTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ThinkingTheme />
             </CardBody>
           </Card>
 
