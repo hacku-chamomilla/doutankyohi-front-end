@@ -23,6 +23,7 @@ import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMaster
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
+import { Wait } from "@/components/game/Wait";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -213,6 +214,14 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/Wait */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Wait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Wait />
+            </CardBody>
+          </Card>
           <VSpacer size={12} />
 
           {/* --------------------*/}
