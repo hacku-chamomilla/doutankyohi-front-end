@@ -5,14 +5,17 @@ import {
   Card,
   CardBody,
   Checkbox,
-  Stack,
-  UnorderedList,
+  HStack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 
-import { VSpacer } from "@/components/common/Spacer";
+import { avatarList } from "@/data/AvatarList";
+
 type Props = {
   hintList: {
     text: string;
+    avatarIndex: number;
     isSelect: boolean;
   }[];
 };
@@ -20,32 +23,30 @@ type Props = {
 export const DeleteHintList = ({ hintList }: Props) => {
   return (
     <>
-      <VSpacer size={8} />
-      <UnorderedList>
+      <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
           return (
             <div key={i}>
-              <Stack spacing="8">
-                <Checkbox
-                  size="lg"
-                  colorScheme="orange"
-                  onChange={() => {
-                    hint.isSelect = !hint.isSelect;
-                  }}
-                >
-                  <Card key={i}>
-                    <CardBody>
-                      <Avatar size="xs" src="https://bit.ly/broken-link" />
-                      <text>{hint.text}</text>
-                    </CardBody>
-                  </Card>
-                </Checkbox>
-              </Stack>
-              <VSpacer size={8} />
+              <Checkbox
+                size="lg"
+                colorScheme="orange"
+                onChange={() => {
+                  hint.isSelect = !hint.isSelect;
+                }}
+              >
+                <Card>
+                  <CardBody>
+                    <HStack>
+                      <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
+                      <Text>{hint.text}</Text>
+                    </HStack>
+                  </CardBody>
+                </Card>
+              </Checkbox>
             </div>
           );
         })}
-      </UnorderedList>
+      </VStack>
     </>
   );
 };
