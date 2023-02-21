@@ -18,6 +18,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
+import { HowToDecideTheme } from "@/components/game/HoeToDecideTheme";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/AvatarList";
@@ -133,6 +134,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <PageBackIcon pass={"/"} />
+            </CardBody>
+          </Card>
+
+          {/* game/HowToDecideTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/HowToDecideTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <HowToDecideTheme />
             </CardBody>
           </Card>
 
