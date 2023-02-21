@@ -20,6 +20,7 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
+import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { MemberList } from "@/components/MemberList";
@@ -141,6 +142,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <PageBackIcon pass={"/"} />
+            </CardBody>
+          </Card>
+
+          {/* game/HowToDecideTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/HowToDecideTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <HowToDecideTheme />
             </CardBody>
           </Card>
 
