@@ -14,7 +14,7 @@ export const ThinkingTheme = () => {
           </Text>
           <VSpacer size={12} />
           <Text fontSize={20} fontStyle={"oblique"}>
-            出題するお題を話し合ってください
+            お題は入力されたものからランダムに選ばれます
           </Text>
         </VStack>
       </Center>
