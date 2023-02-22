@@ -13,7 +13,7 @@ import { MemberList } from "@/components/MemberList";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilRoom } from "@/store/Recoil";
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -26,7 +26,11 @@ const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
+  const player = useRecoilValue(RecoilPlayer);
   const router = useRouter();
+
+  // eslint-disable-next-line no-console
+  console.log(`----------\nplayerId: ${player.id}\n----------`); // TODO 作業用のログ, いつかは消す
 
   const memberGameStart = () => {
     const url = BASE_URL + "step";
@@ -96,6 +100,14 @@ const Wait: NextPage = () => {
           {playerList && (
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
+          <Button
+            colorScheme="red"
+            onClick={() => {
+              router.push("/game");
+            }}
+          >
+            /gameへ！ (デバック用, 後に消す)
+          </Button>
           <VSpacer size={24} />
           {router.query && router.query.isRoomCreate == "true" && (
             <Button

@@ -30,7 +30,7 @@ export const Wait = ({ setStep }: Props) => {
         params: { roomId: room.id },
       })
       .then((res) => {
-        if (res.data == 6) {
+        if (res.data == 5) {
           //NOTE: 回答を入力する step のマジックナンバー
           setStep(res.data);
         }
