@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, VStack } from "@chakra-ui/react";
+import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
@@ -24,8 +24,27 @@ type Player = {
 
 const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
+  const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
+
+  const memberGameStart = () => {
+    const url = BASE_URL + "step";
+
+    axios
+      .get(url, {
+        params: {
+          roomId: room.id,
+        },
+      })
+      .then((res) => {
+        setStep(res.data);
+        step == 1 && router.push("/game");
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
 
   const handleGameStart = () => {
     const url = BASE_URL + "start-game";
@@ -86,6 +105,11 @@ const Wait: NextPage = () => {
               onClick={handleGameStart}
             >
               ゲーム開始
+            </Button>
+          )}
+          {!router.query.isRoomCreate && (
+            <Button colorScheme="blue" onClick={memberGameStart}>
+              Stepをリロード
             </Button>
           )}
         </VStack>
