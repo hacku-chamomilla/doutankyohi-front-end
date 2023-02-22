@@ -1,6 +1,7 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Button, Center, VStack } from "@chakra-ui/react";
@@ -10,33 +11,59 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
-import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { BASE_URL } from "@/data/BaseUrl";
+
+import { RecoilRoom } from "@/store/Recoil";
+
+type Player = {
+  nickname: string;
+  particIcon: number;
+};
 
 const Wait: NextPage = () => {
-  const exampleNameList = [
-    { name: "ふかむーる", avatarIndex: 0 },
-    { name: "ふかみん", avatarIndex: 1 },
-    { name: "ふかむー", avatarIndex: 2 },
-    { name: "ふかめも", avatarIndex: 3 },
-    { name: "KJ", avatarIndex: 4 },
-  ];
-  const _ = useRecoilValue(RecoilPlayer);
+  const [playerList, setPlayerList] = useState<Player[]>();
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
+
+  const FetchPlayerList = () => {
+    const url = BASE_URL + "partic-list";
+    axios
+      .get(url, {
+        params: {
+          roomId: room.id,
+        },
+      })
+      .then((res) => {
+        setPlayerList(res.data);
+      })
+      .catch((err) => {
+        router.push({
+          pathname: "/http-error",
+          query: {
+            message: err.message,
+            name: err.name,
+          },
+        });
+      });
+  };
+
+  useEffect(() => {
+    FetchPlayerList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <PageBackIcon pass={"/create-room"} />
       <Center>
         <VStack>
-          <p>動作確認用</p>
-          <CustomTitleText title="ユーザID" text={_.id}></CustomTitleText>
-          <p>----------</p>
-
           <VSpacer size={20} />
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
-          <MemberList title={"参加者リスト"} memberNameList={exampleNameList} />
+          <Button onClick={FetchPlayerList}>参加者リストの更新</Button>
+          {playerList && (
+            <MemberList title={"参加者リスト"} memberNameList={playerList} />
+          )}
           <VSpacer size={24} />
           {router.query && router.query.isRoomCreate == "true" && (
             <Button

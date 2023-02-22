@@ -38,11 +38,11 @@ const Component: NextPage = () => {
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
   const exampleNameList = [
-    { name: "ふかむーる", avatarIndex: 0 },
-    { name: "ふかみん", avatarIndex: 1 },
-    { name: "ふかむー", avatarIndex: 2 },
-    { name: "ふかめも", avatarIndex: 3 },
-    { name: "KJ", avatarIndex: 4 },
+    { nickname: "ふかむーる", particIcon: 0 },
+    { nickname: "ふかみん", particIcon: 1 },
+    { nickname: "ふかむー", particIcon: 2 },
+    { nickname: "ふかめも", particIcon: 3 },
+    { nickname: "KJ", particIcon: 4 },
   ];
 
   const exampleHintList = [
