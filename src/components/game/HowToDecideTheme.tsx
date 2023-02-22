@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import {
   Button,
@@ -9,10 +12,46 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { VSpacer } from "../common/Spacer";
+import { VSpacer } from "@/components/common/Spacer";
 
-export const HowToDecideTheme = () => {
+import { BASE_URL } from "@/data/BaseUrl";
+
+import { RecoilRoom } from "@/store/Recoil";
+
+import { HandleError } from "@/hooks/useError";
+
+type Props = {
+  setStep: Dispatch<SetStateAction<number>>;
+};
+
+export const HowToDecideTheme = ({ setStep }: Props) => {
   const [value, setValue] = useState<string>("0");
+  const room = useRecoilValue(RecoilRoom);
+  const router = useRouter();
+
+  const hoWToChoice = () => {
+    const url = BASE_URL + "how-decide-theme";
+    console.log(value);
+    console.log(room.id);
+    axios
+      .post(url, {
+        roomId: room.id,
+        HowToDecideTheme: Number(value),
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          if (value === "0") {
+            setStep(2);
+          } else {
+            setStep(3);
+          }
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
+
   return (
     <>
       <Center>
@@ -33,16 +72,7 @@ export const HowToDecideTheme = () => {
             </VStack>
           </RadioGroup>
           <VSpacer size={12} />
-          <Button
-            colorScheme="blue"
-            size="lg"
-            minW={48}
-            onClick={() => {
-              // eslint-disable-next-line no-console
-              console.log(`HowToTheme: value=${value}`); // TODO: 以下の TODO 実装時に削除する
-              // TODO: テーマの選択方法を POST する実装を追加する
-            }}
-          >
+          <Button colorScheme="blue" size="lg" minW={48} onClick={hoWToChoice}>
             決定
           </Button>
           <VSpacer size={12} />
