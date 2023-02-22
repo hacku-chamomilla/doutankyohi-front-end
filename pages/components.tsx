@@ -19,7 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
-import { Answer } from "@/components/game/answer";
+import { Answer } from "@/components/game/Answer";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -248,9 +248,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/answer */}
+          {/* game/Answer */}
           <VSpacer size={8} />
-          <Heading size="lg">game/answer</Heading>
+          <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
               <Answer hintList={exampleAnswerHintList} />
