@@ -37,6 +37,8 @@ const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  const [step, setStep] = useState<number>(0);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -224,7 +226,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Wait</Heading>
           <Card variant="filled">
             <CardBody>
-              <Wait />
+              <Wait setStep={setStep} />
             </CardBody>
           </Card>
           <VSpacer size={12} />
