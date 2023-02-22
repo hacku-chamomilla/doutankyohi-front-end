@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -7,11 +8,14 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 
+import { BASE_URL } from "@/data/BaseUrl";
+
 import { RecoilPlayer } from "@/store/Recoil";
 
-import { BASE_URL } from "../src/data/BaseUrl";
+import { HandleError } from "@/hooks/useError";
 
 const Game: NextPage = () => {
+  const router = useRouter();
   const player = useRecoilValue(RecoilPlayer);
   const [role, setRole] = useState<number>();
 
@@ -28,9 +32,9 @@ const Game: NextPage = () => {
         setRole(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        HandleError(router, err);
       });
-  }, []);
+  }, [player.id, router]);
 
   return (
     <>
