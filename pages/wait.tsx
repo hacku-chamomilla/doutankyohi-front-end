@@ -90,7 +90,8 @@ const Wait: NextPage = () => {
 
   return (
     <>
-      <PageBackIcon pass={"/create-room"} />
+      {router.query.isRoomCreate && <PageBackIcon pass={"/create-room"} />}
+      {!router.query.isRoomCreate && <PageBackIcon pass={"/start-game"} />}
       <Center>
         <VStack>
           <VSpacer size={20} />
