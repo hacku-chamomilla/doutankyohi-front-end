@@ -11,21 +11,20 @@ import { Wait } from "@/components/game/Wait";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilPlayer } from "@/store/Recoil";
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
 const Game: NextPage = () => {
   const router = useRouter();
+  const room = useRecoilValue(RecoilRoom);
   const player = useRecoilValue(RecoilPlayer);
   const [role, setRole] = useState<number>();
   const [step, setStep] = useState<number>(1); // /game に最初に到達する時点でstep=1が保証されている(はず)
 
-  const exampleAnswerHintList = [
-    { text: "ジャッカル", isDelete: true },
-    { text: "ジャッカル", isDelete: true },
-    { text: "かいぎしつ", isDelete: false },
-  ];
+  const [hintList, setHintList] =
+    useState<{ key: string; hint: string; isDelete: boolean }[]>();
+
   // eslint-disable-next-line no-console
   console.log(`----------\nplayerId: ${player.id}\n----------`); // TODO 作業用のログ, いつかは消す
 
@@ -43,10 +42,26 @@ const Game: NextPage = () => {
       });
   }, [player.id, router]);
 
+  useEffect(() => {
+    if (step == 6) {
+      const url = BASE_URL + "hint-list";
+      axios
+        .get(url, {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setHintList(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+  }, [room.id, router, step]);
+
   return (
     <>
       {role == 1 && step == 1 && <Wait setStep={setStep} />}
-      {role == 1 && step == 6 && <Answer hintList={exampleAnswerHintList} />}
+      {role == 1 && step == 6 && hintList && <Answer hintList={hintList} />}
       {role == 2 && <HowToDecideTheme />}
       {role == 3 && <ThinkingTheme />}
     </>
