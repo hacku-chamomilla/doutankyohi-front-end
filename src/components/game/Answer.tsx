@@ -37,7 +37,7 @@ export const Answer = ({ setStep, hintList }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setStep(7); //NOTE: 次のステップへ進むマジックナンバー
+          setStep(6); //NOTE: 次のステップへ進むマジックナンバー
         }
       })
       .catch((err) => {

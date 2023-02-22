@@ -83,10 +83,10 @@ const Game: NextPage = () => {
   return (
     <>
       {role == 1 && step == 1 && <Wait setStep={setStep} />}
-      {role == 1 && step == 6 && hintList && (
+      {role == 1 && step == 5 && hintList && (
         <Answer hintList={hintList} setStep={setStep} />
       )}
-      {(role == 1 || role == 3) && step == 7 && hintList && (
+      {(role == 1 || role == 3) && step == 6 && hintList && (
         <DiscussJudgeAns theme={theme} answer={answer} />
       )}
       {role == 2 && <HowToDecideTheme />}
