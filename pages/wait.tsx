@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, VStack } from "@chakra-ui/react";
 
@@ -9,7 +10,10 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
+import { playerId } from "@/store/Recoil";
+
 const Wait: NextPage = () => {
+  const _ = useRecoilValue(playerId);
   const router = useRouter();
 
   return (
@@ -17,6 +21,10 @@ const Wait: NextPage = () => {
       <PageBackIcon pass={"/create-room"} />
       <Center>
         <VStack>
+          <p>動作確認用</p>
+          <CustomTitleText title="ユーザID" text={_.id}></CustomTitleText>
+          <p>----------</p>
+
           <VSpacer size={20} />
           <CustomTitleText title="ルームID" text="abcdef"></CustomTitleText>
           <VSpacer size={20} />
