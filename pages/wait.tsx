@@ -13,6 +13,13 @@ import { MemberList } from "@/components/MemberList";
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 const Wait: NextPage = () => {
+  const exampleNameList = [
+    { name: "ふかむーる", avatarIndex: 0 },
+    { name: "ふかみん", avatarIndex: 1 },
+    { name: "ふかむー", avatarIndex: 2 },
+    { name: "ふかめも", avatarIndex: 3 },
+    { name: "KJ", avatarIndex: 4 },
+  ];
   const _ = useRecoilValue(RecoilPlayer);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
@@ -29,10 +36,7 @@ const Wait: NextPage = () => {
           <VSpacer size={20} />
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
-          <MemberList
-            title={"参加者リスト"}
-            memberNameList={["aaaaa", "bbbbb", "ccccc"]}
-          />
+          <MemberList title={"参加者リスト"} memberNameList={exampleNameList} />
           <VSpacer size={24} />
           {router.query && router.query.isRoomCreate == "true" && (
             <Button

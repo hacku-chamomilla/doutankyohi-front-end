@@ -1,12 +1,16 @@
 import React from "react";
 
-import { ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Avatar, HStack, Text, UnorderedList } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { avatarList } from "@/data/AvatarList";
 type Props = {
   title: string;
-  memberNameList: Array<string>;
+  memberNameList: {
+    name: string;
+    avatarIndex: number;
+  }[];
 };
 
 export const MemberList = ({ title, memberNameList }: Props) => {
@@ -17,9 +21,12 @@ export const MemberList = ({ title, memberNameList }: Props) => {
       <UnorderedList>
         {memberNameList.map((memberName, i) => {
           return (
-            <ListItem key={i} fontSize="2x1">
-              {memberName}
-            </ListItem>
+            <>
+              <HStack>
+                <Avatar key={i} src={avatarList[memberName.avatarIndex]} />
+                <Text fontSize={24}>{memberName.name}</Text>
+              </HStack>
+            </>
           );
         })}
       </UnorderedList>
