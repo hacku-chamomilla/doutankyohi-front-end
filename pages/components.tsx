@@ -256,7 +256,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
-              <Answer hintList={exampleAnswerHintList} />
+              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
