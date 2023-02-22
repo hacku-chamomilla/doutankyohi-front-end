@@ -32,11 +32,22 @@ const Wait: NextPage = () => {
   // eslint-disable-next-line no-console
   console.log(`----------\nplayerId: ${player.id}\n----------`); // TODO 作業用のログ, いつかは消す
 
-  const memberGameStart = () => {
-    const url = BASE_URL + "step";
+  const Update = () => {
+    axios
+      .get(BASE_URL + "partic-list", {
+        params: {
+          roomId: room.id,
+        },
+      })
+      .then((res) => {
+        setPlayerList(res.data);
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
 
     axios
-      .get(url, {
+      .get(BASE_URL + "step", {
         params: {
           roomId: room.id,
         },
@@ -51,10 +62,8 @@ const Wait: NextPage = () => {
   };
 
   const handleGameStart = () => {
-    const url = BASE_URL + "start-game";
-
     axios
-      .post(url, {
+      .post(BASE_URL + "start-game", {
         roomId: room.id,
       })
       .then((res) => {
@@ -67,24 +76,8 @@ const Wait: NextPage = () => {
       });
   };
 
-  const FetchPlayerList = () => {
-    const url = BASE_URL + "partic-list";
-    axios
-      .get(url, {
-        params: {
-          roomId: room.id,
-        },
-      })
-      .then((res) => {
-        setPlayerList(res.data);
-      })
-      .catch((err) => {
-        HandleError(router, err);
-      });
-  };
-
   useEffect(() => {
-    FetchPlayerList();
+    Update();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -94,20 +87,12 @@ const Wait: NextPage = () => {
       <Center>
         <VStack>
           <VSpacer size={20} />
+          <Button onClick={Update}>更新</Button>
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
-          <Button onClick={FetchPlayerList}>参加者リストの更新</Button>
           {playerList && (
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
-          <Button
-            colorScheme="red"
-            onClick={() => {
-              router.push("/game");
-            }}
-          >
-            /gameへ！ (デバック用, 後に消す)
-          </Button>
           <VSpacer size={24} />
           {router.query && router.query.isRoomCreate == "true" && (
             <Button
@@ -117,11 +102,6 @@ const Wait: NextPage = () => {
               onClick={handleGameStart}
             >
               ゲーム開始
-            </Button>
-          )}
-          {!router.query.isRoomCreate && (
-            <Button colorScheme="blue" onClick={memberGameStart}>
-              Stepをリロード
             </Button>
           )}
         </VStack>
