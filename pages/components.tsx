@@ -23,6 +23,7 @@ import { Answer } from "@/components/game/answer";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
+import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
@@ -258,6 +259,17 @@ const Component: NextPage = () => {
               />
             </CardBody>
           </Card>
+
+          {/* game/InputTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputTheme />
+            </CardBody>
+          </Card>
+
+          <VSpacer size={12} />
 
           {/* --------------------*/}
 
