@@ -6,7 +6,8 @@ import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
 type Props = {
   hintList: {
-    text: string;
+    key: string;
+    hint: string;
     isDelete: boolean;
   }[];
 };
@@ -16,7 +17,6 @@ export const Answer = ({ hintList }: Props) => {
   return (
     <>
       <VSpacer size={4} />
-
       <Center>
         <VStack align="hint">
           <Text fontSize={24}>ヒントをもとに解答しよう！！</Text>
@@ -28,7 +28,7 @@ export const Answer = ({ hintList }: Props) => {
                   {hint.isDelete ? (
                     <Text color={"red"}>{"同担拒否"}</Text>
                   ) : (
-                    <Text color={"blue"}>{hint.text}</Text>
+                    <Text color={"blue"}>{hint.hint}</Text>
                   )}
                 </CardBody>
               </Card>

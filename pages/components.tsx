@@ -60,9 +60,9 @@ const Component: NextPage = () => {
     { text: "ストレート", avatarIndex: 4, isSelect: false },
   ];
   const exampleAnswerHintList = [
-    { text: "ジャッカル", isDelete: true },
-    { text: "ジャッカル", isDelete: true },
-    { text: "かいぎしつ", isDelete: false },
+    { key: "", hint: "ジャッカル", isDelete: true },
+    { key: "", hint: "ジャッカル", isDelete: true },
+    { key: "", hint: "かいぎしつ", isDelete: false },
   ];
   return (
     <>
