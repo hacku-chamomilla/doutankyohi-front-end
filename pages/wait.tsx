@@ -9,6 +9,13 @@ import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
 const Wait: NextPage = () => {
+  const exampleNameList = [
+    { name: "ふかむーる", avatarIndex: 0 },
+    { name: "ふかみん", avatarIndex: 1 },
+    { name: "ふかむー", avatarIndex: 2 },
+    { name: "ふかめも", avatarIndex: 3 },
+    { name: "KJ", avatarIndex: 4 },
+  ];
   return (
     <>
       <PageBackIcon pass={"/create-room"} />
@@ -17,10 +24,7 @@ const Wait: NextPage = () => {
           <VSpacer size={20} />
           <CustomTitleText title="ルームID" text="abcdef"></CustomTitleText>
           <VSpacer size={20} />
-          <MemberList
-            title={"参加者リスト"}
-            memberNameList={["aaaaa", "bbbbb", "ccccc"]}
-          />
+          <MemberList title={"参加者リスト"} memberNameList={exampleNameList} />
           <VSpacer size={24} />
           <Button
             h={"60px"}
