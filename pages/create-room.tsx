@@ -11,30 +11,59 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 
 import { avatarList } from "@/data/AvatarList";
-import { baseUrl } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/BaseUrl";
 
-import { playerId } from "@/store/Recoil";
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 const CreateRoom: NextPage = () => {
-  const setPlayer = useSetRecoilState(playerId);
+  const setRoom = useSetRecoilState(RecoilRoom);
+  const setPlayer = useSetRecoilState(RecoilPlayer);
   const router = useRouter();
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
 
   const handleCreateRoom = () => {
-    const url = baseUrl + "add-player";
+    const url = BASE_URL + "create-room";
     axios
       .post(url, {
-        roomId: "zjH7Si3lo3vjtcqJSaE1", //TODO: #78 で API からの戻り値にする
+        password: "",
+        particNum: 5, // TODO: 現状この値を取得する UI が無いため、それを作る or API からこの引数をなくす
+      })
+      .then((res) => {
+        if (res.status == 200) {
+          handleAddPlayer(res.data);
+        }
+      })
+      .catch((err) => {
+        router.push({
+          pathname: "/http-error",
+          query: {
+            message: err.message,
+            name: err.name,
+          },
+        });
+      });
+  };
+
+  const handleAddPlayer = (roomId: string) => {
+    const url = BASE_URL + "add-player";
+
+    axios
+      .post(url, {
+        roomId: roomId,
         playerName: nickname,
         playerIcon: avatarIndex,
       })
       .then((res) => {
         if (res.status === 200) {
-          const _ = {
+          const newRoomId = {
+            id: roomId,
+          };
+          const newPlayerId = {
             id: res.data,
           };
-          setPlayer(_);
+          setRoom(newRoomId);
+          setPlayer(newPlayerId);
 
           router.push({
             pathname: "/wait",

@@ -1,6 +1,12 @@
 import { atom } from "recoil";
 
-export const playerId = atom({
+export const RecoilRoom = atom({
+  key: "roomId",
+  default: {
+    id: "",
+  },
+});
+export const RecoilPlayer = atom({
   key: "player",
   default: {
     id: "",

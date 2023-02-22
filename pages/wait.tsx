@@ -10,10 +10,11 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
-import { playerId } from "@/store/Recoil";
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 const Wait: NextPage = () => {
-  const _ = useRecoilValue(playerId);
+  const _ = useRecoilValue(RecoilPlayer);
+  const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
 
   return (
@@ -26,7 +27,7 @@ const Wait: NextPage = () => {
           <p>----------</p>
 
           <VSpacer size={20} />
-          <CustomTitleText title="ルームID" text="abcdef"></CustomTitleText>
+          <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
           <MemberList
             title={"参加者リスト"}
