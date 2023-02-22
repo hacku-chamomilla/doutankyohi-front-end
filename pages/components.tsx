@@ -26,6 +26,7 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -276,6 +277,15 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <InputTheme />
+            </CardBody>
+          </Card>
+
+          {/* game/Result */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Result</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Result />
             </CardBody>
           </Card>
 
