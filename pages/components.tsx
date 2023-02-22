@@ -19,7 +19,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
-import { Answer } from "@/components/game/answer";
+import { Answer } from "@/components/game/Answer";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -38,6 +38,8 @@ const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  const [step, setStep] = useState<number>(0);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -225,7 +227,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Wait</Heading>
           <Card variant="filled">
             <CardBody>
-              <Wait />
+              <Wait setStep={setStep} />
             </CardBody>
           </Card>
           <VSpacer size={12} />
@@ -249,9 +251,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/answer */}
+          {/* game/Answer */}
           <VSpacer size={8} />
-          <Heading size="lg">game/answer</Heading>
+          <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
               <Answer hintList={exampleAnswerHintList} />
