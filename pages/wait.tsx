@@ -25,6 +25,23 @@ const Wait: NextPage = () => {
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
 
+  const handleGameStart = () => {
+    const url = BASE_URL + "start-game";
+
+    axios
+      .post(url, {
+        roomId: room.id,
+      })
+      .then((res) => {
+        if (res.data) {
+          router.push("/game");
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
+
   const FetchPlayerList = () => {
     const url = BASE_URL + "partic-list";
     axios
