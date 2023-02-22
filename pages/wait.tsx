@@ -15,6 +15,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilRoom } from "@/store/Recoil";
 
+import { HandleError } from "@/hooks/useError";
+
 type Player = {
   nickname: string;
   particIcon: number;
@@ -24,6 +26,23 @@ const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
+
+  const handleGameStart = () => {
+    const url = BASE_URL + "start-game";
+
+    axios
+      .post(url, {
+        roomId: room.id,
+      })
+      .then((res) => {
+        if (res.data) {
+          router.push("/game");
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
 
   const FetchPlayerList = () => {
     const url = BASE_URL + "partic-list";
@@ -37,13 +56,7 @@ const Wait: NextPage = () => {
         setPlayerList(res.data);
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
   };
 
@@ -70,9 +83,7 @@ const Wait: NextPage = () => {
               h={"60px"}
               w={"270px"}
               colorScheme="blue"
-              // onClick={() => {
-              //   router.push("");
-              // }}
+              onClick={handleGameStart}
             >
               ゲーム開始
             </Button>

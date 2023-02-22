@@ -16,6 +16,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
+import { HandleError } from "@/hooks/useError";
+
 const JoinRoom: NextPage = () => {
   const router = useRouter();
   const setRoom = useSetRecoilState(RecoilRoom);
@@ -45,13 +47,7 @@ const JoinRoom: NextPage = () => {
         }
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
     return false;
   };
@@ -80,13 +76,7 @@ const JoinRoom: NextPage = () => {
         }
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
   };
 

@@ -15,6 +15,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
+import { HandleError } from "@/hooks/useError";
+
 const CreateRoom: NextPage = () => {
   const setRoom = useSetRecoilState(RecoilRoom);
   const setPlayer = useSetRecoilState(RecoilPlayer);
@@ -35,13 +37,7 @@ const CreateRoom: NextPage = () => {
         }
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
   };
 
@@ -77,13 +73,7 @@ const CreateRoom: NextPage = () => {
         }
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
   };
 
