@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import React from "react";
 
 import { Button, Center, VStack } from "@chakra-ui/react";
@@ -9,6 +10,8 @@ import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
 const Wait: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <PageBackIcon pass={"/create-room"} />
@@ -22,16 +25,18 @@ const Wait: NextPage = () => {
             memberNameList={["aaaaa", "bbbbb", "ccccc"]}
           />
           <VSpacer size={24} />
-          <Button
-            h={"60px"}
-            w={"270px"}
-            colorScheme="blue"
-            // onClick={() => {
-            //   router.push("");
-            // }}
-          >
-            ゲーム開始
-          </Button>
+          {router.query && router.query.isRoomCreate == "true" && (
+            <Button
+              h={"60px"}
+              w={"270px"}
+              colorScheme="blue"
+              // onClick={() => {
+              //   router.push("");
+              // }}
+            >
+              ゲーム開始
+            </Button>
+          )}
         </VStack>
       </Center>
     </>

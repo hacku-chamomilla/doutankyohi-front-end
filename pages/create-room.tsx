@@ -47,9 +47,7 @@ const CreateRoom: NextPage = () => {
               router.push({
                 pathname: "/wait",
                 query: {
-                  username: nickname,
-                  avatarIcon: avatarIndex,
-                  isRoomCreate: true,
+                  isRoomCreate: "true",
                 },
               });
             }}
