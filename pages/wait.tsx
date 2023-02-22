@@ -15,6 +15,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilRoom } from "@/store/Recoil";
 
+import { HandleError } from "@/hooks/useError";
+
 type Player = {
   nickname: string;
   particIcon: number;
@@ -54,13 +56,7 @@ const Wait: NextPage = () => {
         setPlayerList(res.data);
       })
       .catch((err) => {
-        router.push({
-          pathname: "/http-error",
-          query: {
-            message: err.message,
-            name: err.name,
-          },
-        });
+        HandleError(router, err);
       });
   };
 
@@ -87,9 +83,7 @@ const Wait: NextPage = () => {
               h={"60px"}
               w={"270px"}
               colorScheme="blue"
-              // onClick={() => {
-              //   router.push("");
-              // }}
+              onClick={handleGameStart}
             >
               ゲーム開始
             </Button>
