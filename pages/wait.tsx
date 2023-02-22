@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, VStack } from "@chakra-ui/react";
 
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
@@ -90,7 +90,11 @@ const Wait: NextPage = () => {
 
   return (
     <>
-      <PageBackIcon pass={"/create-room"} />
+      {router.query.isRoomCreate ? (
+        <PageBackIcon pass={"/create-room"} />
+      ) : (
+        <PageBackIcon pass={"/start-game"} />
+      )}
       <Center>
         <VStack>
           <VSpacer size={20} />
