@@ -1,12 +1,57 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, Input, Text, VStack } from "@chakra-ui/react";
 
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { VSpacer } from "@/components/common/Spacer";
 
-export const InputHint = () => {
+import { BASE_URL } from "@/data/BaseUrl";
+
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+
+import { HandleError } from "@/hooks/useError";
+
+type Props = {
+  theme: string;
+  setStep: Dispatch<SetStateAction<number>>;
+};
+
+export const InputHint = ({ theme, setStep }: Props) => {
   const [inputHint, setInputHint] = useState<string>("");
+  const player = useRecoilValue(RecoilPlayer);
+  const room = useRecoilValue(RecoilRoom);
+  const router = useRouter();
+
+  const HintPost = () => {
+    const url = BASE_URL + "create-hint";
+    const url2 = BASE_URL + "step";
+    axios
+      .post(url, {
+        playerId: player.id,
+        hint: inputHint,
+        roomId: room.id,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          axios
+            .get(url2, {
+              params: { roomId: room.id },
+            })
+            .then((res) => {
+              setStep(res.data);
+            })
+            .catch((err) => {
+              HandleError(router, err);
+            });
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
 
   return (
     <>
@@ -16,22 +61,14 @@ export const InputHint = () => {
           <VSpacer size={4} />
           <Text>ほかの人と被らないようにヒントを作成しましょう </Text>
           <VSpacer size={8} />
-          <CustomTitleText title="お題" text="ポーカー" />
+          <CustomTitleText title="お題" text={theme} />
           <VSpacer size={8} />
           <Input
             placeholder="ヒント"
             onChange={(event) => setInputHint(event.target.value)}
           />
           <VSpacer size={8} />
-          <Button
-            colorScheme="blue"
-            minW={48}
-            onClick={() => {
-              // eslint-disable-next-line no-console
-              console.log(inputHint); // TODO: 以下の TODO 実装時に削除する
-              // TODO: ヒントを API で送信する実装
-            }}
-          >
+          <Button colorScheme="blue" minW={48} onClick={HintPost}>
             決定
           </Button>
           <VSpacer size={8} />
