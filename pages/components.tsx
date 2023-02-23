@@ -19,6 +19,7 @@ import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
+import { YouAre } from "@/components/common/YouAre";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { Answer } from "@/components/game/Answer";
 import { AnswerWait } from "@/components/game/AnswerWait";
@@ -280,6 +281,30 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
           <VSpacer size={12} />
+
+          {/* common/AreYou */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/AreYou</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは人狼です！"
+                text="回答者の妨害をしましょう！"
+                areYou={true}
+              />
+            </CardBody>
+          </Card>
+          <VSpacer size={8} />
+          <Heading size="lg">common/AreYou</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは村人です！"
+                text="協力して正解に導こう！"
+                areYou={false}
+              />
+            </CardBody>
+          </Card>
 
           {/* DeleteHintList */}
           <VSpacer size={8} />
