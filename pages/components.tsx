@@ -21,6 +21,7 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { Answer } from "@/components/game/Answer";
+import { AnswerWait } from "@/components/game/AnswerWait";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -279,6 +280,25 @@ const Component: NextPage = () => {
               >
                 チェックされているものをコンソールで確認
               </Button>
+            </CardBody>
+          </Card>
+
+          {/* game/Answer */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Answer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
+          {/* game/AnswerWait */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/AnswerWait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
             </CardBody>
           </Card>
 
