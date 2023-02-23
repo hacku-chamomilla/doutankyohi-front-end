@@ -31,8 +31,6 @@ export const HowToDecideTheme = ({ setStep }: Props) => {
 
   const hoWToChoice = () => {
     const url = BASE_URL + "how-decide-theme";
-    console.log(value);
-    console.log(room.id);
     axios
       .post(url, {
         roomId: room.id,
