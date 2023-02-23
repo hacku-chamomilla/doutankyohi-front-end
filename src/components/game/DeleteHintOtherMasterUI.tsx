@@ -1,6 +1,15 @@
 import React from "react";
 
-import { Avatar, Card, CardBody, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Card,
+  CardBody,
+  Center,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -16,14 +25,20 @@ type Props = {
 export const DeleteHintOtherMasterUI = ({ hintList }: Props) => {
   return (
     <>
-      <Text fontSize={24}>被ったヒントを見つけましょう</Text>
+      <Center>
+        <HStack>
+          <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+          <Text fontSize={24}>被ったヒントをみつけよう</Text>
+          <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+        </HStack>
+      </Center>
       <VSpacer size={20} />
       <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
           return (
             <>
               <Card key={i}>
-                <CardBody>
+                <CardBody boxShadow={"lg"}>
                   <HStack>
                     <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
                     <Text>{hint.text}</Text>

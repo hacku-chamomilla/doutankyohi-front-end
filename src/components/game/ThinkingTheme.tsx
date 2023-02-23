@@ -25,9 +25,7 @@ export const ThinkingTheme = ({ setStep }: Props) => {
     <>
       <Center>
         <VStack>
-          <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
-            あなたはヒントを与える人です!
-          </Text>
+          <Text fontSize="xl">あなたはヒントホルダーです！</Text>
           <VSpacer size={12} />
           <Text fontSize={20} fontStyle={"oblique"}>
             お題の決め方を相談してください！

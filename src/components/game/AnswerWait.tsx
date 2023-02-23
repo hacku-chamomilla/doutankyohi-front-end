@@ -1,13 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import { SpinnerIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
   CardBody,
   Center,
   HStack,
-  Icon,
   Text,
   VStack,
 } from "@chakra-ui/react";

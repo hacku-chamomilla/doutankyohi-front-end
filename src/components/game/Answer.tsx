@@ -3,7 +3,16 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Card, CardBody, Center, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Center,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 
 import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
@@ -50,12 +59,24 @@ export const Answer = ({ setStep, hintList }: Props) => {
       <VSpacer size={4} />
       <Center>
         <VStack align="hint">
-          <Text fontSize={24}>ヒントをもとに解答しよう！！</Text>
+          <HStack>
+            <Image
+              src="https://bit.ly/3ILhIE6"
+              alt="deco4"
+              boxSize="51px"
+            ></Image>
+            <Text fontSize={24}>ヒントをもとに解答しよう</Text>
+            <Image
+              src="https://bit.ly/3XZKCoe"
+              alt="deco4"
+              boxSize="50px"
+            ></Image>
+          </HStack>
           <VSpacer size={4} />
           {hintList.map((hint, i) => {
             return (
               <Card key={i}>
-                <CardBody boxShadow={"dark-lg"}>
+                <CardBody boxShadow={"2xl"}>
                   {hint.isDelete ? (
                     <Text color={"red"}>{"同担拒否"}</Text>
                   ) : (
@@ -77,7 +98,7 @@ export const Answer = ({ setStep, hintList }: Props) => {
           <Button
             fontSize={12}
             textColor={"white"}
-            colorScheme={"blue"}
+            colorScheme={"red"}
             onClick={handleAnswer}
           >
             決定

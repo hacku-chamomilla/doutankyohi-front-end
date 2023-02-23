@@ -39,7 +39,7 @@ export const SelectDuplicateHint = () => {
           <VSpacer size={8} />
           {hintList && <DeleteHintList hintList={hintList} />}
           <VSpacer size={8} />
-          <Button colorScheme="blue" minW={48} onClick={handleClick}>
+          <Button colorScheme="red" minW={48} minH={12} onClick={handleClick}>
             決定
           </Button>
         </VStack>

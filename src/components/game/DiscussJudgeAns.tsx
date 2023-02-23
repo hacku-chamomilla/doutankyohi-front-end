@@ -32,7 +32,7 @@ export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
           <VSpacer size={12} />
           <Button onClick={handleUpdate}>更新</Button>
           <VSpacer size={12} />
-          <Text fontSize={24}>回答者の答えが正解か話し合おう!</Text>
+          <Text fontSize={24}>ゲッサーの答えが正解か話し合おう!</Text>
           <VSpacer size={12} />
           <CustomTitleText title={"お題"} text={theme} />
           <VSpacer size={8} />

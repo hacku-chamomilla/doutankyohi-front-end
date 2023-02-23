@@ -48,7 +48,7 @@ export const InputHint = ({ theme, setStep }: Props) => {
     <>
       <Center>
         <VStack>
-          <Text fontSize="xl">あなたはヒントを与える人です！</Text>
+          <Text fontSize="xl">あなたはヒントホルダーです！</Text>
           <VSpacer size={4} />
           <Text>ほかの人と被らないようにヒントを作成しましょう </Text>
           <VSpacer size={8} />
@@ -59,7 +59,7 @@ export const InputHint = ({ theme, setStep }: Props) => {
             onChange={(event) => setInputHint(event.target.value)}
           />
           <VSpacer size={8} />
-          <Button colorScheme="blue" minW={48} onClick={HintPost}>
+          <Button colorScheme="red" minW={48} minH={12} onClick={HintPost}>
             決定
           </Button>
           <VSpacer size={8} />

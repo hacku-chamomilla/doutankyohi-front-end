@@ -55,7 +55,7 @@ export const HowToDecideTheme = ({ setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={8} />
-          <Text fontSize="xl">あなたはヒントを考える人です！</Text>
+          <Text fontSize="xl">あなたはヒントホルダーです！</Text>
           <VSpacer size={12} />
           <Text fontSize="xl">お題の決定方法</Text>
           <VSpacer size={12} />
@@ -70,7 +70,7 @@ export const HowToDecideTheme = ({ setStep }: Props) => {
             </VStack>
           </RadioGroup>
           <VSpacer size={12} />
-          <Button colorScheme="blue" size="lg" minW={48} onClick={hoWToChoice}>
+          <Button colorScheme="pink" size="lg" minW={48} onClick={hoWToChoice}>
             決定
           </Button>
           <VSpacer size={12} />

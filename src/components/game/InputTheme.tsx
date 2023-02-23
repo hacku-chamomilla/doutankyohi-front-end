@@ -48,9 +48,7 @@ export const InputTheme = ({ setStep }: Props) => {
     <>
       <Center>
         <VStack>
-          <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
-            あなたはヒントを与える人です!
-          </Text>
+          <Text fontSize="xl">あなたはヒントホルダーです！</Text>
           <VSpacer size={12} />
           <Text fontSize={20} fontStyle={"oblique"}>
             お題は入力されたものからランダムに選ばれます
@@ -63,8 +61,8 @@ export const InputTheme = ({ setStep }: Props) => {
             setText={setText}
           />
           <VSpacer size={20} />
-          <Button colorScheme="blue" minW={64} onClick={ThemePost}>
-            更新
+          <Button colorScheme="red" minW={64} minH={12} onClick={ThemePost}>
+            決定
           </Button>
           <VSpacer size={8} />
         </VStack>
