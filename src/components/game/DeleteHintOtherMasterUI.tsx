@@ -41,6 +41,7 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
           <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
         </HStack>
       </Center>
+      <VSpacer size={12} />
       <Button
         onClick={() => {
           FetchStep(setStep, router, room.id);
@@ -48,9 +49,7 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
       >
         更新
       </Button>
-      <VSpacer size={20} />
-      <Text fontSize={24}>被ったヒントを見つけましょう</Text>
-      <VSpacer size={20} />
+      <VSpacer size={12} />
       <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
           return (

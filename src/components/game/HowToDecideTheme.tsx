@@ -6,6 +6,8 @@ import { useRecoilValue } from "recoil";
 import {
   Button,
   Center,
+  HStack,
+  Image,
   Radio,
   RadioGroup,
   Text,
@@ -52,7 +54,11 @@ export const HowToDecideTheme = ({ setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={8} />
-          <Text fontSize="xl">あなたはヒントホルダーです！</Text>
+          <HStack>
+            <Image src="https://bit.ly/3xLp0kK" alt="deco6" boxSize="50px" />
+            <Text fontSize="xl">あなたはヒントホルダーです！</Text>
+            <Image src="https://bit.ly/3XQ6KBu" alt="deco7" boxSize="50px" />
+          </HStack>
           <VSpacer size={12} />
           <Text fontSize="xl">お題の決定方法</Text>
           <VSpacer size={12} />
