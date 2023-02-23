@@ -69,7 +69,8 @@ const Home: NextPage = () => {
                             </AccordionButton>
                           </h2>
                           <AccordionPanel pb={4}>
-                            ゲーム開始時に、1人がゲッサー、その他がヒントホルダーのロールがそれぞれ与えられる。
+                            ゲーム開始時に、1人がゲッサー(回答者)、その他がヒントホルダー(ヒントを与える人)
+                            のロールがそれぞれ与えられる。
                           </AccordionPanel>
                         </AccordionItem>
                         <AccordionItem>
@@ -98,7 +99,12 @@ const Home: NextPage = () => {
                             </AccordionButton>
                           </h2>
                           <AccordionPanel pb={4}>
-                            ヒントホルダーは、お題となった単語に関連する単語をそれぞれ入力する。
+                            <p>
+                              ヒントホルダーは、お題に関連する単語をそれぞれ入力する。
+                            </p>
+                            <p>
+                              ヒントは1単語で入力する。お題が含まれた単語や英語訳等は避ける。
+                            </p>
                           </AccordionPanel>
                         </AccordionItem>
                         <AccordionItem>
@@ -154,7 +160,7 @@ const Home: NextPage = () => {
                   </TabPanel>
                   <TabPanel>
                     <ModalBody>
-                      <Accordion defaultIndex={[0]} allowMultiple>
+                      <Accordion defaultIndex={[0]}>
                         <AccordionItem>
                           <h2>
                             <AccordionButton>

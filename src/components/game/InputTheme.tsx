@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
@@ -51,9 +51,11 @@ export const InputTheme = ({ setStep }: Props) => {
       ) : (
         <Center>
           <VStack>
-            <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
-              あなたはヒントを与える人です!
-            </Text>
+            <HStack>
+              <Image src="https://bit.ly/3xLp0kK" alt="deco6" boxSize="50px" />
+              <Text fontSize="xl">あなたはヒントホルダーです！</Text>
+              <Image src="https://bit.ly/3XQ6KBu" alt="deco7" boxSize="50px" />
+            </HStack>
             <VSpacer size={12} />
             <Text fontSize={20} fontStyle={"oblique"}>
               お題は入力されたものからランダムに選ばれます
@@ -66,7 +68,7 @@ export const InputTheme = ({ setStep }: Props) => {
               setText={setText}
             />
             <VSpacer size={20} />
-            <Button colorScheme="blue" minW={64} onClick={handlePost}>
+            <Button colorScheme="red" minW={64} minH={12} onClick={ThemePost}>
               決定
             </Button>
             <VSpacer size={8} />

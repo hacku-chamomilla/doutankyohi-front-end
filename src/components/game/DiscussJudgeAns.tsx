@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { RecoilRoom } from "@/store/Recoil";
 
@@ -32,7 +32,11 @@ export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
           <VSpacer size={12} />
           <Button onClick={handleUpdate}>更新</Button>
           <VSpacer size={12} />
-          <Text fontSize={24}>回答者の答えが正解か話し合おう!</Text>
+          <HStack>
+            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="50px" />
+            <Text fontSize={24}>ゲッサーの答えが正解か話し合おう!</Text>
+            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="50px" />
+          </HStack>
           <VSpacer size={12} />
           <CustomTitleText title={"お題"} text={theme} />
           <VSpacer size={8} />

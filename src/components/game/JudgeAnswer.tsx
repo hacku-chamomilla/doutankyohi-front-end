@@ -48,7 +48,7 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={4} />
-          <Text fontSize="xl">回答者が入力した答えが正解か判定しよう！</Text>
+          <Text fontSize="xl">ゲッサーが入力した答えが正解か判定しよう！</Text>
           <VSpacer size={12} />
           {theme && <CustomTitleText title="お題" text={theme} />}
           <VSpacer size={4} />
@@ -56,8 +56,8 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
           <VSpacer size={12} />
           <HStack>
             <Button
-              colorScheme="blue"
-              minW={24}
+              colorScheme="red"
+              minW={28}
               onClick={() => {
                 handleJudge(true);
               }}
@@ -67,7 +67,7 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
             <HSpacer size={4} />
             <Button
               colorScheme="blackAlpha"
-              minW={24}
+              minW={28}
               onClick={() => {
                 handleJudge(false);
               }}
