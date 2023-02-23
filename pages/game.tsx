@@ -143,8 +143,8 @@ const Game: NextPage = () => {
       {role == 1 && step == 5 && hintList && (
         <Answer hintList={hintList} setStep={setStep} />
       )}
-      {(role === 1 || role === 2) && step === 5 && hintList && (
-        <AnswerWait hintList={hintList} setStep={setStep} />
+      {(role === 2 || role === 3) && step === 5 && hintList && (
+        <AnswerWait setStep={setStep} hintList={hintList} />
       )}
 
       {/* --------------- */}

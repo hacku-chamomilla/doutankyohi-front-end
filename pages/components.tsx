@@ -171,6 +171,16 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/AnswerWait */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/AnswerWait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
           {/* game/DiscussJudgeAns */}
           <VSpacer size={8} />
           <Heading size="lg">game/DiscussJudgeAns</Heading>
