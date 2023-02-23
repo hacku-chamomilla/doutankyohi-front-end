@@ -32,6 +32,7 @@ import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
+import { VoteResult } from "@/components/game/VoteResult";
 import { Wait } from "@/components/game/Wait";
 import { MemberList } from "@/components/MemberList";
 
@@ -343,6 +344,28 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <InputTheme setStep={setStep} />
+            </CardBody>
+          </Card>
+
+          {/* game/VoteResult */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/VoteResult</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <VoteResult
+                name={"Player1"}
+                wolf={"Player2"}
+                banish={false}
+                peace={false}
+              />
+            </CardBody>
+            <CardBody>
+              <VoteResult
+                name={"Player1"}
+                wolf={"Player2"}
+                banish={true}
+                peace={true}
+              />
             </CardBody>
           </Card>
 
