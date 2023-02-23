@@ -135,8 +135,9 @@ const Game: NextPage = () => {
         <SelectDuplicateHint hintList={hintList} setStep={setStep} />
       )}
       {role === 3 && step === 4 && hintList && (
-        <DeleteHintOtherMasterUI hintList={hintList} />
+        <DeleteHintOtherMasterUI hintList={hintList} setStep={setStep} />
       )}
+
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}
