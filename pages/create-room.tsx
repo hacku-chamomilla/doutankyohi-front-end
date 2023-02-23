@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, Image, Text, VStack } from "@chakra-ui/react";
 
 import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
@@ -77,16 +77,18 @@ const CreateRoom: NextPage = () => {
     <>
       <VSpacer size={4} />
       <PageBackIcon pass={"/start-game"} />
-      <VSpacer size={12} />
+      <VSpacer size={4} />
 
       <Center>
         <VStack>
-          <Text fontSize={40}>ルームの作成</Text>
+          <Text fontSize={40}>ルームを作成</Text>
+          <Image src="https://bit.ly/3XZv4AS" alt="deco1" />
           <VSpacer size={8} />
-          <Text fontSize={20} whiteSpace="pre-line">
-            {"「ルームの作成」を押すと,\nルームIDが自動で生成されます"}
+          <Text fontSize={14} whiteSpace="pre-line">
+            {"「ルームを作成」で、ルームIDが自動生成されます"}
           </Text>
           <VSpacer size={8} />
+
           <NNAndIcon
             title={"ニックネーム"}
             subtitle={"アイコン選択"}
@@ -99,12 +101,13 @@ const CreateRoom: NextPage = () => {
           />
           <VSpacer size={24} />
           <Button
-            colorScheme="blue"
+            colorScheme="orange"
             color={"white"}
             minW={64}
+            minH={12}
             onClick={handleCreateRoom}
           >
-            ルーム作成
+            ルームを作成
           </Button>
           <VSpacer size={24} />
         </VStack>

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 
-import { Button, Center, Input, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
 
 import { CustomInput } from "@/components/common/CustomInput";
 import { NNAndIcon } from "@/components/common/NNAndIcon";
@@ -88,12 +88,14 @@ const JoinRoom: NextPage = () => {
 
   return (
     <>
+      <VSpacer size={4} />
       <PageBackIcon pass={"/start-game"} />
-      <VSpacer size={8} />
+      <VSpacer size={4} />
       <Center>
         <VStack>
-          <Text fontSize="3xl">ルームに参加</Text>
-          <VSpacer size={12} />
+          <Text fontSize={40}>ルームに参加</Text>
+          <Image src="https://bit.ly/3XROgR3" alt="deco1" />
+          <VSpacer size={6} />
           {isRoomId ? (
             <CustomInput
               title={"参加するルームのIDを入力して下さい"}
@@ -117,6 +119,7 @@ const JoinRoom: NextPage = () => {
               <Text color="red">※ルームIDが正しくありません</Text>
             </>
           )}
+          <VSpacer size={8} />
 
           <NNAndIcon
             title={"ニックネーム"}
@@ -128,15 +131,16 @@ const JoinRoom: NextPage = () => {
             setNickname={setNickname}
             setAvatarIndex={setAvatarIndex}
           />
-          <VSpacer size={24} />
+          <VSpacer size={8} />
           <Button
-            colorScheme="linkedin"
+            colorScheme="purple"
             minW={64}
+            minH={12}
             onClick={() => {
               isRoomExit();
             }}
           >
-            参加する
+            ルームに参加
           </Button>
           <VSpacer size={8} />
         </VStack>
