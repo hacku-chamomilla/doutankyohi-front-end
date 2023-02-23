@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Answer } from "@/components/game/Answer";
+import { AnswerWait } from "@/components/game/AnswerWait";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -154,6 +155,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {role == 1 && step == 5 && hintList && (
         <Answer hintList={hintList} setStep={setStep} />
+      )}
+      {(role === 2 || role === 3) && step === 5 && hintList && (
+        <AnswerWait setStep={setStep} hintList={hintList} />
       )}
 
       {/* --------------- */}
