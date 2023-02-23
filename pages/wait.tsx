@@ -13,7 +13,7 @@ import { MemberList } from "@/components/MemberList";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -26,9 +26,12 @@ const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
+  const player = useRecoilValue(RecoilPlayer);
   const owner = useRecoilValue(RecoilOwner);
-
   const router = useRouter();
+
+  // eslint-disable-next-line no-console
+  console.log(`roomId: ${room.id} playerId:${player.id}`); // TODO:デバック用のログ
 
   const Update = () => {
     axios
