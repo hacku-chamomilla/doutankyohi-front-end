@@ -88,7 +88,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step == 7) {
+    if (step === 7) {
       axios
         .get(BASE_URL + "judgement-answer", {
           params: { roomId: room.id },
@@ -110,21 +110,21 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {role == 1 && step == 1 && <Wait setStep={setStep} />}
-      {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
-      {role == 3 && step == 1 && <ThinkingTheme setStep={setStep} />}
+      {role === 1 && step === 1 && <Wait setStep={setStep} />}
+      {role === 2 && step === 1 && <HowToDecideTheme setStep={setStep} />}
+      {role === 3 && step === 1 && <ThinkingTheme setStep={setStep} />}
 
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 2 && (
+      {(role === 2 || role === 3) && step === 2 && (
         <InputTheme setStep={setStep} />
       )}
 
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 3 && (
+      {(role === 2 || role === 3) && step === 3 && (
         <InputHint theme={theme} setStep={setStep} />
       )}
 
@@ -140,7 +140,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}
-      {role == 1 && step == 5 && hintList && (
+      {role === 1 && step === 5 && hintList && (
         <Answer hintList={hintList} setStep={setStep} />
       )}
       {(role === 2 || role === 3) && step === 5 && hintList && (
@@ -150,7 +150,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 6 */}
       {/* --------------- */}
-      {(role == 1 || role == 3) && step == 6 && (
+      {(role === 1 || role === 3) && step === 6 && (
         <DiscussJudgeAns theme={theme} answer={answer} setStep={setStep} />
       )}
       {role === 2 && step === 6 && (
@@ -159,7 +159,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step == 7 && (
+      {step === 7 && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
     </>
