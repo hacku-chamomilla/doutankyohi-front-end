@@ -46,15 +46,6 @@ export const Answer = ({ setStep, hintList }: Props) => {
       });
   };
 
-  let count = 0;
-  // デバック用
-  hintList.map((hint) => {
-    if (!hint.isDelete) {
-      count += 1;
-    }
-  });
-  console.log(`debug ${count}`);
-
   return (
     <>
       <VSpacer size={4} />

@@ -29,15 +29,6 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
 
-  let count = 0;
-  // デバック用
-  hintList.map((hint) => {
-    if (!hint.isDelete) {
-      count += 1;
-    }
-  });
-  console.log(`debug ${count}`);
-
   return (
     <>
       <VSpacer size={4} />
