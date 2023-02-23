@@ -176,7 +176,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/AnswerWait</Heading>
           <Card variant="filled">
             <CardBody>
-              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
+              <AnswerWait hintList={exampleHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
@@ -299,7 +299,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
-              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
+              <Answer hintList={exampleHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
@@ -309,7 +309,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/AnswerWait</Heading>
           <Card variant="filled">
             <CardBody>
-              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
+              <AnswerWait hintList={exampleHintList} setStep={setStep} />
             </CardBody>
           </Card>
 
