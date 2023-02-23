@@ -6,6 +6,7 @@ import { Button, Center, VStack } from "@chakra-ui/react";
 
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const StartGame: NextPage = () => {
   const router = useRouter();
@@ -13,25 +14,29 @@ const StartGame: NextPage = () => {
     <>
       <VSpacer size={4} />
       <PageBackIcon pass={"/"} />
-      <VSpacer size={40} />
+      <VSpacer size={60} />
 
       <Center>
         <VStack>
           <Button
-            colorScheme="blue"
+            rightIcon={<SunIcon />}
+            colorScheme="orange"
             color={"white"}
             minW={64}
+            minH={20}
             onClick={() => {
               router.push("/create-room");
             }}
           >
-            ルーム作成
+            ルームを作成
           </Button>
-          <VSpacer size={12} />
+          <VSpacer size={8} />
           <Button
-            colorScheme="blue"
+            leftIcon={<MoonIcon />}
+            colorScheme="purple"
             color={"white"}
             minW={64}
+            minH={20}
             onClick={() => {
               router.push("/join-room");
             }}
