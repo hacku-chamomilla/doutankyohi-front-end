@@ -7,6 +7,8 @@ import { useRecoilValue } from "recoil";
 import { Answer } from "@/components/game/Answer";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
+import { InputHint } from "@/components/game/InputHint";
+import { InputTheme } from "@/components/game/InputTheme";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 
@@ -89,7 +91,9 @@ const Game: NextPage = () => {
       {(role == 1 || role == 3) && step == 6 && hintList && (
         <DiscussJudgeAns theme={theme} answer={answer} />
       )}
-      {role == 2 && <HowToDecideTheme />}
+      {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
+      {(role == 2 || role == 3) && step == 2 && <InputTheme />}
+      {(role == 2 || role == 3) && step == 3 && <InputHint />}
       {role == 3 && <ThinkingTheme />}
     </>
   );
