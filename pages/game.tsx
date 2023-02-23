@@ -86,7 +86,7 @@ const Game: NextPage = () => {
     }
     if (step == 7) {
       axios
-        .get(BASE_URL + "/judgement-answer", {
+        .get(BASE_URL + "judgement-answer", {
           params: { roomId: room.id },
         })
         .then((res) => {
