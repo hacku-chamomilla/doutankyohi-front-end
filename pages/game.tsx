@@ -110,7 +110,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {role === 1 && step === 1 && <Wait setStep={setStep} />}
+      {role === 1 && step === 1 && (
+        <Wait text={"あなたは回答者です"} setStep={setStep} />
+      )}
       {role === 2 && step === 1 && <HowToDecideTheme setStep={setStep} />}
       {role === 3 && step === 1 && <ThinkingTheme setStep={setStep} />}
 
