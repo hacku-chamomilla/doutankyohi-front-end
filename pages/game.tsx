@@ -60,7 +60,7 @@ const Game: NextPage = () => {
 
   useEffect(() => {
     //NOTE: マジックナンバー
-    if (step === 3) {
+    if (step === 3 || step === 6) {
       axios
         .get(BASE_URL + "theme", {
           params: { roomId: room.id },
@@ -88,16 +88,6 @@ const Game: NextPage = () => {
     }
     //NOTE: マジックナンバー
     if (step === 6) {
-      axios
-        .get(BASE_URL + "theme", {
-          params: { roomId: room.id },
-        })
-        .then((res) => {
-          setTheme(res.data);
-        })
-        .catch((err) => {
-          HandleError(router, err);
-        });
       axios
         .get(BASE_URL + "answer", {
           params: { roomId: room.id },
