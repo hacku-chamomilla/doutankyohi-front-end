@@ -7,6 +7,8 @@ import { useRecoilValue } from "recoil";
 import { Answer } from "@/components/game/Answer";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
+import { InputHint } from "@/components/game/InputHint";
+import { InputTheme } from "@/components/game/InputTheme";
 import { Result } from "@/components/game/Result";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -105,17 +107,22 @@ const Game: NextPage = () => {
       {/* Step 1 */}
       {/* --------------- */}
       {role == 1 && step == 1 && <Wait setStep={setStep} />}
+      {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
+      {role == 3 && step == 1 && <ThinkingTheme />}
 
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
+      {(role == 2 || role == 3) && step == 2 && <InputTheme />}
 
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
+      {(role == 2 || role == 3) && step == 3 && <InputHint />}
 
       {/* --------------- */}
       {/* Step 4 */}
+      {/* --------------- */}
 
       {/* --------------- */}
       {/* Step 5 */}
@@ -137,9 +144,6 @@ const Game: NextPage = () => {
       {step == 7 && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
-
-      {role == 2 && <HowToDecideTheme />}
-      {role == 3 && <ThinkingTheme />}
     </>
   );
 };

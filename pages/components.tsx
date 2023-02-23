@@ -197,7 +197,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/HowToDecideTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <HowToDecideTheme />
+              <HowToDecideTheme setStep={setStep} />
             </CardBody>
           </Card>
 
