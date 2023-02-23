@@ -325,9 +325,9 @@ const Component: NextPage = () => {
           </Card>
           <VSpacer size={12} />
 
-          {/* common/AreYou */}
+          {/* common/YouAre */}
           <VSpacer size={8} />
-          <Heading size="lg">common/AreYou</Heading>
+          <Heading size="lg">common/YouAre</Heading>
           <Card variant="filled">
             <CardBody>
               <YouAre
@@ -338,7 +338,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
           <VSpacer size={8} />
-          <Heading size="lg">common/AreYou</Heading>
+          <Heading size="lg">common/YouAre</Heading>
           <Card variant="filled">
             <CardBody>
               <YouAre
