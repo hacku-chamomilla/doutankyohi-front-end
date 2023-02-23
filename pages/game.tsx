@@ -29,12 +29,13 @@ const Game: NextPage = () => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
   const player = useRecoilValue(RecoilPlayer);
-  const [role, setRole] = useState<number>();
+  const [role, setRole] = useState<number>(-1);
   const [step, setStep] = useState<number>(1); // /game に最初に到達する時点でstep=1が保証されている(はず)
   const [theme, setTheme] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>();
   const [hintList, setHintList] = useState<Hint[]>();
+  const [deletedHintList, setDeletedHintList] = useState<Hint[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role";
@@ -63,7 +64,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step === 4 || step === 5) {
+    if (step === 4) {
       const url = BASE_URL + "hint-list";
       axios
         .get(url, {
@@ -71,6 +72,18 @@ const Game: NextPage = () => {
         })
         .then((res) => {
           setHintList(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    if (step === 5) {
+      axios
+        .get(BASE_URL + "hint-list", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setDeletedHintList(res.data);
         })
         .catch((err) => {
           HandleError(router, err);
@@ -110,13 +123,18 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {role === 1 && step === 1 && <Wait setStep={setStep} />}
+      {role === 1 && step === 1 && (
+        <Wait text={"あなたはゲッサーです！"} setStep={setStep} />
+      )}
       {role === 2 && step === 1 && <HowToDecideTheme setStep={setStep} />}
       {role === 3 && step === 1 && <ThinkingTheme setStep={setStep} />}
 
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
+      {role === 1 && step === 2 && (
+        <Wait text={"あなたはゲッサーです！"} setStep={setStep} />
+      )}
       {(role === 2 || role === 3) && step === 2 && (
         <InputTheme setStep={setStep} />
       )}
@@ -124,6 +142,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
+      {role === 1 && step === 3 && (
+        <Wait text={"あなたはゲッサーです！"} setStep={setStep} />
+      )}
       {(role === 2 || role === 3) && step === 3 && (
         <InputHint theme={theme} setStep={setStep} />
       )}
@@ -131,6 +152,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 4 */}
       {/* --------------- */}
+      {role === 1 && step === 4 && (
+        <Wait text={"あなたはゲッサーです！"} setStep={setStep} />
+      )}
       {role === 2 && step === 4 && hintList && (
         <SelectDuplicateHint hintList={hintList} setStep={setStep} />
       )}
@@ -141,11 +165,11 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}
-      {role === 1 && step === 5 && hintList && (
-        <Answer hintList={hintList} setStep={setStep} />
+      {role === 1 && step === 5 && deletedHintList && (
+        <Answer hintList={deletedHintList} setStep={setStep} />
       )}
-      {(role === 2 || role === 3) && step === 5 && hintList && (
-        <AnswerWait setStep={setStep} hintList={hintList} />
+      {(role === 2 || role === 3) && step === 5 && deletedHintList && (
+        <AnswerWait hintList={deletedHintList} setStep={setStep} />
       )}
 
       {/* --------------- */}
@@ -157,10 +181,11 @@ const Game: NextPage = () => {
       {role === 2 && step === 6 && (
         <JudgeAnswer theme={theme} answer={answer} setStep={setStep} />
       )}
+
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step === 7 && (
+      {step === 7 && isCorrect !== undefined && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
     </>
