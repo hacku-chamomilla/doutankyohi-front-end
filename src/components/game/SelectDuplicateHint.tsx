@@ -62,7 +62,7 @@ export const SelectDuplicateHint = ({ hintList, setStep }: Props) => {
           <VSpacer size={8} />
           <DeleteHintList hintList={hintList} />
           <VSpacer size={8} />
-          <Button colorScheme="blue" minW={48} onClick={handleClick}>
+          <Button colorScheme="red" minW={48} minH={12} onClick={handleClick}>
             決定
           </Button>
         </VStack>

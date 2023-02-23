@@ -72,11 +72,11 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
           )}
           <VSpacer size={12} />
           {owner.isOwner ? (
-            <Button colorScheme="linkedin" minW={64} onClick={Initialize}>
+            <Button colorScheme="red" minW={64} minH={12} onClick={Initialize}>
               次へ
             </Button>
           ) : (
-            <Button colorScheme="linkedin" minW={64} onClick={FetchStep}>
+            <Button colorScheme="red" minW={64} minH={12} onClick={FetchStep}>
               更新
             </Button>
           )}

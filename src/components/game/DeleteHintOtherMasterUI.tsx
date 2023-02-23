@@ -7,7 +7,9 @@ import {
   Button,
   Card,
   CardBody,
+  Center,
   HStack,
+  Image,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -32,6 +34,14 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
   const room = useRecoilValue(RecoilRoom);
   return (
     <>
+      <Center>
+        <HStack>
+          <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+          <Text fontSize={24}>被ったヒントをみつけよう</Text>
+          <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+        </HStack>
+      </Center>
+      <VSpacer size={12} />
       <Button
         onClick={() => {
           FetchStep(setStep, router, room.id);
@@ -39,20 +49,20 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
       >
         更新
       </Button>
-      <VSpacer size={20} />
-      <Text fontSize={24}>被ったヒントを見つけましょう</Text>
-      <VSpacer size={20} />
+      <VSpacer size={12} />
       <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
           return (
-            <Card key={i}>
-              <CardBody>
-                <HStack>
-                  <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
-                  <Text>{hint.hint}</Text>
-                </HStack>
-              </CardBody>
-            </Card>
+            <>
+              <Card key={i}>
+                <CardBody boxShadow={"lg"}>
+                  <HStack>
+                    <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
+                    <Text>{hint.hint}</Text>
+                  </HStack>
+                </CardBody>
+              </Card>
+            </>
           );
         })}
       </VStack>

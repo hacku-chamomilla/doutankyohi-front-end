@@ -10,7 +10,14 @@ export const CustomTitleText = ({ title, text }: Props) => {
   return (
     <HStack spacing="40px">
       <Text fontSize="lg">{title}</Text>
-      <Box borderWidth="2px" borderColor="blue" borderRadius={10} p={3}>
+      <Box
+        borderWidth="2px"
+        borderColor="blue"
+        borderRadius={10}
+        p={3}
+        minW={48}
+        minH={12}
+      >
         {text}
       </Box>
     </HStack>
