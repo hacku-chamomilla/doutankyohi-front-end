@@ -1,18 +1,22 @@
+import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
 
-import { SpinnerIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
   CardBody,
   Center,
   HStack,
-  Icon,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
+
+import { RecoilRoom } from "@/store/Recoil";
+
+import { FetchStep } from "@/hooks/useFetchStep";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
@@ -23,7 +27,10 @@ type Props = {
   }[];
 };
 
-export const AnswerWait = ({ hintList }: Props) => {
+export const AnswerWait = ({ setStep, hintList }: Props) => {
+  const router = useRouter();
+  const room = useRecoilValue(RecoilRoom);
+
   return (
     <>
       <VSpacer size={4} />
@@ -34,6 +41,16 @@ export const AnswerWait = ({ hintList }: Props) => {
             <Button isLoading colorScheme="gray"></Button>
           </HStack>
           <VSpacer size={4} />
+
+          <Button
+            fontSize={20}
+            textColor={"white"}
+            colorScheme={"blue"}
+            onClick={() => FetchStep(setStep, router, room.id)}
+          >
+            更新
+          </Button>
+          <VSpacer size={12} />
           {hintList.map((hint, i) => {
             return (
               <Card key={i}>
@@ -48,7 +65,7 @@ export const AnswerWait = ({ hintList }: Props) => {
             );
           })}
 
-          <VSpacer size={12} />
+          <VSpacer size={42} />
         </VStack>
       </Center>
     </>
