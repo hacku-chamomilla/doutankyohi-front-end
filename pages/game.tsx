@@ -119,6 +119,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
+      {role === 1 && step === 2 && (
+        <Wait text={"あなたは回答者です"} setStep={setStep} />
+      )}
       {(role === 2 || role === 3) && step === 2 && (
         <InputTheme setStep={setStep} />
       )}
@@ -126,6 +129,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
+      {role === 1 && step === 3 && (
+        <Wait text={"あなたは回答者です"} setStep={setStep} />
+      )}
       {(role === 2 || role === 3) && step === 3 && (
         <InputHint theme={theme} setStep={setStep} />
       )}
@@ -133,6 +139,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 4 */}
       {/* --------------- */}
+      {role === 1 && step === 4 && (
+        <Wait text={"あなたは回答者です"} setStep={setStep} />
+      )}
       {role === 2 && step === 4 && hintList && (
         <SelectDuplicateHint hintList={hintList} setStep={setStep} />
       )}
