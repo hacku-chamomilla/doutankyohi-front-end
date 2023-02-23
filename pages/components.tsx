@@ -61,8 +61,8 @@ const Component: NextPage = () => {
       avatarIndex: 0,
       isDelete: false,
     },
-    { playerId: "22222", hint: "トランプ", avatarIndex: 1, isDelete: false },
-    { playerId: "33333", hint: "オールイン", avatarIndex: 2, isDelete: false },
+    { playerId: "22222", hint: "トランプ", avatarIndex: 1, isDelete: true },
+    { playerId: "33333", hint: "オールイン", avatarIndex: 2, isDelete: true },
     { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
     { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
@@ -297,25 +297,6 @@ const Component: NextPage = () => {
               >
                 チェックされているものをコンソールで確認
               </Button>
-            </CardBody>
-          </Card>
-
-          {/* game/Answer */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/Answer</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <Answer hintList={exampleHintList} setStep={setStep} />
-              <VSpacer size={8} />
-            </CardBody>
-          </Card>
-
-          {/* game/AnswerWait */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/AnswerWait</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <AnswerWait hintList={exampleHintList} setStep={setStep} />
             </CardBody>
           </Card>
 
