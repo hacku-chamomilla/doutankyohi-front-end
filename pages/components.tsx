@@ -24,6 +24,7 @@ import { YouAre } from "@/components/common/YouAre";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { Answer } from "@/components/game/Answer";
 import { AnswerWait } from "@/components/game/AnswerWait";
+import { BanishPerson } from "@/components/game/BanishPerson";
 import { ChoiceWolf } from "@/components/game/ChoiceWolf";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
@@ -355,6 +356,16 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <ChoiceWolf wolfList={exampleWolfHintList} />
+              <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/* game/BanishPerson*/}
+          <VSpacer size={8} />
+          <Heading size="lg">game/BanishPerson</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <BanishPerson player="KJ" vote={6} />
               <p>{text}</p>
             </CardBody>
           </Card>
