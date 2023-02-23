@@ -24,7 +24,7 @@ const Game: NextPage = () => {
   const room = useRecoilValue(RecoilRoom);
   const player = useRecoilValue(RecoilPlayer);
   const [role, setRole] = useState<number>();
-  const [step, setStep] = useState<number>(7); // /game に最初に到達する時点でstep=1が保証されている(はず)
+  const [step, setStep] = useState<number>(1); // /game に最初に到達する時点でstep=1が保証されている(はず)
   const [theme, setTheme] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
