@@ -14,6 +14,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+import { ChoiceWolfList } from "@/components/ChoiceWolfList";
 import { CustomInput } from "@/components/common/CustomInput";
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { NNAndIcon } from "@/components/common/NNAndIcon";
@@ -23,6 +24,7 @@ import { YouAre } from "@/components/common/YouAre";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { Answer } from "@/components/game/Answer";
 import { AnswerWait } from "@/components/game/AnswerWait";
+import { ChoiceWolf } from "@/components/game/ChoiceWolf";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -64,7 +66,38 @@ const Component: NextPage = () => {
     { nickname: "ふかめも", particIcon: 3, point: 2 },
     { nickname: "KJ", particIcon: 4, point: 3 },
   ];
-
+  const exampleWolfHintList = [
+    {
+      playerId: "11111",
+      playerName: "KJ",
+      hint: "フルハウス",
+      avatarIndex: 0,
+    },
+    {
+      playerId: "22222",
+      playerName: "ケイジ",
+      hint: "平和宣言(トランプ)",
+      avatarIndex: 1,
+    },
+    {
+      playerId: "33333",
+      playerName: "本多",
+      hint: "オールイン",
+      avatarIndex: 2,
+    },
+    {
+      playerId: "44444",
+      playerName: "ホンダ",
+      hint: "トランプ",
+      avatarIndex: 3,
+    },
+    {
+      playerId: "55555",
+      playerName: "ケイジェイ",
+      hint: "ストレート",
+      avatarIndex: 4,
+    },
+  ];
   const exampleHintList = [
     {
       playerId: "11111",
@@ -139,6 +172,16 @@ const Component: NextPage = () => {
                 text="協力して正解に導こう！"
                 areYou={false}
               />
+            </CardBody>
+          </Card>
+
+          {/* ChoiceWolfList */}
+          <VSpacer size={8} />
+          <Heading size="lg">ChoiceWolfList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ChoiceWolfList wolfList={exampleWolfHintList} />
+              <p>{text}</p>
             </CardBody>
           </Card>
 
@@ -373,6 +416,80 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
           <VSpacer size={12} />
+
+          {/* common/YouAre */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは人狼です！"
+                text="正解しないように妨害をしよう！"
+                areYou={true}
+              />
+            </CardBody>
+          </Card>
+          <VSpacer size={8} />
+          <Heading size="lg">common/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは村人です！"
+                text="協力して正解に導こう！"
+                areYou={false}
+              />
+            </CardBody>
+          </Card>
+
+          {/* game/ChoiceWolf*/}
+          <VSpacer size={8} />
+          <Heading size="lg">game/ChoiceWolf</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ChoiceWolf wolfList={exampleWolfHintList} />
+              <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/* DeleteHintList */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
+            </CardBody>
+          </Card>
+
+          {/* MemberList */}
+          <VSpacer size={8} />
+          <Heading size="lg">MemberList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <MemberList
+                title={"参加者リスト"}
+                memberNameList={exampleNameList}
+              />
+            </CardBody>
+          </Card>
+
+          {/* game/InputTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputTheme setStep={setStep} />
+            </CardBody>
+          </Card>
 
           <VSpacer size={12} />
 
