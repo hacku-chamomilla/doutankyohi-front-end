@@ -113,7 +113,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 2 && <InputTheme />}
+      {(role == 2 || role == 3) && step == 2 && (
+        <InputTheme setStep={setStep} />
+      )}
 
       {/* --------------- */}
       {/* Step 3 */}

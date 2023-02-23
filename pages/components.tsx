@@ -299,7 +299,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/InputTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <InputTheme />
+              <InputTheme setStep={setStep} />
             </CardBody>
           </Card>
 
