@@ -5,16 +5,15 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
+import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
+import { Wait } from "@/components/game/Wait";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
-import { FetchStep } from "@/hooks/useFetchStep";
-
-import { CustomInput } from "../common/CustomInput";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
@@ -22,11 +21,12 @@ type Props = {
 
 export const InputTheme = ({ setStep }: Props) => {
   const [text, setText] = useState("");
+  const [isPost, setIsPost] = useState<boolean>(false);
   const player = useRecoilValue(RecoilPlayer);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
 
-  const ThemePost = () => {
+  const handlePost = () => {
     const url = BASE_URL + "create-theme";
     axios
       .post(url, {
@@ -36,7 +36,7 @@ export const InputTheme = ({ setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          FetchStep(setStep, router, room.id);
+          setIsPost(true);
         }
       })
       .catch((err) => {
@@ -46,29 +46,33 @@ export const InputTheme = ({ setStep }: Props) => {
 
   return (
     <>
-      <Center>
-        <VStack>
-          <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
-            あなたはヒントを与える人です!
-          </Text>
-          <VSpacer size={12} />
-          <Text fontSize={20} fontStyle={"oblique"}>
-            お題は入力されたものからランダムに選ばれます
-          </Text>
-          <VSpacer size={12} />
-          <CustomInput
-            title={""}
-            placeholder={"お題を入力"}
-            text={text}
-            setText={setText}
-          />
-          <VSpacer size={20} />
-          <Button colorScheme="blue" minW={64} onClick={ThemePost}>
-            更新
-          </Button>
-          <VSpacer size={8} />
-        </VStack>
-      </Center>
+      {isPost ? (
+        <Wait text={"他の人の入力を待っています"} setStep={setStep} />
+      ) : (
+        <Center>
+          <VStack>
+            <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
+              あなたはヒントを与える人です!
+            </Text>
+            <VSpacer size={12} />
+            <Text fontSize={20} fontStyle={"oblique"}>
+              お題は入力されたものからランダムに選ばれます
+            </Text>
+            <VSpacer size={12} />
+            <CustomInput
+              title={""}
+              placeholder={"お題を入力"}
+              text={text}
+              setText={setText}
+            />
+            <VSpacer size={20} />
+            <Button colorScheme="blue" minW={64} onClick={handlePost}>
+              決定
+            </Button>
+            <VSpacer size={8} />
+          </VStack>
+        </Center>
+      )}
     </>
   );
 };
