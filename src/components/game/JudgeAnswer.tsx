@@ -33,8 +33,10 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
         roomId: room.id,
         isCorrect: param,
       })
-      .then(() => {
-        FetchStep(setStep, router, room.id);
+      .then((res) => {
+        if (res.status === 200) {
+          FetchStep(setStep, router, room.id);
+        }
       })
       .catch((err) => {
         HandleError(router, err);
