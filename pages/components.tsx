@@ -252,7 +252,10 @@ const Component: NextPage = () => {
           <Heading size="lg">game/SelectDuplicateHint</Heading>
           <Card variant="filled">
             <CardBody>
-              <SelectDuplicateHint />
+              <SelectDuplicateHint
+                hintList={exampleHintList}
+                setStep={setStep}
+              />
             </CardBody>
           </Card>
 
