@@ -5,11 +5,13 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Answer } from "@/components/game/Answer";
+import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { Result } from "@/components/game/Result";
+import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 
@@ -28,7 +30,17 @@ const Game: NextPage = () => {
   const [theme, setTheme] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
+  const exampleHintList = [
+    {
+      text: "フルハウス",
+      avatarIndex: 0,
+      isSelect: false,
+    },
+    { text: "トランプ", avatarIndex: 1, isSelect: false },
+    { text: "オールイン", avatarIndex: 2, isSelect: false },
+    { text: "トランプ", avatarIndex: 3, isSelect: false },
+    { text: "ストレート", avatarIndex: 4, isSelect: false },
+  ];
   const [hintList, setHintList] =
     useState<{ key: string; hint: string; isDelete: boolean }[]>();
 
@@ -120,12 +132,15 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 3 && <InputHint />}
+      {(role == 2 || role == 3) && step == 3 && <InputHint setStep={setStep} />}
 
       {/* --------------- */}
       {/* Step 4 */}
       {/* --------------- */}
-
+      {role === 2 && step === 4 && <SelectDuplicateHint />}
+      {role === 3 && step === 4 && (
+        <DeleteHintOtherMasterUI hintList={exampleHintList} />
+      )}
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}

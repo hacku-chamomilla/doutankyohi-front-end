@@ -206,7 +206,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/InputHint</Heading>
           <Card variant="filled">
             <CardBody>
-              <InputHint />
+              <InputHint setStep={setStep} />
             </CardBody>
           </Card>
 
