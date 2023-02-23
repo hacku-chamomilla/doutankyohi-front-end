@@ -178,7 +178,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/DiscussJudgeAns</Heading>
           <Card variant="filled">
             <CardBody>
-              <DiscussJudgeAns theme={text} answer={text} />
+              <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
             </CardBody>
           </Card>
 
