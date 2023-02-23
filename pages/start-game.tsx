@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Button, Center, VStack } from "@chakra-ui/react";
 
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const StartGame: NextPage = () => {
   const router = useRouter();
