@@ -195,7 +195,10 @@ const Component: NextPage = () => {
           <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
           <Card variant="filled">
             <CardBody>
-              <DeleteHintOtherMasterUI hintList={exampleHintList} />
+              <DeleteHintOtherMasterUI
+                hintList={exampleHintList}
+                setStep={setStep}
+              />
               <VSpacer size={8} />
             </CardBody>
           </Card>
