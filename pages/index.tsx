@@ -58,7 +58,7 @@ const Home: NextPage = () => {
                 <TabPanels>
                   <TabPanel>
                     <ModalBody>
-                      <Accordion defaultIndex={[0]} allowMultiple>
+                      <Accordion defaultIndex={[0]}>
                         <AccordionItem>
                           <h2>
                             <AccordionButton>
