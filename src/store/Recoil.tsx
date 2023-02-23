@@ -13,6 +13,13 @@ export const RecoilPlayer = atom({
   },
 });
 
+export const RecoilOwner = atom({
+  key: "owner",
+  default: {
+    isOwner: false,
+  },
+});
+
 // --------------------
 
 // 値の取得

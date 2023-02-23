@@ -14,7 +14,7 @@ import { VSpacer } from "@/components/common/Spacer";
 import { avatarList } from "@/data/AvatarList";
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -22,6 +22,8 @@ const JoinRoom: NextPage = () => {
   const router = useRouter();
   const setRoom = useSetRecoilState(RecoilRoom);
   const setPlayer = useSetRecoilState(RecoilPlayer);
+  const setOwner = useSetRecoilState(RecoilOwner);
+
   const [inputRoomId, setInputRoomId] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
@@ -69,8 +71,12 @@ const JoinRoom: NextPage = () => {
           const newPlayerId = {
             id: res.data,
           };
+          const newOwner = {
+            isOwner: false,
+          };
           setRoom(newRoomId);
           setPlayer(newPlayerId);
+          setOwner(newOwner);
 
           router.push("/wait");
         }
