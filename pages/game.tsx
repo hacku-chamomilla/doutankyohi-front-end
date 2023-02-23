@@ -35,6 +35,7 @@ const Game: NextPage = () => {
   const [answer, setAnswer] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>();
   const [hintList, setHintList] = useState<Hint[]>();
+  const [deletedHintList, setDeletedHintList] = useState<Hint[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role";
@@ -63,7 +64,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step === 4 || step === 5) {
+    if (step === 4) {
       const url = BASE_URL + "hint-list";
       axios
         .get(url, {
@@ -71,6 +72,18 @@ const Game: NextPage = () => {
         })
         .then((res) => {
           setHintList(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    if (step === 5) {
+      axios
+        .get(BASE_URL + "hint-list", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setDeletedHintList(res.data);
         })
         .catch((err) => {
           HandleError(router, err);
@@ -152,11 +165,11 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}
-      {role === 1 && step === 5 && hintList && (
-        <Answer hintList={hintList} setStep={setStep} />
+      {role === 1 && step === 5 && deletedHintList && (
+        <Answer hintList={deletedHintList} setStep={setStep} />
       )}
-      {(role === 2 || role === 3) && step === 5 && hintList && (
-        <AnswerWait setStep={setStep} hintList={hintList} />
+      {(role === 2 || role === 3) && step === 5 && deletedHintList && (
+        <AnswerWait hintList={deletedHintList} setStep={setStep} />
       )}
 
       {/* --------------- */}
