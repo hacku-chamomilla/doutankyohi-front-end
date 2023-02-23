@@ -1,33 +1,56 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
 
-type Hint = {
-  text: string;
-  avatarIndex: number;
-  isSelect: boolean;
+import { BASE_URL } from "@/data/BaseUrl";
+
+import { RecoilRoom } from "@/store/Recoil";
+
+import { Hint } from "@/types/type";
+
+import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
+
+type Props = {
+  hintList: Hint[];
+  setStep: Dispatch<SetStateAction<number>>;
 };
 
-export const SelectDuplicateHint = () => {
-  const [hintList, setHintList] = useState<Hint[]>();
+export const SelectDuplicateHint = ({ hintList, setStep }: Props) => {
+  const router = useRouter();
+  const room = useRecoilValue(RecoilRoom);
 
-  useEffect(() => {
-    setHintList([
-      { text: "フルハウス", avatarIndex: 0, isSelect: false },
-      { text: "トランプ", avatarIndex: 1, isSelect: false },
-      { text: "オールイン", avatarIndex: 2, isSelect: false },
-      { text: "トランプ", avatarIndex: 3, isSelect: false },
-      { text: "ストレート", avatarIndex: 4, isSelect: false },
-    ]);
-  }, []);
+  const pickUpPlayerList = () => {
+    const output: string[] = [];
+    hintList.forEach((hint) => {
+      if (hint.isDelete) {
+        output.push(hint.playerId);
+      }
+    });
+    return output;
+  };
 
   const handleClick = () => {
-    // eslint-disable-next-line no-console
-    console.log(hintList); // TODO: 以下の TODO の実装時に削除
-    // TODO: 重複したヒントを POST する
+    const playerList = pickUpPlayerList();
+    axios
+      .post(BASE_URL + "delete-hint", {
+        hint: playerList,
+        roomId: room.id,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          FetchStep(setStep, router, room.id);
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
   };
 
   return (
@@ -37,7 +60,7 @@ export const SelectDuplicateHint = () => {
           <VSpacer size={8} />
           <Text fontSize="xl">被ったヒントを消してください！</Text>
           <VSpacer size={8} />
-          {hintList && <DeleteHintList hintList={hintList} />}
+          <DeleteHintList hintList={hintList} />
           <VSpacer size={8} />
           <Button colorScheme="red" minW={48} minH={12} onClick={handleClick}>
             決定

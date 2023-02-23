@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Answer } from "@/components/game/Answer";
+import { AnswerWait } from "@/components/game/AnswerWait";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
@@ -20,6 +21,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
+import { Hint } from "@/types/type";
+
 import { HandleError } from "@/hooks/useError";
 
 const Game: NextPage = () => {
@@ -31,19 +34,7 @@ const Game: NextPage = () => {
   const [theme, setTheme] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const exampleHintList = [
-    {
-      text: "フルハウス",
-      avatarIndex: 0,
-      isSelect: false,
-    },
-    { text: "トランプ", avatarIndex: 1, isSelect: false },
-    { text: "オールイン", avatarIndex: 2, isSelect: false },
-    { text: "トランプ", avatarIndex: 3, isSelect: false },
-    { text: "ストレート", avatarIndex: 4, isSelect: false },
-  ];
-  const [hintList, setHintList] =
-    useState<{ key: string; hint: string; isDelete: boolean }[]>();
+  const [hintList, setHintList] = useState<Hint[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role";
@@ -60,7 +51,6 @@ const Game: NextPage = () => {
   }, [player.id, router]);
 
   useEffect(() => {
-    //NOTE: マジックナンバー
     if (step === 3 || step === 6) {
       axios
         .get(BASE_URL + "theme", {
@@ -73,8 +63,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    //NOTE: マジックナンバー
-    if (step === 5) {
+    if (step === 4 || step === 5) {
       const url = BASE_URL + "hint-list";
       axios
         .get(url, {
@@ -87,8 +76,6 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-
-    //NOTE: マジックナンバー
     if (step === 6) {
       axios
         .get(BASE_URL + "answer", {
@@ -101,8 +88,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    //NOTE: マジックナンバー
-    if (step == 7) {
+    if (step === 7) {
       axios
         .get(BASE_URL + "judgement-answer", {
           params: { roomId: room.id },
@@ -124,42 +110,48 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {role == 1 && step == 1 && <Wait setStep={setStep} />}
-      {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
-      {role == 3 && step == 1 && <ThinkingTheme setStep={setStep} />}
+      {role === 1 && step === 1 && <Wait setStep={setStep} />}
+      {role === 2 && step === 1 && <HowToDecideTheme setStep={setStep} />}
+      {role === 3 && step === 1 && <ThinkingTheme setStep={setStep} />}
 
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 2 && (
+      {(role === 2 || role === 3) && step === 2 && (
         <InputTheme setStep={setStep} />
       )}
 
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 3 && (
+      {(role === 2 || role === 3) && step === 3 && (
         <InputHint theme={theme} setStep={setStep} />
       )}
 
       {/* --------------- */}
       {/* Step 4 */}
       {/* --------------- */}
-      {role === 2 && step === 4 && <SelectDuplicateHint />}
-      {role === 3 && step === 4 && (
-        <DeleteHintOtherMasterUI hintList={exampleHintList} />
+      {role === 2 && step === 4 && hintList && (
+        <SelectDuplicateHint hintList={hintList} setStep={setStep} />
       )}
+      {role === 3 && step === 4 && hintList && (
+        <DeleteHintOtherMasterUI hintList={hintList} setStep={setStep} />
+      )}
+
       {/* --------------- */}
       {/* Step 5 */}
       {/* --------------- */}
-      {role == 1 && step == 5 && hintList && (
+      {role === 1 && step === 5 && hintList && (
         <Answer hintList={hintList} setStep={setStep} />
+      )}
+      {(role === 2 || role === 3) && step === 5 && hintList && (
+        <AnswerWait setStep={setStep} hintList={hintList} />
       )}
 
       {/* --------------- */}
       {/* Step 6 */}
       {/* --------------- */}
-      {(role == 1 || role == 3) && step == 6 && (
+      {(role === 1 || role === 3) && step === 6 && (
         <DiscussJudgeAns theme={theme} answer={answer} setStep={setStep} />
       )}
       {role === 2 && step === 6 && (
@@ -168,7 +160,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step == 7 && (
+      {step === 7 && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
     </>
