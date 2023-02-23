@@ -19,6 +19,7 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
@@ -38,11 +39,7 @@ export const HowToDecideTheme = ({ setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          if (value === "0") {
-            setStep(2);
-          } else {
-            setStep(3);
-          }
+          FetchStep(setStep, router, room.id);
         }
       })
       .catch((err) => {

@@ -30,10 +30,9 @@ const CreateRoom: NextPage = () => {
     axios
       .post(url, {
         password: "",
-        particNum: 5, // TODO: 現状この値を取得する UI が無いため、それを作る or API からこの引数をなくす
       })
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           handleAddPlayer(res.data);
         }
       })

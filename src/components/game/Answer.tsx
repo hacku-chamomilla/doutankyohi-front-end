@@ -13,11 +13,12 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
   hintList: {
-    key: string;
+    avatarIndex: number;
     hint: string;
     isDelete: boolean;
   }[];
@@ -37,7 +38,7 @@ export const Answer = ({ setStep, hintList }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setStep(6); //NOTE: 次のステップへ進むマジックナンバー
+          FetchStep(setStep, router, room.id);
         }
       })
       .catch((err) => {

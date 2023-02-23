@@ -16,15 +16,13 @@ import { VSpacer } from "@/components/common/Spacer";
 
 import { RecoilRoom } from "@/store/Recoil";
 
+import { Hint } from "@/types/type";
+
 import { FetchStep } from "@/hooks/useFetchStep";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
-  hintList: {
-    key: string;
-    hint: string;
-    isDelete: boolean;
-  }[];
+  hintList: Hint[];
 };
 
 export const AnswerWait = ({ setStep, hintList }: Props) => {

@@ -56,20 +56,17 @@ const Component: NextPage = () => {
 
   const exampleHintList = [
     {
-      text: "フルハウス",
+      playerId: "11111",
+      hint: "フルハウス",
       avatarIndex: 0,
-      isSelect: false,
+      isDelete: false,
     },
-    { text: "トランプ", avatarIndex: 1, isSelect: false },
-    { text: "オールイン", avatarIndex: 2, isSelect: false },
-    { text: "トランプ", avatarIndex: 3, isSelect: false },
-    { text: "ストレート", avatarIndex: 4, isSelect: false },
+    { playerId: "22222", hint: "トランプ", avatarIndex: 1, isDelete: false },
+    { playerId: "33333", hint: "オールイン", avatarIndex: 2, isDelete: false },
+    { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
+    { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
-  const exampleAnswerHintList = [
-    { key: "", hint: "ジャッカル", isDelete: true },
-    { key: "", hint: "ジャッカル", isDelete: true },
-    { key: "", hint: "かいぎしつ", isDelete: false },
-  ];
+
   return (
     <>
       <VStack>
@@ -169,7 +166,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
-              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
+              <Answer hintList={exampleHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
@@ -179,7 +176,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/AnswerWait</Heading>
           <Card variant="filled">
             <CardBody>
-              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
+              <AnswerWait hintList={exampleHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
@@ -255,7 +252,10 @@ const Component: NextPage = () => {
           <Heading size="lg">game/SelectDuplicateHint</Heading>
           <Card variant="filled">
             <CardBody>
-              <SelectDuplicateHint />
+              <SelectDuplicateHint
+                hintList={exampleHintList}
+                setStep={setStep}
+              />
             </CardBody>
           </Card>
 
@@ -302,7 +302,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Answer</Heading>
           <Card variant="filled">
             <CardBody>
-              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
+              <Answer hintList={exampleHintList} setStep={setStep} />
               <VSpacer size={8} />
             </CardBody>
           </Card>
@@ -312,7 +312,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/AnswerWait</Heading>
           <Card variant="filled">
             <CardBody>
-              <AnswerWait hintList={exampleAnswerHintList} setStep={setStep} />
+              <AnswerWait hintList={exampleHintList} setStep={setStep} />
             </CardBody>
           </Card>
 

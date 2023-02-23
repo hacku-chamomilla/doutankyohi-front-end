@@ -12,12 +12,10 @@ import {
 
 import { avatarList } from "@/data/AvatarList";
 
+import { Hint } from "@/types/type";
+
 type Props = {
-  hintList: {
-    text: string;
-    avatarIndex: number;
-    isSelect: boolean;
-  }[];
+  hintList: Hint[];
 };
 
 export const DeleteHintList = ({ hintList }: Props) => {
@@ -31,14 +29,14 @@ export const DeleteHintList = ({ hintList }: Props) => {
                 size="lg"
                 colorScheme="orange"
                 onChange={() => {
-                  hint.isSelect = !hint.isSelect;
+                  hint.isDelete = !hint.isDelete;
                 }}
               >
                 <Card>
                   <CardBody>
                     <HStack>
                       <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
-                      <Text>{hint.text}</Text>
+                      <Text>{hint.hint}</Text>
                     </HStack>
                   </CardBody>
                 </Card>

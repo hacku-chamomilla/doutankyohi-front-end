@@ -24,7 +24,6 @@ type Player = {
 
 const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
-  const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
   const player = useRecoilValue(RecoilPlayer);
   const owner = useRecoilValue(RecoilOwner);
@@ -33,7 +32,7 @@ const Wait: NextPage = () => {
   // eslint-disable-next-line no-console
   console.log(`roomId: ${room.id} playerId:${player.id}`); // TODO:デバック用のログ
 
-  const Update = () => {
+  const updateParticList = () => {
     axios
       .get(BASE_URL + "partic-list", {
         params: {
@@ -46,7 +45,9 @@ const Wait: NextPage = () => {
       .catch((err) => {
         HandleError(router, err);
       });
+  };
 
+  const judgeIsGameStart = () => {
     // NOTE: 遷移も行われているため共通化できない
     axios
       .get(BASE_URL + "step", {
@@ -55,12 +56,18 @@ const Wait: NextPage = () => {
         },
       })
       .then((res) => {
-        setStep(res.data);
-        step == 1 && router.push("/game");
+        if (res.data === 1) {
+          router.push("/game");
+        }
       })
       .catch((err) => {
         HandleError(router, err);
       });
+  };
+
+  const handleUpdate = () => {
+    judgeIsGameStart();
+    updateParticList();
   };
 
   const handleGameStart = () => {
@@ -79,7 +86,7 @@ const Wait: NextPage = () => {
   };
 
   useEffect(() => {
-    Update();
+    handleUpdate();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -93,7 +100,7 @@ const Wait: NextPage = () => {
       <Center>
         <VStack>
           <VSpacer size={20} />
-          <Button onClick={Update}>更新</Button>
+          <Button onClick={handleUpdate}>更新</Button>
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
           {playerList && (
