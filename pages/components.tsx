@@ -289,7 +289,7 @@ const Component: NextPage = () => {
             <CardBody>
               <YouAre
                 title="あなたは人狼です！"
-                text="回答者の妨害をしましょう！"
+                text="正解しないように妨害をしよう！"
                 areYou={true}
               />
             </CardBody>
