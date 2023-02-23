@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import { Avatar, HStack, Input, Text } from "@chakra-ui/react";
+import { Avatar, HStack, Image, Input, Text } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -27,7 +27,10 @@ export const NNAndIcon = ({
 }: Props) => {
   return (
     <>
-      <Text fontSize="24">{title}</Text>
+      <HStack>
+        <Image boxSize={6} src="https://bit.ly/3ItzWsi" alt="deco3" />
+        <Text fontSize="24">{title}</Text>
+      </HStack>
       <VSpacer size={2} />
       <Input
         w="50%"
@@ -38,7 +41,10 @@ export const NNAndIcon = ({
         onChange={(event) => setNickname(event.target.value)}
       />
       <VSpacer size={8} />
-      <Text fontSize="24">{subtitle}</Text>
+      <HStack>
+        <Image boxSize={6} src="https://bit.ly/3ItzWsi" alt="deco3" />
+        <Text fontSize="24">{subtitle}</Text>
+      </HStack>
       <VSpacer size={2} />
       <HStack>
         {avatarList.map((avatar, i) => {
