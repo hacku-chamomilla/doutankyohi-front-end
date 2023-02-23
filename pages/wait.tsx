@@ -13,7 +13,7 @@ import { MemberList } from "@/components/MemberList";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -26,11 +26,9 @@ const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
-  const player = useRecoilValue(RecoilPlayer);
-  const router = useRouter();
+  const owner = useRecoilValue(RecoilOwner);
 
-  // eslint-disable-next-line no-console
-  console.log(`----------\nplayerId: ${player.id}\n----------`); // TODO 作業用のログ, いつかは消す
+  const router = useRouter();
 
   const Update = () => {
     axios
@@ -83,7 +81,7 @@ const Wait: NextPage = () => {
 
   return (
     <>
-      {router.query.isRoomCreate ? (
+      {owner ? (
         <PageBackIcon pass={"/create-room"} />
       ) : (
         <PageBackIcon pass={"/start-game"} />
@@ -98,7 +96,7 @@ const Wait: NextPage = () => {
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
           <VSpacer size={24} />
-          {router.query && router.query.isRoomCreate == "true" && (
+          {owner && (
             <Button
               h={"60px"}
               w={"270px"}

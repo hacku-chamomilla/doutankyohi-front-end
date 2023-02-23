@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useSetRecoilState } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
@@ -13,13 +13,14 @@ import { VSpacer } from "@/components/common/Spacer";
 import { avatarList } from "@/data/AvatarList";
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
 const CreateRoom: NextPage = () => {
   const setRoom = useSetRecoilState(RecoilRoom);
   const setPlayer = useSetRecoilState(RecoilPlayer);
+  const setOwner = useSetRecoilState(RecoilOwner);
   const router = useRouter();
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
@@ -58,18 +59,14 @@ const CreateRoom: NextPage = () => {
           const newPlayerId = {
             id: res.data,
           };
+          const newOwner = {
+            isOwner: true,
+          };
           setRoom(newRoomId);
           setPlayer(newPlayerId);
+          setOwner(newOwner);
 
-          router.push({
-            pathname: "/wait",
-            // TODO: isRoomCreate の値を Recoil で管理するようにする
-            query: {
-              username: nickname,
-              avatarIcon: avatarIndex,
-              isRoomCreate: true,
-            },
-          });
+          router.push("/wait");
         }
       })
       .catch((err) => {

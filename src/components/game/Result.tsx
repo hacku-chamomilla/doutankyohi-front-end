@@ -1,16 +1,20 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
+import { RecoilOwner } from "@/store/Recoil";
+
 import { CustomTitleText } from "../common/CustomTitleText";
 import { VSpacer } from "../common/Spacer";
-
 type Props = {
   theme: string;
   answer: string;
   isCorrect: boolean;
 };
 export const Result = ({ theme, answer, isCorrect }: Props) => {
+  const owner = useRecoilValue(RecoilOwner);
+
   return (
     <>
       <Center>
@@ -26,9 +30,15 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
             <Text fontSize="3xl">残念！公開処刑！</Text>
           )}
           <VSpacer size={12} />
-          <Button colorScheme="linkedin" minW={64}>
-            次へ
-          </Button>
+          {owner ? (
+            <Button colorScheme="linkedin" minW={64}>
+              次へ
+            </Button>
+          ) : (
+            <Button colorScheme="linkedin" minW={64}>
+              更新
+            </Button>
+          )}
         </VStack>
       </Center>
     </>
