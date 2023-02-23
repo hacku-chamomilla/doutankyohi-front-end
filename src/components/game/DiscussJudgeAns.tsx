@@ -1,6 +1,10 @@
+import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
+
+import { RecoilRoom } from "@/store/Recoil";
 
 import { FetchStep } from "@/hooks/useFetchStep";
 
@@ -14,8 +18,11 @@ type Props = {
 };
 
 export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
+  const router = useRouter();
+  const room = useRecoilValue(RecoilRoom);
+
   const handleUpdate = () => {
-    FetchStep(7, setStep);
+    FetchStep(7, setStep, router, room.id);
   };
 
   return (

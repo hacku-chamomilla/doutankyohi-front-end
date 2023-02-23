@@ -37,7 +37,7 @@ export const InputTheme = ({ setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          FetchStep(3, setStep);
+          FetchStep(3, setStep, router, room.id);
         }
       })
       .catch((err) => {
