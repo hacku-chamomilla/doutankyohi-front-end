@@ -172,7 +172,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step === 7 && isCorrect && (
+      {step === 7 && isCorrect !== undefined && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
     </>
