@@ -16,7 +16,6 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
-import { FetchStep } from "@/hooks/useFetchStep";
 
 type Player = {
   nickname: string;
@@ -86,7 +85,7 @@ const Wait: NextPage = () => {
 
   return (
     <>
-      {owner ? (
+      {owner.isOwner ? (
         <PageBackIcon pass={"/create-room"} />
       ) : (
         <PageBackIcon pass={"/start-game"} />
@@ -101,7 +100,7 @@ const Wait: NextPage = () => {
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
           <VSpacer size={24} />
-          {owner && (
+          {owner.isOwner && (
             <Button
               h={"60px"}
               w={"270px"}
