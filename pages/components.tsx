@@ -6,6 +6,7 @@ import {
   Button,
   Card,
   CardBody,
+  Checkbox,
   Container,
   Heading,
   HStack,
@@ -41,6 +42,10 @@ const Component: NextPage = () => {
   const [avatarIndex, setAvatarIndex] = useState(0);
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [step, setStep] = useState<number>(0);
+  const theme = "theme";
+  const answer = "answer";
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -159,12 +164,22 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/Answer */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Answer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Answer hintList={exampleAnswerHintList} setStep={setStep} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
           {/* game/DiscussJudgeAns */}
           <VSpacer size={8} />
           <Heading size="lg">game/DiscussJudgeAns</Heading>
           <Card variant="filled">
             <CardBody>
-              <DiscussJudgeAns theme={text} answer={text} />
+              <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
             </CardBody>
           </Card>
 
@@ -187,6 +202,15 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/InputHint */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputHint</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputHint />
+            </CardBody>
+          </Card>
+
           {/* game/JudgeAnswer */}
           <VSpacer size={8} />
           <Heading size="lg">game/JudgeAnswer</Heading>
@@ -196,12 +220,19 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/InputHint */}
+          {/* game/Result */}
           <VSpacer size={8} />
-          <Heading size="lg">game/InputHint</Heading>
+          <Heading size="lg">game/Result</Heading>
           <Card variant="filled">
             <CardBody>
-              <InputHint />
+              <Result theme={theme} answer={answer} isCorrect={isCorrect} />
+              <Checkbox
+                onChange={() => {
+                  setIsCorrect(!isCorrect);
+                }}
+              >
+                isCorrect = true
+              </Checkbox>
             </CardBody>
           </Card>
 
@@ -289,15 +320,6 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <InputTheme />
-            </CardBody>
-          </Card>
-
-          {/* game/Result */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/Result</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <Result />
             </CardBody>
           </Card>
 
