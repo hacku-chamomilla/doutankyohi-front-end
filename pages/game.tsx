@@ -92,7 +92,9 @@ const Game: NextPage = () => {
         <DiscussJudgeAns theme={theme} answer={answer} />
       )}
       {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
-      {(role == 2 || role == 3) && step == 2 && <InputTheme />}
+      {(role == 2 || role == 3) && step == 2 && (
+        <InputTheme setStep={setStep} />
+      )}
       {(role == 2 || role == 3) && step == 3 && <InputHint />}
       {role == 3 && <ThinkingTheme />}
     </>
