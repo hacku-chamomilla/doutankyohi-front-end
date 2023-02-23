@@ -17,7 +17,7 @@ import { HandleError } from "@/hooks/useError";
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
   hintList: {
-    key: string;
+    avatarIndex: number;
     hint: string;
     isDelete: boolean;
   }[];

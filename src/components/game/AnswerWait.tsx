@@ -1,26 +1,22 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-import { SpinnerIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
   CardBody,
   Center,
   HStack,
-  Icon,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { Hint } from "@/types/type";
+
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
-  hintList: {
-    key: string;
-    hint: string;
-    isDelete: boolean;
-  }[];
+  hintList: Hint[];
 };
 
 export const AnswerWait = ({ hintList }: Props) => {
