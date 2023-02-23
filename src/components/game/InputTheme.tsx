@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, VStack } from "@chakra-ui/react";
+import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -12,8 +12,8 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
-import { ThinkingTheme } from "./ThinkingTheme";
 import { CustomInput } from "../common/CustomInput";
 
 type Props = {
@@ -28,7 +28,6 @@ export const InputTheme = ({ setStep }: Props) => {
 
   const ThemePost = () => {
     const url = BASE_URL + "create-theme";
-    const url2 = BASE_URL + "step";
     axios
       .post(url, {
         playerId: player.id,
@@ -37,16 +36,7 @@ export const InputTheme = ({ setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          axios
-            .get(url2, {
-              params: { roomId: room.id },
-            })
-            .then((res) => {
-              setStep(res.data);
-            })
-            .catch((err) => {
-              HandleError(router, err);
-            });
+          FetchStep(setStep, router, room.id);
         }
       })
       .catch((err) => {
@@ -58,7 +48,13 @@ export const InputTheme = ({ setStep }: Props) => {
     <>
       <Center>
         <VStack>
-          <ThinkingTheme />
+          <Text fontSize={40} fontStyle={"oblique"} color={"red"}>
+            あなたはヒントを与える人です!
+          </Text>
+          <VSpacer size={12} />
+          <Text fontSize={20} fontStyle={"oblique"}>
+            お題は入力されたものからランダムに選ばれます
+          </Text>
           <VSpacer size={12} />
           <CustomInput
             title={""}

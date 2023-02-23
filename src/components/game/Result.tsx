@@ -40,6 +40,7 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
       });
   };
 
+  // NOTE: 遷移を含むため共通化できない
   const FetchStep = () => {
     axios
       .get(BASE_URL + "step", {
@@ -70,7 +71,7 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
             <Text fontSize="3xl">残念！公開処刑！</Text>
           )}
           <VSpacer size={12} />
-          {owner ? (
+          {owner.isOwner ? (
             <Button colorScheme="linkedin" minW={64} onClick={Initialize}>
               次へ
             </Button>

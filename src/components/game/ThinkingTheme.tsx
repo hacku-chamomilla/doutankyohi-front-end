@@ -1,10 +1,26 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
 
-import { Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
-export const ThinkingTheme = () => {
+import { RecoilRoom } from "@/store/Recoil";
+
+import { FetchStep } from "@/hooks/useFetchStep";
+
+type Props = {
+  setStep: Dispatch<SetStateAction<number>>;
+};
+
+export const ThinkingTheme = ({ setStep }: Props) => {
+  const router = useRouter();
+  const room = useRecoilValue(RecoilRoom);
+  const handleUpdate = () => {
+    FetchStep(setStep, router, room.id);
+  };
+
   return (
     <>
       <Center>
@@ -14,8 +30,10 @@ export const ThinkingTheme = () => {
           </Text>
           <VSpacer size={12} />
           <Text fontSize={20} fontStyle={"oblique"}>
-            お題は入力されたものからランダムに選ばれます
+            お題の決め方を相談してください！
           </Text>
+          <VSpacer size={12} />
+          <Button onClick={handleUpdate}>更新</Button>
         </VStack>
       </Center>
     </>

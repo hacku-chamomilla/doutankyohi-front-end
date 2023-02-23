@@ -47,6 +47,7 @@ const Wait: NextPage = () => {
         HandleError(router, err);
       });
 
+    // NOTE: 遷移も行われているため共通化できない
     axios
       .get(BASE_URL + "step", {
         params: {
@@ -84,7 +85,7 @@ const Wait: NextPage = () => {
 
   return (
     <>
-      {owner ? (
+      {owner.isOwner ? (
         <PageBackIcon pass={"/create-room"} />
       ) : (
         <PageBackIcon pass={"/start-game"} />
@@ -99,7 +100,7 @@ const Wait: NextPage = () => {
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
           <VSpacer size={24} />
-          {owner && (
+          {owner.isOwner && (
             <Button
               h={"60px"}
               w={"270px"}
