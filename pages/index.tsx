@@ -4,6 +4,11 @@ import React from "react";
 
 import { QuestionOutlineIcon, StarIcon } from "@chakra-ui/icons";
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Box,
   Button,
   Center,
@@ -53,65 +58,176 @@ const Home: NextPage = () => {
                 <TabPanels>
                   <TabPanel>
                     <ModalBody>
-                      <p>
-                        ゲーム開始時に、1人がゲッサー、その他がヒントホルダーのロールがそれぞれ与えられる。
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        ヒントホルダーは、お題となる単語をランダムで決定するか、自分たちで決定するかを選ぶことができる。
-                        自分たちで決定する場合は、ヒントホルダーそれぞれが入力したお題の中からランダムで選ばれる。
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        ヒントホルダーは、お題となった単語に関連する単語をそれぞれ入力する。
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        ヒントを全員が書き終わり次第、ヒントホルダーは話し合いを行い、
-                        ヒントホルダー間で同じ又は類似したヒントがあった場合、そのヒントを削除する。
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        残ったヒントから、ゲッサーはテーマを推測＆回答！
-                        当たれば正解！うれしい、間違うと残念！公開処刑！
-                      </p>
-                      <VSpacer size={2} />
-                      全員が回答者を1回ずつやることでワンセット終了
+                      <Accordion defaultIndex={[0]} allowMultiple>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                1.ロールに関して
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            ゲーム開始時に、1人がゲッサー、その他がヒントホルダーのロールがそれぞれ与えられる。
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                2.お題の決め方
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              ヒントホルダーは、お題となる単語をランダムで決定するか、自分たちで決定するかを選ぶことができる。
+                            </p>
+                            自分たちで決定する場合は、ヒントホルダーそれぞれが入力したお題の中からランダムで選ばれる。
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                3.ヒントの入力
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            ヒントホルダーは、お題となった単語に関連する単語をそれぞれ入力する。
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                4.ヒントの削除
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              ヒントを書き終わり次第、ヒントホルダーは話し合いを行う。
+                            </p>
+                            <p>
+                              ヒントホルダー間で同じ又は類似したヒントがあった場合、そのヒントを削除する。
+                            </p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                5.お題を推測
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              残ったヒントから、ゲッサーはテーマを推測＆回答！
+                            </p>
+                            <p>当たれば正解！！おめでとう！</p>
+                            <p>間違うと残念！公開処刑！</p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                6.次のフェイズへ
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            全員が回答者を1回ずつやることでワンセット終了
+                          </AccordionPanel>
+                        </AccordionItem>
+                      </Accordion>
                     </ModalBody>
                   </TabPanel>
                   <TabPanel>
                     <ModalBody>
-                      <p>
-                        ヒントホルダーの中に「人狼」が存在するかもしれない(0~1人)
-                      </p>
+                      <Accordion defaultIndex={[0]} allowMultiple>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                1.人狼
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            ヒントホルダーの中に「人狼」が存在するかもしれない(0~1人)
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                2.人狼の役割
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              人狼はゲッサーに、正しい答えを導かせないようにする。
+                            </p>
+                            <p>
+                              (全然違うヒントを出す、ほかのヒントの削除を狙うなど)
+                            </p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                3.人狼をみつける
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              正解/不正解の判定が行われた後に、ゲッサーが人狼をみつけるフェイズがある。
+                            </p>
+                            <p>
+                              他のヒントホルダーとの話し合いを行い、人狼だと思うヒントホルダーを選択する。
+                            </p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                4.得点
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>・ゲッサー正解&人狼推測成功: 村+3Pt</p>
+                            <VSpacer size={2} />
+                            <p>・ゲッサー正解&人狼推測失敗: 村+1Pt、人狼+1Pt</p>
+                            <VSpacer size={2} />
+                            <p>
+                              ・ゲッサー不正解&人狼推測成功: 村+2Pt、人狼+1Pt
+                            </p>
+                            <VSpacer size={2} />
+                            <p>・ゲッサー不正解&人狼推測失敗: 人狼+5Pt</p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                      </Accordion>
+                      <p></p>
                       <VSpacer size={2} />
-                      <p>
-                        人狼はゲッサーのミスリードを誘う(全然違うヒントを出す)や、
-                        ほかのヒントの削除を狙うなどして、正しい答えを導かせないようにする。
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        ゲッサーは、正解/不正解の判定が行われた後に人狼が誰かを当てるフェイズがある。
-                      </p>
-                      <VSpacer size={4} />
-                      <Center> - 結果 -</Center>
-                      <VSpacer size={4} />
-                      <p>
-                        回答者が正解しかつ人狼を見つけた場合(人狼が居なかった事を当てた場合も)、村+3ポイント
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        回答者が正解したが人狼をみつけられなかった場合、村+1ポイント、人狼+1ポイント
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        回答者が不正解だったが人狼を見つけた場合、村+2ポイント、
-                        人狼+1ポイント(人狼が居ない事を当てた場合は村のみポイント)
-                      </p>
-                      <VSpacer size={2} />
-                      <p>
-                        回答者が不正解かつ人狼をみつけられなかった場合、人狼+5ポイント
-                      </p>
                     </ModalBody>
                   </TabPanel>
                 </TabPanels>
