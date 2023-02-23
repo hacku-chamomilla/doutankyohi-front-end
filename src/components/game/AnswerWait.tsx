@@ -31,10 +31,6 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
 
-  const StepGet = () => {
-    FetchStep(setStep, router, room.id);
-  };
-
   return (
     <>
       <VSpacer size={4} />
@@ -50,7 +46,7 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
             fontSize={20}
             textColor={"white"}
             colorScheme={"blue"}
-            onClick={StepGet}
+            onClick={() => FetchStep(setStep, router, room.id)}
           >
             更新
           </Button>
