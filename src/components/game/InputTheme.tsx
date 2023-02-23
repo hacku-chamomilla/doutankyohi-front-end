@@ -12,6 +12,7 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 import { ThinkingTheme } from "./ThinkingTheme";
 import { CustomInput } from "../common/CustomInput";
@@ -28,7 +29,6 @@ export const InputTheme = ({ setStep }: Props) => {
 
   const ThemePost = () => {
     const url = BASE_URL + "create-theme";
-    const url2 = BASE_URL + "step";
     axios
       .post(url, {
         playerId: player.id,
@@ -37,16 +37,7 @@ export const InputTheme = ({ setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          axios
-            .get(url2, {
-              params: { roomId: room.id },
-            })
-            .then((res) => {
-              setStep(res.data);
-            })
-            .catch((err) => {
-              HandleError(router, err);
-            });
+          FetchStep(3, setStep);
         }
       })
       .catch((err) => {

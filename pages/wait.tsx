@@ -16,6 +16,7 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 type Player = {
   nickname: string;
@@ -47,6 +48,7 @@ const Wait: NextPage = () => {
         HandleError(router, err);
       });
 
+    // NOTE: 遷移も行われているため共通化できない
     axios
       .get(BASE_URL + "step", {
         params: {

@@ -1,15 +1,8 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
-import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
-import { BASE_URL } from "@/data/BaseUrl";
-
-import { RecoilRoom } from "@/store/Recoil";
-
-import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 import { CustomTitleText } from "../common/CustomTitleText";
 import { VSpacer } from "../common/Spacer";
@@ -21,25 +14,8 @@ type Props = {
 };
 
 export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
-  const router = useRouter();
-  const room = useRecoilValue(RecoilRoom);
-
-  const handleFetchStep = () => {
-    const url = BASE_URL + "step";
-
-    axios
-      .get(url, {
-        params: { roomId: room.id },
-      })
-      .then((res) => {
-        if (res.data == 7) {
-          //NOTE: 回答を入力する step のマジックナンバー
-          setStep(res.data);
-        }
-      })
-      .catch((err) => {
-        HandleError(router, err);
-      });
+  const handleUpdate = () => {
+    FetchStep(7, setStep);
   };
 
   return (
@@ -47,7 +23,7 @@ export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={12} />
-          <Button onClick={handleFetchStep}>更新</Button>
+          <Button onClick={handleUpdate}>更新</Button>
           <VSpacer size={12} />
           <Text fontSize={24}>回答者の答えが正解か話し合おう!</Text>
           <VSpacer size={12} />

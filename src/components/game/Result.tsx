@@ -40,6 +40,7 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
       });
   };
 
+  // NOTE: 遷移を含むため共通化できない
   const FetchStep = () => {
     axios
       .get(BASE_URL + "step", {
