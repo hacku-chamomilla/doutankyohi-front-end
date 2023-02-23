@@ -276,7 +276,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Wait</Heading>
           <Card variant="filled">
             <CardBody>
-              <Wait setStep={setStep} />
+              <Wait text={"適当なタイトル"} setStep={setStep} />
             </CardBody>
           </Card>
           <VSpacer size={12} />
