@@ -1,23 +1,46 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
 
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 
-export const JudgeAnswer = () => {
-  const [theme, setTheme] = useState<string>();
-  const [answer, setAnswer] = useState<string>();
+import { BASE_URL } from "@/data/BaseUrl";
 
-  useEffect(() => {
-    setTheme("ポーカー");
-    setAnswer("ポーカー");
-  }, []);
+import { RecoilRoom } from "@/store/Recoil";
+
+import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
+
+type Props = {
+  theme: string;
+  answer: string;
+  setStep: Dispatch<SetStateAction<number>>;
+};
+
+export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
+  const room = useRecoilValue(RecoilRoom);
+  const router = useRouter();
 
   const handleJudge = (param: boolean) => {
-    // eslint-disable-next-line no-console
-    console.log(`正解処理：${param}`); // TODO: 以下の TODO の実装時に削除する
-    // TODO: 解答処理を実装
+    const url = BASE_URL + "is-correct";
+
+    axios
+      .post(url, {
+        roomId: room.id,
+        isCorrect: param,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          FetchStep(setStep, router, room.id);
+        }
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
   };
 
   return (

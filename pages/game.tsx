@@ -10,6 +10,7 @@ import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
+import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
@@ -158,10 +159,12 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 6 */}
       {/* --------------- */}
-      {(role == 1 || role == 3) && step == 6 && hintList && (
+      {(role == 1 || role == 3) && step == 6 && (
         <DiscussJudgeAns theme={theme} answer={answer} setStep={setStep} />
       )}
-
+      {role === 2 && step === 6 && (
+        <JudgeAnswer theme={theme} answer={answer} setStep={setStep} />
+      )}
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
