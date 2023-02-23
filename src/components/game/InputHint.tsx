@@ -13,6 +13,7 @@ import { BASE_URL } from "@/data/BaseUrl";
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
 
 type Props = {
   theme: string;
@@ -27,7 +28,6 @@ export const InputHint = ({ theme, setStep }: Props) => {
 
   const HintPost = () => {
     const url = BASE_URL + "create-hint";
-    const url2 = BASE_URL + "step";
     axios
       .post(url, {
         playerId: player.id,
@@ -36,16 +36,7 @@ export const InputHint = ({ theme, setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          axios
-            .get(url2, {
-              params: { roomId: room.id },
-            })
-            .then((res) => {
-              setStep(res.data);
-            })
-            .catch((err) => {
-              HandleError(router, err);
-            });
+          FetchStep(setStep, router, room.id);
         }
       })
       .catch((err) => {

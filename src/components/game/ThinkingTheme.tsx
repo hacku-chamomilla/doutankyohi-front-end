@@ -18,7 +18,7 @@ export const ThinkingTheme = ({ setStep }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
   const handleUpdate = () => {
-    FetchStep(2, setStep, router, room.id);
+    FetchStep(setStep, router, room.id);
   };
 
   return (

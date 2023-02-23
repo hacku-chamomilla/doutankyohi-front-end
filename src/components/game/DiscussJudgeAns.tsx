@@ -22,7 +22,7 @@ export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
   const room = useRecoilValue(RecoilRoom);
 
   const handleUpdate = () => {
-    FetchStep(7, setStep, router, room.id);
+    FetchStep(setStep, router, room.id);
   };
 
   return (

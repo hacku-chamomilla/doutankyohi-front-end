@@ -19,7 +19,7 @@ export const Wait = ({ setStep }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
   const handleUpdate = () => {
-    FetchStep(5, setStep, router, room.id);
+    FetchStep(setStep, router, room.id);
   };
 
   return (

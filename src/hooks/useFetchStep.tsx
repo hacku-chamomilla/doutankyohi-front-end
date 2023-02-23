@@ -1,14 +1,12 @@
 import axios from "axios";
-import { NextRouter, useRouter } from "next/router";
-import React, { Dispatch, SetStateAction } from "react";
-import { useRecoilValue } from "recoil";
+import { NextRouter } from "next/router";
+import { Dispatch, SetStateAction } from "react";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
 import { HandleError } from "@/hooks/useError";
 
 export const FetchStep = (
-  StepToDetect: number,
   setStep: Dispatch<SetStateAction<number>>,
   router: NextRouter,
   roomId: string
@@ -18,9 +16,7 @@ export const FetchStep = (
       params: { roomId: roomId },
     })
     .then((res) => {
-      if (res.data === StepToDetect) {
-        setStep(res.data);
-      }
+      setStep(res.data);
     })
     .catch((err) => {
       HandleError(router, err);
