@@ -13,7 +13,7 @@ import { MemberList } from "@/components/MemberList";
 
 import { BASE_URL } from "@/data/BaseUrl";
 
-import { RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -24,14 +24,47 @@ type Player = {
 
 const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
+  const [step, setStep] = useState<number>(0);
   const room = useRecoilValue(RecoilRoom);
+  const player = useRecoilValue(RecoilPlayer);
+  const owner = useRecoilValue(RecoilOwner);
   const router = useRouter();
 
-  const handleGameStart = () => {
-    const url = BASE_URL + "start-game";
+  // eslint-disable-next-line no-console
+  console.log(`roomId: ${room.id} playerId:${player.id}`); // TODO:デバック用のログ
+
+  const Update = () => {
+    axios
+      .get(BASE_URL + "partic-list", {
+        params: {
+          roomId: room.id,
+        },
+      })
+      .then((res) => {
+        setPlayerList(res.data);
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
 
     axios
-      .post(url, {
+      .get(BASE_URL + "step", {
+        params: {
+          roomId: room.id,
+        },
+      })
+      .then((res) => {
+        setStep(res.data);
+        step == 1 && router.push("/game");
+      })
+      .catch((err) => {
+        HandleError(router, err);
+      });
+  };
+
+  const handleGameStart = () => {
+    axios
+      .post(BASE_URL + "start-game", {
         roomId: room.id,
       })
       .then((res) => {
@@ -44,41 +77,29 @@ const Wait: NextPage = () => {
       });
   };
 
-  const FetchPlayerList = () => {
-    const url = BASE_URL + "partic-list";
-    axios
-      .get(url, {
-        params: {
-          roomId: room.id,
-        },
-      })
-      .then((res) => {
-        setPlayerList(res.data);
-      })
-      .catch((err) => {
-        HandleError(router, err);
-      });
-  };
-
   useEffect(() => {
-    FetchPlayerList();
+    Update();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      <PageBackIcon pass={"/create-room"} />
+      {owner ? (
+        <PageBackIcon pass={"/create-room"} />
+      ) : (
+        <PageBackIcon pass={"/start-game"} />
+      )}
       <Center>
         <VStack>
           <VSpacer size={20} />
+          <Button onClick={Update}>更新</Button>
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
-          <Button onClick={FetchPlayerList}>参加者リストの更新</Button>
           {playerList && (
             <MemberList title={"参加者リスト"} memberNameList={playerList} />
           )}
           <VSpacer size={24} />
-          {router.query && router.query.isRoomCreate == "true" && (
+          {owner && (
             <Button
               h={"60px"}
               w={"270px"}
