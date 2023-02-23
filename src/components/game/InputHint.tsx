@@ -15,32 +15,15 @@ import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 import { HandleError } from "@/hooks/useError";
 
 type Props = {
+  theme: string;
   setStep: Dispatch<SetStateAction<number>>;
 };
 
-export const InputHint = ({ setStep }: Props) => {
+export const InputHint = ({ theme, setStep }: Props) => {
   const [inputHint, setInputHint] = useState<string>("");
-  const [theme, setTheme] = useState<string>("");
   const player = useRecoilValue(RecoilPlayer);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
-
-  const ThemeGet = () => {
-    const url = BASE_URL + "theme";
-
-    axios
-      .get(url, {
-        params: { roomId: room.id },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          setTheme(res.data);
-        }
-      })
-      .catch((err) => {
-        HandleError(router, err);
-      });
-  };
 
   const HintPost = () => {
     const url = BASE_URL + "create-hint";
@@ -70,7 +53,6 @@ export const InputHint = ({ setStep }: Props) => {
       });
   };
 
-  ThemeGet();
   return (
     <>
       <Center>

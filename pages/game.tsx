@@ -60,6 +60,19 @@ const Game: NextPage = () => {
 
   useEffect(() => {
     //NOTE: マジックナンバー
+    if (step === 3) {
+      axios
+        .get(BASE_URL + "theme", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setTheme(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    //NOTE: マジックナンバー
     if (step === 5) {
       const url = BASE_URL + "hint-list";
       axios
@@ -132,7 +145,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 3 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 3 && <InputHint setStep={setStep} />}
+      {(role == 2 || role == 3) && step == 3 && (
+        <InputHint theme={theme} setStep={setStep} />
+      )}
 
       {/* --------------- */}
       {/* Step 4 */}

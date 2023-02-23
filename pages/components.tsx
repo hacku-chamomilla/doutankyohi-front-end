@@ -206,7 +206,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/InputHint</Heading>
           <Card variant="filled">
             <CardBody>
-              <InputHint setStep={setStep} />
+              <InputHint theme="小三元" setStep={setStep} />
             </CardBody>
           </Card>
 
