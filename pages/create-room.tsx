@@ -105,7 +105,7 @@ const CreateRoom: NextPage = () => {
           />
           <VSpacer size={24} />
           <Button
-            colorScheme="red"
+            colorScheme="orange"
             color={"white"}
             minW={64}
             minH={12}
