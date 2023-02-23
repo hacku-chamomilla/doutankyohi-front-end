@@ -113,7 +113,9 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {/* Step 2 */}
       {/* --------------- */}
-      {(role == 2 || role == 3) && step == 2 && <InputTheme />}
+      {(role == 2 || role == 3) && step == 2 && (
+        <InputTheme setStep={setStep} />
+      )}
 
       {/* --------------- */}
       {/* Step 3 */}
@@ -144,12 +146,6 @@ const Game: NextPage = () => {
       {step == 7 && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
-      {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
-      {(role == 2 || role == 3) && step == 2 && (
-        <InputTheme setStep={setStep} />
-      )}
-      {(role == 2 || role == 3) && step == 3 && <InputHint />}
-      {role == 3 && <ThinkingTheme />}
     </>
   );
 };
