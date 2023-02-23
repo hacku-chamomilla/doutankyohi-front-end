@@ -61,6 +61,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
+
     //NOTE: マジックナンバー
     if (step === 6) {
       axios
@@ -84,6 +85,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
+    //NOTE: マジックナンバー
     if (step == 7) {
       axios
         .get(BASE_URL + "judgement-answer", {
@@ -108,7 +110,7 @@ const Game: NextPage = () => {
       {/* --------------- */}
       {role == 1 && step == 1 && <Wait setStep={setStep} />}
       {role == 2 && step == 1 && <HowToDecideTheme setStep={setStep} />}
-      {role == 3 && step == 1 && <ThinkingTheme />}
+      {role == 3 && step == 1 && <ThinkingTheme setStep={setStep} />}
 
       {/* --------------- */}
       {/* Step 2 */}
