@@ -33,9 +33,9 @@ export const NNAndIcon = ({
       </HStack>
       <VSpacer size={2} />
       <Input
-        w="50%"
+        w="85%"
         value={nickname}
-        outlineColor="blue"
+        outlineColor="seagreen"
         placeholder={placeholder}
         size="lg"
         onChange={(event) => setNickname(event.target.value)}
