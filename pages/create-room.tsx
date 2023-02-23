@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useSetRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
