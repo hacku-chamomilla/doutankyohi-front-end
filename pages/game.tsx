@@ -33,7 +33,7 @@ const Game: NextPage = () => {
   const [step, setStep] = useState<number>(1); // /game に最初に到達する時点でstep=1が保証されている(はず)
   const [theme, setTheme] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>();
   const [hintList, setHintList] = useState<Hint[]>();
 
   useEffect(() => {
@@ -157,10 +157,11 @@ const Game: NextPage = () => {
       {role === 2 && step === 6 && (
         <JudgeAnswer theme={theme} answer={answer} setStep={setStep} />
       )}
+
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step === 7 && (
+      {step === 7 && isCorrect && (
         <Result theme={theme} answer={answer} isCorrect={isCorrect} />
       )}
     </>
