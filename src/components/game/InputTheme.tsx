@@ -68,7 +68,7 @@ export const InputTheme = ({ setStep }: Props) => {
               setText={setText}
             />
             <VSpacer size={20} />
-            <Button colorScheme="red" minW={64} minH={12} onClick={ThemePost}>
+            <Button colorScheme="red" minW={64} minH={12} onClick={handlePost}>
               決定
             </Button>
             <VSpacer size={8} />
