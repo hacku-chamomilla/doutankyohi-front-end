@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 

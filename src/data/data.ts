@@ -6,3 +6,5 @@ export const avatarList = [
   "https://bit.ly/3IquAOD",
   "https://bit.ly/41j3GAD",
 ];
+
+export const BASE_URL = "http://localhost:1323/";

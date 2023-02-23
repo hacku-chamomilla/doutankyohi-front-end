@@ -8,7 +8,7 @@ import { Button, Center, Text, VStack } from "@chakra-ui/react";
 import { VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilRoom } from "@/store/Recoil";
 

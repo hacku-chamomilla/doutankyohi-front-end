@@ -34,7 +34,7 @@ import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 import { MemberList } from "@/components/MemberList";
 
-import { avatarList } from "@/data/AvatarList";
+import { avatarList } from "@/data/data";
 
 const Component: NextPage = () => {
   const [text, setText] = useState("");

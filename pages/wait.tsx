@@ -11,7 +11,7 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 

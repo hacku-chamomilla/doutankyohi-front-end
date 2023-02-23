@@ -11,8 +11,7 @@ import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 
-import { avatarList } from "@/data/AvatarList";
-import { BASE_URL } from "@/data/BaseUrl";
+import { avatarList, BASE_URL } from "@/data/data";
 
 import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
