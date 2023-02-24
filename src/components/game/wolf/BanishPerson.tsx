@@ -67,7 +67,6 @@ export const BanishPerson = ({ choseWolf, setWolfResult, setStep }: Props) => {
           <VSpacer size={12} />
           <Text fontSize={24}>投票数:{choseWolf.vote}</Text>
           <VSpacer size={40} />
-
           {owner.isOwner ? (
             <Button colorScheme="red" minW={48} minH={12} onClick={handleClick}>
               次へ進む

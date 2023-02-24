@@ -13,6 +13,7 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { Score } from "@/components/game/Score";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -54,6 +55,8 @@ const WolfGame: NextPage = () => {
   const [choseWolf, setChoseWolf] = useState<ChoseWolf>();
   const [wolfResult, setWolfResult] = useState<number>(0);
   const [trustWolfName, setTrustWolfName] = useState<string>("");
+  const [playerList, setPlayerList] =
+    useState<{ nickname: string; particIcon: number; point: number }[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role-wolf";
@@ -163,6 +166,18 @@ const WolfGame: NextPage = () => {
         })
         .then((res) => {
           setTrustWolfName(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    if (step === 11) {
+      axios
+        .get(BASE_URL + "partic-list-wolf", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setPlayerList(res.data);
         })
         .catch((err) => {
           HandleError(router, err);
@@ -283,6 +298,13 @@ const WolfGame: NextPage = () => {
           result={wolfResult}
           setStep={setStep}
         />
+      )}
+
+      {/* --------------- */}
+      {/* Step 11 */}
+      {/* --------------- */}
+      {step === 11 && playerList && (
+        <Score playerList={playerList} setStep={setStep} />
       )}
     </>
   );

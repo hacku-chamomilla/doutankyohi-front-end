@@ -117,6 +117,10 @@ const Component: NextPage = () => {
     { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
     { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
+  const explampleVoteList = [
+    { name: "AAA", id: "123", vote: 1 },
+    { name: "BBB", id: "456", vote: 3 },
+  ];
 
   return (
     <>
@@ -379,7 +383,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Score</Heading>
           <Card variant="filled">
             <CardBody>
-              <Score />
+              <Score playerList={examplePointList} setStep={setStep} />
             </CardBody>
           </Card>
 
@@ -419,7 +423,11 @@ const Component: NextPage = () => {
           <Heading size="lg">game/wolf/BanishPerson</Heading>
           <Card variant="filled">
             <CardBody>
-              <BanishPerson player="KJ" vote={6} />
+              <BanishPerson
+                choseWolf={explampleVoteList}
+                setWolfResult={setStep}
+                setStep={setStep}
+              />
               <p>{text}</p>
             </CardBody>
           </Card>
