@@ -69,30 +69,37 @@ export const VoteResult = ({ name, wolf, result, setStep }: Props) => {
           <VSpacer size={8} />
           {result === 1 && (
             <>
-              <Text fontSize={20}>{name}が追放された</Text>
+              <Text fontSize={20}>誰も追放されなかった！</Text>
               <VSpacer size={20} />
-              <Text fontSize={20}>しかし人狼は存在しなかった</Text>
+              <Text fontSize={20}>
+                もちろん人狼は最初から存在していなかった！
+              </Text>
             </>
           )}
           {result === 2 && (
             <>
-              <Text fontSize={20}>誰も追放されなかった</Text>
+              <Text fontSize={20}>{name}が追放された</Text>
               <VSpacer size={20} />
-              <Text fontSize={20}>人狼は存在しなかった</Text>
+              <Text fontSize={20}>しかし人狼は元々存在しなかった...</Text>
             </>
           )}
           {result === 3 && (
             <>
-              <Text fontSize={20}>{name}が追放された</Text>
+              <Text fontSize={20}>{name}が追放された！！</Text>
               <VSpacer size={20} />
-              <Text fontSize={20}>人狼は {wolf} だった！</Text>
+              <Text fontSize={20}>人狼は予想通り {wolf} だった！</Text>
             </>
           )}
           {result === 4 && (
             <>
-              <Text fontSize={20}>誰も追放されなかった</Text>
+              <Text fontSize={20}>追放者:{name}</Text>
               <VSpacer size={20} />
-              <Text fontSize={20}>人狼は {wolf} だった！</Text>
+              <Text fontSize={20} whiteSpace="pre-line">
+                しかし、この村にはまだ人狼がいる。
+              </Text>
+              <Text fontSize={20} whiteSpace="pre-line">
+                人狼の正体は{wolf}だった！
+              </Text>
             </>
           )}
           <VSpacer size={12} />
