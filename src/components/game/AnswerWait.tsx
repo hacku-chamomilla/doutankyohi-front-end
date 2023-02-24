@@ -51,10 +51,10 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
       <Center>
         <VStack align="hint">
           <HStack>
-            <Text fontSize={24} color="orange">
+            <Text fontSize={16} color="orange">
               ゲッサー
             </Text>
-            <Text fontSize={24} color="black">
+            <Text fontSize={16} color="black">
               が入力しています
             </Text>
             <Button isLoading colorScheme="gray"></Button>

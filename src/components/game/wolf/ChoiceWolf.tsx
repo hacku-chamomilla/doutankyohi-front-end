@@ -66,6 +66,9 @@ export const ChoiceWolf = ({ setStep, wolfList }: Props) => {
             <Text fontSize={12}>
               ※最初の人は回答者ですが、人狼の可能性もあります※
             </Text>
+            <Text fontSize={12}>
+              ※人狼がいない場合(平和村)を予想する場合は自分に投票※
+            </Text>
             <VSpacer size={4} />
             <ChoiceWolfList wolfList={wolfList} setValue={setValue} />
             <VSpacer size={12} />
