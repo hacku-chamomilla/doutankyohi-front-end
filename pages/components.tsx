@@ -47,7 +47,8 @@ const Component: NextPage = () => {
   const theme = "theme";
   const answer = "answer";
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
+  const [iswolf, setIswolf] = useState<boolean>(false);
+  const [ispeace, setIsPeace] = useState<boolean>(false);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -355,17 +356,23 @@ const Component: NextPage = () => {
               <VoteResult
                 name={"Player1"}
                 wolf={"Player2"}
-                banish={false}
-                peace={false}
+                banish={iswolf}
+                peace={ispeace}
               />
-            </CardBody>
-            <CardBody>
-              <VoteResult
-                name={"Player1"}
-                wolf={"Player2"}
-                banish={true}
-                peace={true}
-              />
+              <Checkbox
+                onChange={() => {
+                  setIswolf(!iswolf);
+                }}
+              >
+                追放者: true
+              </Checkbox>
+              <Checkbox
+                onChange={() => {
+                  setIsPeace(!ispeace);
+                }}
+              >
+                平和村: true
+              </Checkbox>
             </CardBody>
           </Card>
 
