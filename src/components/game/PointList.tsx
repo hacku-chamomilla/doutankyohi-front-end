@@ -1,15 +1,6 @@
 import React from "react";
 
-import {
-  Avatar,
-  Box,
-  Center,
-  HStack,
-  Stack,
-  Text,
-  UnorderedList,
-  VStack,
-} from "@chakra-ui/react";
+import { Avatar, Center, HStack, Text, UnorderedList } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -38,7 +29,7 @@ export const PointList = ({ memberPointList }: Props) => {
                   </HStack>
 
                   <Text fontSize={24} display="flex" justifyContent="flex-end">
-                    {memberName.point}pt
+                    ：{memberName.point}pt
                   </Text>
                 </HStack>
               </>
