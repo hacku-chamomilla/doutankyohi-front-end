@@ -196,6 +196,7 @@ const Component: NextPage = () => {
                 placeholder={"ぎゃんぶる"}
                 text={text}
                 setText={setText}
+                validation={false}
               />
               <p>{text}</p>
             </CardBody>

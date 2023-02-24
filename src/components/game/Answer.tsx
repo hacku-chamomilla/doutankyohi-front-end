@@ -37,6 +37,7 @@ export const Answer = ({ setStep, hintList }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
   const [answer, setAnswer] = useState("");
+  const [answerVal, setAnswerVal] = useState<boolean>(true);
 
   const handleAnswer = () => {
     const url = BASE_URL + "update-answer";
@@ -94,13 +95,20 @@ export const Answer = ({ setStep, hintList }: Props) => {
             placeholder={"ナイスゲッサ―"}
             text={answer}
             setText={setAnswer}
+            validation={answerVal}
           />
           <VSpacer size={8} />
           <Button
             fontSize={12}
             textColor={"white"}
             colorScheme={"red"}
-            onClick={handleAnswer}
+            onClick={() => {
+              if (answer === "") {
+                setAnswerVal(false);
+              } else {
+                handleAnswer();
+              }
+            }}
           >
             決定
           </Button>

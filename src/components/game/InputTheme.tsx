@@ -25,6 +25,7 @@ export const InputTheme = ({ setStep }: Props) => {
   const player = useRecoilValue(RecoilPlayer);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
+  const [inputThemeVal, setInputThemeVal] = useState<boolean>(true);
 
   const handlePost = () => {
     const url = BASE_URL + "create-theme";
@@ -66,9 +67,21 @@ export const InputTheme = ({ setStep }: Props) => {
               placeholder={"お題を入力"}
               text={text}
               setText={setText}
+              validation={inputThemeVal}
             />
             <VSpacer size={20} />
-            <Button colorScheme="red" minW={64} minH={12} onClick={handlePost}>
+            <Button
+              colorScheme="red"
+              minW={64}
+              minH={12}
+              onClick={() => {
+                if (text === "") {
+                  setInputThemeVal(false);
+                } else {
+                  handlePost();
+                }
+              }}
+            >
               決定
             </Button>
             <VSpacer size={8} />

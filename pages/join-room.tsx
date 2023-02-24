@@ -105,17 +105,17 @@ const JoinRoom: NextPage = () => {
           <Text fontSize={40}>ルームに参加</Text>
           <Image src="https://bit.ly/3XROgR3" alt="deco1" />
           <VSpacer size={6} />
+          <Text fontSize="xl">参加するルームのIDを入力して下さい</Text>
+          <VSpacer size={8} />
           {roomIdVal ? (
-            <CustomInput
-              title={"参加するルームのIDを入力して下さい"}
-              placeholder={"roomID"}
-              text={inputRoomId}
-              setText={setInputRoomId}
+            <Input
+              value={inputRoomId}
+              placeholder="roomId"
+              size="lg"
+              onChange={(event) => setInputRoomId(event.target.value)}
             />
           ) : (
             <>
-              <Text fontSize="xl">参加するルームのIDを入力して下さい</Text>
-              <VSpacer size={8} />
               <Input
                 value={inputRoomId}
                 placeholder="roomId"
