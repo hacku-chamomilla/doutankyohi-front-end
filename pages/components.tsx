@@ -30,7 +30,9 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { PointList } from "@/components/game/PointList";
 import { Result } from "@/components/game/Result";
+import { Score } from "@/components/game/Score";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -55,6 +57,14 @@ const Component: NextPage = () => {
     { nickname: "ふかむー", particIcon: 2 },
     { nickname: "ふかめも", particIcon: 3 },
     { nickname: "KJ", particIcon: 4 },
+  ];
+
+  const examplePointList = [
+    { nickname: "ふかむーる", particIcon: 0, point: 3 },
+    { nickname: "ふかみん", particIcon: 1, point: 5 },
+    { nickname: "ふかむー", particIcon: 2, point: 0 },
+    { nickname: "ふかめも", particIcon: 3, point: 2 },
+    { nickname: "KJ", particIcon: 4, point: 3 },
   ];
   const exampleWolfHintList = [
     {
@@ -109,6 +119,61 @@ const Component: NextPage = () => {
           <Heading size="lg" textAlign="center">
             Components Mock Storybook
           </Heading>
+
+          {/* DeleteHintList */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
+            </CardBody>
+          </Card>
+
+          {/* MemberList */}
+          <VSpacer size={8} />
+          <Heading size="lg">MemberList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <MemberList
+                title={"参加者リスト"}
+                memberNameList={exampleNameList}
+              />
+            </CardBody>
+          </Card>
+
+          {/* common/AreYou */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/AreYou</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは人狼です！"
+                text="正解しないように妨害をしよう！"
+                areYou={true}
+              />
+            </CardBody>
+          </Card>
+          <VSpacer size={8} />
+          <Heading size="lg">common/AreYou</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは村人です！"
+                text="協力して正解に導こう！"
+                areYou={false}
+              />
+            </CardBody>
+          </Card>
 
           {/* ChoiceWolfList */}
           <VSpacer size={8} />
@@ -330,6 +395,15 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/PointList */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/PointList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <PointList memberPointList={examplePointList} />
+            </CardBody>
+          </Card>
+
           {/* game/Result */}
           <VSpacer size={8} />
           <Heading size="lg">game/Result</Heading>
@@ -343,6 +417,15 @@ const Component: NextPage = () => {
               >
                 isCorrect = true
               </Checkbox>
+            </CardBody>
+          </Card>
+
+          {/* game/Score */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Score</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Score />
             </CardBody>
           </Card>
 
