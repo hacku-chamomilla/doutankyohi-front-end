@@ -73,8 +73,11 @@ const CreateRoom: NextPage = () => {
           setPlayer(newPlayerId);
           setOwner(newOwner);
 
-          if (wolfMode === true) router.push("/wolfWait");
-          if (wolfMode === false) router.push("/wait");
+          if (wolfMode === true) {
+            router.push("/wolf-wait");
+          } else {
+            router.push("/wait");
+          }
         }
       })
       .catch((err) => {
