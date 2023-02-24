@@ -144,6 +144,7 @@ const Component: NextPage = () => {
                 placeholder={"ぎゃんぶる"}
                 text={text}
                 setText={setText}
+                validation={false}
               />
               <p>{text}</p>
             </CardBody>
@@ -172,6 +173,7 @@ const Component: NextPage = () => {
                 avatarIndex={avatarIndex}
                 setNickname={setNickname}
                 setAvatarIndex={setAvatarIndex}
+                isNNNull={true}
               />
             </CardBody>
             <Text>名前:{nickname}</Text>

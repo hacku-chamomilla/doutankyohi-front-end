@@ -34,6 +34,7 @@ export const InputHint = ({ theme, setStep }: Props) => {
   const player = useRecoilValue(RecoilPlayer);
   const room = useRecoilValue(RecoilRoom);
   const router = useRouter();
+  const [inputHintVal, setInputHintVal] = useState<boolean>(true);
 
   const handlePost = () => {
     const url = BASE_URL + "create-hint";
@@ -74,8 +75,20 @@ export const InputHint = ({ theme, setStep }: Props) => {
               placeholder="ヒント"
               onChange={(event) => setInputHint(event.target.value)}
             />
+            {!inputHintVal && <Text color="red">※ヒントを入力して下さい</Text>}
             <VSpacer size={8} />
-            <Button colorScheme="red" minW={48} minH={12} onClick={handlePost}>
+            <Button
+              colorScheme="red"
+              minW={48}
+              minH={12}
+              onClick={() => {
+                if (inputHint === "") {
+                  setInputHintVal(false);
+                } else {
+                  handlePost();
+                }
+              }}
+            >
               決定
             </Button>
             <VSpacer size={8} />

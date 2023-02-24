@@ -6,7 +6,6 @@ import { useSetRecoilState } from "recoil";
 
 import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
 
-import { CustomInput } from "@/components/common/CustomInput";
 import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
@@ -27,7 +26,16 @@ const JoinRoom: NextPage = () => {
   const [inputRoomId, setInputRoomId] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
-  const [isRoomId, setIsRoomId] = useState<boolean>(true);
+  const [roomIdVal, setRoomIdVal] = useState<boolean>(true);
+  const [isNNNull, setIsNNNull] = useState<boolean>(false);
+
+  const NNValidation = () => {
+    if (nickname === "") {
+      setIsNNNull(true);
+    } else {
+      setIsNNNull(false);
+    }
+  };
 
   const isRoomExit = () => {
     const url = BASE_URL + "is-room-exit";
@@ -40,18 +48,20 @@ const JoinRoom: NextPage = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          if (res.data === false) {
-            setIsRoomId(false);
-            return false;
+          if (!res.data) {
+            setRoomIdVal(false);
           } else {
-            addPlayer();
+            if (nickname !== "") {
+              addPlayer();
+            } else {
+              setRoomIdVal(true);
+            }
           }
         }
       })
       .catch((err) => {
         HandleError(router, err);
       });
-    return false;
   };
 
   const addPlayer = () => {
@@ -96,17 +106,17 @@ const JoinRoom: NextPage = () => {
           <Text fontSize={40}>ルームに参加</Text>
           <Image src="https://bit.ly/3XROgR3" alt="deco1" />
           <VSpacer size={6} />
-          {isRoomId ? (
-            <CustomInput
-              title={"参加するルームのIDを入力して下さい"}
-              placeholder={"roomID"}
-              text={inputRoomId}
-              setText={setInputRoomId}
+          <Text fontSize="xl">参加するルームのIDを入力して下さい</Text>
+          <VSpacer size={8} />
+          {roomIdVal ? (
+            <Input
+              value={inputRoomId}
+              placeholder="roomId"
+              size="lg"
+              onChange={(event) => setInputRoomId(event.target.value)}
             />
           ) : (
             <>
-              <Text fontSize="xl">参加するルームのIDを入力して下さい</Text>
-              <VSpacer size={8} />
               <Input
                 value={inputRoomId}
                 placeholder="roomId"
@@ -130,6 +140,7 @@ const JoinRoom: NextPage = () => {
             avatarIndex={avatarIndex}
             setNickname={setNickname}
             setAvatarIndex={setAvatarIndex}
+            isNNNull={isNNNull}
           />
           <VSpacer size={8} />
           <Button
@@ -137,7 +148,12 @@ const JoinRoom: NextPage = () => {
             minW={64}
             minH={12}
             onClick={() => {
-              isRoomExit();
+              NNValidation();
+              if (inputRoomId === "") {
+                setRoomIdVal(false);
+              } else {
+                isRoomExit();
+              }
             }}
           >
             ルームに参加
