@@ -117,10 +117,7 @@ const Component: NextPage = () => {
     { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
     { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
-  const exampleVoteList = [
-    { nickname: "AAA", id: "123", vote: 1 },
-    { nickname: "BBB", id: "456", vote: 3 },
-  ];
+  const exampleVoteList = { nickname: "AAA", id: "123", vote: 1 };
 
   return (
     <>
