@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -18,7 +18,9 @@ export const ChoiceWolf = ({ wolfList }: Props) => {
       <Center>
         <VStack>
           <HStack>
+            <Image src="https://bit.ly/3kjlHyp" alt="deco11" boxSize="40px" />
             <Text fontSize={24}>人狼は誰だ！！</Text>
+            <Image src="https://bit.ly/3kjlHyp" alt="deco11" boxSize="40px" />
           </HStack>
           <VSpacer size={12} />
           <ChoiceWolfList wolfList={wolfList} />

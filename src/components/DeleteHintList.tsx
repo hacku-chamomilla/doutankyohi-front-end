@@ -33,7 +33,7 @@ export const DeleteHintList = ({ hintList }: Props) => {
                 }}
               >
                 <Card>
-                  <CardBody>
+                  <CardBody minW={80} boxShadow="2xl">
                     <HStack>
                       <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
                       <Text>{hint.hint}</Text>
