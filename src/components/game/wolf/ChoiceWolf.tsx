@@ -19,7 +19,10 @@ export const ChoiceWolf = ({ wolfList }: Props) => {
         <VStack>
           <HStack>
             <Image src="https://bit.ly/3kjlHyp" alt="deco11" boxSize="40px" />
-            <Text fontSize={24}>人狼は誰だ！！</Text>
+            <Text fontSize={24} color="red">
+              人狼
+            </Text>
+            <Text fontSize={24}>は誰だ！！</Text>
             <Image src="https://bit.ly/3kjlHyp" alt="deco11" boxSize="40px" />
           </HStack>
           <VSpacer size={12} />

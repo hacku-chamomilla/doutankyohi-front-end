@@ -54,7 +54,11 @@ export const InputTheme = ({ setStep }: Props) => {
           <VStack>
             <HStack>
               <Image src="https://bit.ly/3xLp0kK" alt="deco6" boxSize="50px" />
-              <Text fontSize="xl">あなたはヒントホルダーです！</Text>
+              <Text fontSize={24}>あなたは</Text>
+              <Text fontSize={24} color="purple">
+                ヒントホルダー
+              </Text>
+              <Text fontSize={24}>です</Text>
               <Image src="https://bit.ly/3XQ6KBu" alt="deco7" boxSize="50px" />
             </HStack>
             <VSpacer size={12} />
