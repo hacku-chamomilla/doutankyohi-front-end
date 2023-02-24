@@ -26,6 +26,7 @@ import { Hint } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
 
+// TODO: pages/game と共通化できるとこを共通化する
 const WolfGame: NextPage = () => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
@@ -55,7 +56,7 @@ const WolfGame: NextPage = () => {
   }, [player.id, router]);
 
   useEffect(() => {
-    if (step === 3 || step === 6) {
+    if (step === 3 || step === 6 || step === 7) {
       axios
         .get(BASE_URL + "theme", {
           params: { roomId: room.id },
@@ -92,7 +93,7 @@ const WolfGame: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step === 6) {
+    if (step === 6 || step === 7) {
       axios
         .get(BASE_URL + "answer", {
           params: { roomId: room.id },
@@ -193,7 +194,12 @@ const WolfGame: NextPage = () => {
       {/* Step 7 */}
       {/* --------------- */}
       {step === 7 && isCorrect !== undefined && (
-        <Result theme={theme} answer={answer} isCorrect={isCorrect} />
+        <Result
+          theme={theme}
+          answer={answer}
+          isCorrect={isCorrect}
+          setStep={setStep}
+        />
       )}
     </>
   );
