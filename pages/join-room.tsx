@@ -27,7 +27,16 @@ const JoinRoom: NextPage = () => {
   const [inputRoomId, setInputRoomId] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
-  const [isRoomId, setIsRoomId] = useState<boolean>(true);
+  const [roomIdVal, setRoomIdVal] = useState<boolean>(true);
+  const [isNNNull, setIsNNNull] = useState<boolean>(false);
+
+  const NNValidation = () => {
+    if (nickname === "") {
+      setIsNNNull(true);
+    } else {
+      setIsNNNull(false);
+    }
+  };
 
   const isRoomExit = () => {
     const url = BASE_URL + "is-room-exit";
@@ -41,7 +50,7 @@ const JoinRoom: NextPage = () => {
       .then((res) => {
         if (res.status === 200) {
           if (res.data === false) {
-            setIsRoomId(false);
+            setRoomIdVal(false);
             return false;
           } else {
             addPlayer();
@@ -96,7 +105,7 @@ const JoinRoom: NextPage = () => {
           <Text fontSize={40}>ルームに参加</Text>
           <Image src="https://bit.ly/3XROgR3" alt="deco1" />
           <VSpacer size={6} />
-          {isRoomId ? (
+          {roomIdVal ? (
             <CustomInput
               title={"参加するルームのIDを入力して下さい"}
               placeholder={"roomID"}
@@ -130,6 +139,7 @@ const JoinRoom: NextPage = () => {
             avatarIndex={avatarIndex}
             setNickname={setNickname}
             setAvatarIndex={setAvatarIndex}
+            isNNNull={isNNNull}
           />
           <VSpacer size={8} />
           <Button
@@ -137,7 +147,12 @@ const JoinRoom: NextPage = () => {
             minW={64}
             minH={12}
             onClick={() => {
-              isRoomExit();
+              NNValidation();
+              if (inputRoomId === "") {
+                setRoomIdVal(false);
+              } else {
+                isRoomExit();
+              }
             }}
           >
             ルームに参加

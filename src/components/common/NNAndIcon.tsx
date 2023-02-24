@@ -13,6 +13,7 @@ type Props = {
   avatarIndex: number;
   setAvatarIndex: Dispatch<SetStateAction<number>>;
   setNickname: Dispatch<SetStateAction<string>>;
+  isNNNull: boolean;
 };
 
 export const NNAndIcon = ({
@@ -24,6 +25,7 @@ export const NNAndIcon = ({
   avatarList,
   avatarIndex,
   setAvatarIndex,
+  isNNNull,
 }: Props) => {
   return (
     <>
@@ -40,6 +42,7 @@ export const NNAndIcon = ({
         size="lg"
         onChange={(event) => setNickname(event.target.value)}
       />
+      {isNNNull && <Text color="red">※ニックネームを入力して下さい</Text>}
       <VSpacer size={8} />
       <HStack>
         <Image boxSize={6} src="https://bit.ly/3ItzWsi" alt="deco3" />
