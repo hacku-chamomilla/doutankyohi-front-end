@@ -52,6 +52,9 @@ const Game: NextPage = () => {
   }, [player.id, router]);
 
   useEffect(() => {
+    if (step === 0) {
+      router.push("/wait");
+    }
     if (step === 3 || step === 6) {
       axios
         .get(BASE_URL + "theme", {
@@ -187,7 +190,6 @@ const Game: NextPage = () => {
           theme={theme}
           answer={answer}
           isCorrect={isCorrect}
-          step={step}
           setStep={setStep}
         />
       )}

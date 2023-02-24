@@ -20,16 +20,13 @@ type Props = {
   theme: string;
   answer: string;
   isCorrect: boolean;
-  step: number;
   setStep: Dispatch<SetStateAction<number>>;
 };
 
-export const Result = ({ theme, answer, isCorrect, step, setStep }: Props) => {
+export const Result = ({ theme, answer, isCorrect, setStep }: Props) => {
   const router = useRouter();
   const owner = useRecoilValue(RecoilOwner);
   const room = useRecoilValue(RecoilRoom);
-  const [isDisabled, setIsDisabled] = useState<boolean>(true);
-
   const Initialize = () => {
     axios
       .post(BASE_URL + "initialize", {
@@ -74,12 +71,6 @@ export const Result = ({ theme, answer, isCorrect, step, setStep }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (IS_AUTO_REQUEST) {
-      setIsDisabled(false);
-    }
-  }, [step]);
-
   return (
     <>
       <Center>
@@ -100,14 +91,8 @@ export const Result = ({ theme, answer, isCorrect, step, setStep }: Props) => {
               次へ
             </Button>
           ) : IS_AUTO_REQUEST ? (
-            <Button
-              colorScheme="red"
-              minW={64}
-              minH={12}
-              isDisabled={isDisabled}
-              onClick={handleNext}
-            >
-              次へ
+            <Button colorScheme="red" minW={64} minH={12} isDisabled={true}>
+              待機中
             </Button>
           ) : (
             <Button colorScheme="red" minW={64} minH={12} onClick={handleNext}>
