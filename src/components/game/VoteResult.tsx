@@ -69,28 +69,28 @@ export const VoteResult = ({ name, wolf, result, setStep }: Props) => {
           <VSpacer size={8} />
           {result === 1 && (
             <>
-              <Text fontSize={20}>{name}が追放された</Text>
-              <VSpacer size={20} />
-              <Text fontSize={20}>しかし人狼は存在しなかった</Text>
-            </>
-          )}
-          {result === 2 && (
-            <>
               <Text fontSize={20}>誰も追放されなかった</Text>
               <VSpacer size={20} />
               <Text fontSize={20}>人狼は存在しなかった</Text>
             </>
           )}
-          {result === 3 && (
+          {result === 2 && (
             <>
               <Text fontSize={20}>{name}が追放された</Text>
+              <VSpacer size={20} />
+              <Text fontSize={20}>しかし人狼は存在しなかった</Text>
+            </>
+          )}
+          {result === 3 && (
+            <>
+              <Text fontSize={20}>誰も追放されなかった</Text>
               <VSpacer size={20} />
               <Text fontSize={20}>人狼は {wolf} だった！</Text>
             </>
           )}
           {result === 4 && (
             <>
-              <Text fontSize={20}>誰も追放されなかった</Text>
+              <Text fontSize={20}>{name}が追放された</Text>
               <VSpacer size={20} />
               <Text fontSize={20}>人狼は {wolf} だった！</Text>
             </>
