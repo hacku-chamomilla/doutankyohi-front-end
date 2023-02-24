@@ -29,7 +29,7 @@ export const BanishPerson = ({ choseWolf, setWolfResult, setStep }: Props) => {
 
   const handleClick = () => {
     axios
-      .post(BASE_URL + "", {
+      .post(BASE_URL + "vanish-wolf", {
         playerId: choseWolf.id,
         roomId: room.id,
       })

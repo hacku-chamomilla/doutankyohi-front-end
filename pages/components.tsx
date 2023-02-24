@@ -117,7 +117,7 @@ const Component: NextPage = () => {
     { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
     { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
-  const explampleVoteList = [
+  const exampleVoteList = [
     { name: "AAA", id: "123", vote: 1 },
     { name: "BBB", id: "456", vote: 3 },
   ];
@@ -424,7 +424,7 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <BanishPerson
-                choseWolf={explampleVoteList}
+                choseWolf={exampleVoteList}
                 setWolfResult={setStep}
                 setStep={setStep}
               />

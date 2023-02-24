@@ -7,6 +7,7 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
+import { ChoiceWolfList } from "@/components/ChoiceWolfList";
 import { VSpacer } from "@/components/common/Spacer";
 import { Wait } from "@/components/game/Wait";
 
@@ -17,8 +18,6 @@ import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 import { Vote } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
-
-import { ChoiceWolfList } from "../../ChoiceWolfList";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
