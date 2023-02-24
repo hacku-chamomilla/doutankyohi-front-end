@@ -13,6 +13,7 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -40,14 +41,14 @@ const WolfGame: NextPage = () => {
   const [catchCamp, setCatchCamp] = useState<boolean>(); // 自分が人狼 or 村人か true=人狼, false=村人
 
   useEffect(() => {
-    const url = BASE_URL + "get-role";
+    const url = BASE_URL + "get-role-wolf";
     axios
       .get(url, {
         params: { playerId: player.id },
       })
       .then((res) => {
-        setRole(res.data[0]);
-        setCatchCamp(res.data[1]);
+        setRole(res.data["role"]);
+        setCatchCamp(res.data["wolf"]);
       })
       .catch((err) => {
         HandleError(router, err);
@@ -119,14 +120,14 @@ const WolfGame: NextPage = () => {
   }, [room.id, router, step]);
 
   // eslint-disable-next-line no-console
-  console.log(`role:${role} step:${step} camp:${camp}`); // TODO : デバッグ用のログ
+  console.log(`role:${role} step:${step} camp:${camp} catchCamp:${catchCamp}`); // TODO : デバッグ用のログ
 
   return (
     <>
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {step === 1 && !camp && catchCamp && (
+      {step === 1 && !camp && (catchCamp == true || catchCamp == false) && (
         <YouAre youAre={catchCamp} setYouAre={setCamp} />
       )}
       {camp && role === 1 && step === 1 && (
@@ -194,6 +195,14 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
+      {step === 7 && isCorrect !== undefined && (
+        <Result
+          theme={theme}
+          answer={answer}
+          isCorrect={isCorrect}
+          setStep={setStep}
+        />
+      )}
     </>
   );
 };

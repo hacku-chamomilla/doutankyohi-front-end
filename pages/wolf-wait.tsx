@@ -77,7 +77,7 @@ const WolfWait: NextPage = () => {
       })
       .then((res) => {
         if (res.data) {
-          router.push("/game");
+          router.push("/wolf-game");
         }
       })
       .catch((err) => {
