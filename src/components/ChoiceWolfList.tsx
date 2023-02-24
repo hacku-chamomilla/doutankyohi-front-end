@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { avatarList } from "@/data/AvatarList";
+import { avatarList } from "@/data/data";
 
 import { Wolf } from "@/types/choice";
 
