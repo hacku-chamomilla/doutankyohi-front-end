@@ -28,6 +28,8 @@ import { Hint, Vote } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
 
+import { VoteResult } from "../src/components/game/VoteResult";
+
 type ChoseWolf = {
   id: string;
   name: string;
@@ -51,6 +53,7 @@ const WolfGame: NextPage = () => {
   const [voteList, setVoteList] = useState<Vote[]>();
   const [choseWolf, setChoseWolf] = useState<ChoseWolf>();
   const [wolfResult, setWolfResult] = useState<number>(0);
+  const [trustWolfName, setTrustWolfName] = useState<string>("");
 
   useEffect(() => {
     const url = BASE_URL + "get-role-wolf";
@@ -148,6 +151,18 @@ const WolfGame: NextPage = () => {
         })
         .then((res) => {
           setChoseWolf(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    if (step === 10) {
+      axios
+        .get(BASE_URL + "get-wolf-name", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setTrustWolfName(res.data);
         })
         .catch((err) => {
           HandleError(router, err);
@@ -254,6 +269,18 @@ const WolfGame: NextPage = () => {
         <BanishPerson
           choseWolf={choseWolf}
           setWolfResult={setWolfResult}
+          setStep={setStep}
+        />
+      )}
+
+      {/* --------------- */}
+      {/* Step 10 */}
+      {/* --------------- */}
+      {step === 10 && choseWolf && (
+        <VoteResult
+          name={choseWolf.name}
+          wolf={trustWolfName}
+          result={wolfResult}
           setStep={setStep}
         />
       )}
