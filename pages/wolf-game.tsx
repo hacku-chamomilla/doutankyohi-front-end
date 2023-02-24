@@ -39,16 +39,17 @@ const WolfGame: NextPage = () => {
   const [hintList, setHintList] = useState<Hint[]>();
   const [deletedHintList, setDeletedHintList] = useState<Hint[]>();
   const [camp, setCamp] = useState<boolean>(false); // 人狼と村人を表示する画面をみたか, true=見た
-  const [catchCamp, setCatchCamp] = useState<boolean>(true); // 自分が人狼 or 村人か true=人狼, false=村人
+  const [catchCamp, setCatchCamp] = useState<boolean>(); // 自分が人狼 or 村人か true=人狼, false=村人
 
   useEffect(() => {
-    const url = BASE_URL + "get-role";
+    const url = BASE_URL + "get-role-wolf";
     axios
       .get(url, {
         params: { playerId: player.id },
       })
       .then((res) => {
-        setRole(res.data);
+        setRole(res.data["role"]);
+        setCatchCamp(res.data["wolf"]);
       })
       .catch((err) => {
         HandleError(router, err);
@@ -120,14 +121,16 @@ const WolfGame: NextPage = () => {
   }, [room.id, router, step]);
 
   // eslint-disable-next-line no-console
-  console.log(`role:${role} step:${step} camp:${camp}`); // TODO : デバッグ用のログ
+  console.log(`role:${role} step:${step} camp:${camp} catchCamp:${catchCamp}`); // TODO : デバッグ用のログ
 
   return (
     <>
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {step === 1 && !camp && <YouAre youAre={catchCamp} setYouAre={setCamp} />}
+      {step === 1 && !camp && (catchCamp == true || catchCamp == false) && (
+        <YouAre youAre={catchCamp} setYouAre={setCamp} />
+      )}
       {camp && role === 1 && step === 1 && (
         <Wait text={"あなたはゲッサーです！"} setStep={setStep} />
       )}
