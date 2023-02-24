@@ -2,15 +2,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
-import {
-  Button,
-  Center,
-  Checkbox,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 

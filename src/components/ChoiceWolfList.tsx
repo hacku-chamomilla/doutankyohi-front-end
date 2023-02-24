@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import {
   Avatar,
   Card,
   CardBody,
-  Center,
   HStack,
   Radio,
   RadioGroup,
@@ -14,26 +13,33 @@ import {
 
 import { avatarList } from "@/data/data";
 
-import { Wolf } from "@/types/choice";
+import { Vote } from "@/types/type";
 
 type Props = {
-  wolfList: Wolf[];
+  wolfList: Vote[];
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
-export const ChoiceWolfList = ({ wolfList }: Props) => {
+export const ChoiceWolfList = ({ wolfList, setValue }: Props) => {
   return (
     <>
       <RadioGroup>
         <Stack>
           {wolfList.map((list, i) => {
             return (
-              <Radio value={list.playerId} key={i}>
+              <Radio
+                value={list.playerid}
+                key={i}
+                onClick={() => {
+                  setValue(list.playerid);
+                }}
+              >
                 <Card>
                   <CardBody minW={80} boxShadow="2xl">
                     <HStack>
-                      <Avatar size="xs" src={avatarList[list.avatarIndex]} />
-                      <Text>{list.playerName}:</Text>
-                      <Text>{list.hint}</Text>
+                      <Avatar size="xs" src={avatarList[list.particIcon]} />
+                      <Text>{list.nickname}:</Text>
+                      <Text>{list.text}</Text>
                     </HStack>
                   </CardBody>
                 </Card>

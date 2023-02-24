@@ -44,6 +44,8 @@ import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/data";
 
+import { Vote } from "@/types/type";
+
 const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
@@ -71,36 +73,36 @@ const Component: NextPage = () => {
     { nickname: "ふかめも", particIcon: 3, point: 2 },
     { nickname: "KJ", particIcon: 4, point: 3 },
   ];
-  const exampleWolfHintList = [
+  const exampleWolfHintList: Vote[] = [
     {
-      playerId: "11111",
-      playerName: "KJ",
-      hint: "フルハウス",
-      avatarIndex: 0,
+      playerid: "11111",
+      nickname: "KJ",
+      text: "フルハウス",
+      particIcon: 0,
     },
     {
-      playerId: "22222",
-      playerName: "ケイジ",
-      hint: "平和宣言(トランプ)",
-      avatarIndex: 1,
+      playerid: "22222",
+      nickname: "ケイジ",
+      text: "平和宣言(トランプ)",
+      particIcon: 1,
     },
     {
-      playerId: "33333",
-      playerName: "本多",
-      hint: "オールイン",
-      avatarIndex: 2,
+      playerid: "33333",
+      nickname: "本多",
+      text: "オールイン",
+      particIcon: 2,
     },
     {
-      playerId: "44444",
-      playerName: "ホンダ",
-      hint: "トランプ",
-      avatarIndex: 3,
+      playerid: "44444",
+      nickname: "ホンダ",
+      text: "トランプ",
+      particIcon: 3,
     },
     {
-      playerId: "55555",
-      playerName: "ケイジェイ",
-      hint: "ストレート",
-      avatarIndex: 4,
+      playerid: "55555",
+      nickname: "ケイジェイ",
+      text: "ストレート",
+      particIcon: 4,
     },
   ];
   const exampleHintList = [
@@ -130,7 +132,10 @@ const Component: NextPage = () => {
           <Heading size="lg">ChoiceWolfList</Heading>
           <Card variant="filled">
             <CardBody>
-              <ChoiceWolfList wolfList={exampleWolfHintList} />
+              <ChoiceWolfList
+                wolfList={exampleWolfHintList}
+                setValue={setText}
+              />
               <p>{text}</p>
             </CardBody>
           </Card>
@@ -424,7 +429,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/wolf/ChoiceWolf</Heading>
           <Card variant="filled">
             <CardBody>
-              <ChoiceWolf wolfList={exampleWolfHintList} />
+              <ChoiceWolf wolfList={exampleWolfHintList} setStep={setStep} />
               <p>{text}</p>
             </CardBody>
           </Card>

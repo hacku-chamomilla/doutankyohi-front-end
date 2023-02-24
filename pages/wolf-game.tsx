@@ -13,16 +13,17 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
-import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
+import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
+import { ThemeResult } from "@/components/game/wolf/ThemeResult";
 
 import { BASE_URL } from "@/data/data";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
-import { Hint } from "@/types/type";
+import { Hint, Vote } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -40,6 +41,7 @@ const WolfGame: NextPage = () => {
   const [deletedHintList, setDeletedHintList] = useState<Hint[]>();
   const [camp, setCamp] = useState<boolean>(false); // 人狼と村人を表示する画面をみたか, true=見た
   const [catchCamp, setCatchCamp] = useState<boolean>(); // 自分が人狼 or 村人か true=人狼, false=村人
+  const [voteList, setVoteList] = useState<Vote[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role-wolf";
@@ -118,6 +120,18 @@ const WolfGame: NextPage = () => {
           HandleError(router, err);
         });
     }
+    if (step === 8) {
+      axios
+        .get(BASE_URL + "partic-list-vote", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setVoteList(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
   }, [room.id, router, step]);
 
   // eslint-disable-next-line no-console
@@ -128,7 +142,7 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {/* Step 1 */}
       {/* --------------- */}
-      {step === 1 && !camp && (catchCamp == true || catchCamp == false) && (
+      {step === 1 && !camp && catchCamp !== undefined && (
         <YouAre youAre={catchCamp} setYouAre={setCamp} />
       )}
       {camp && role === 1 && step === 1 && (
@@ -197,12 +211,19 @@ const WolfGame: NextPage = () => {
       {/* Step 7 */}
       {/* --------------- */}
       {step === 7 && isCorrect !== undefined && (
-        <Result
+        <ThemeResult
           theme={theme}
           answer={answer}
           isCorrect={isCorrect}
           setStep={setStep}
         />
+      )}
+
+      {/* --------------- */}
+      {/* Step 8 */}
+      {/* --------------- */}
+      {step === 8 && voteList && (
+        <ChoiceWolf wolfList={voteList} setStep={setStep} />
       )}
     </>
   );

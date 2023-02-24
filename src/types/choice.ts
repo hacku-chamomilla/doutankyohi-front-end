@@ -1,6 +1,6 @@
 export type Wolf = {
   playerId: string;
-  playerName: string;
-  avatarIndex: number;
-  hint: string;
+  nickName: string;
+  particIcon: number;
+  text: string;
 };
