@@ -170,6 +170,17 @@ const WolfGame: NextPage = () => {
         .catch((err) => {
           HandleError(router, err);
         });
+
+      axios
+        .get(BASE_URL + "result", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setWolfResult(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
     }
     if (step === 11) {
       axios
