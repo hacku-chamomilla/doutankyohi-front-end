@@ -13,6 +13,7 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -25,6 +26,7 @@ import { Hint } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
 
+// TODO: pages/game と共通化できるとこを共通化する
 const WolfGame: NextPage = () => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
@@ -54,7 +56,7 @@ const WolfGame: NextPage = () => {
   }, [player.id, router]);
 
   useEffect(() => {
-    if (step === 3 || step === 6) {
+    if (step === 3 || step === 6 || step === 7) {
       axios
         .get(BASE_URL + "theme", {
           params: { roomId: room.id },
@@ -91,7 +93,7 @@ const WolfGame: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step === 6) {
+    if (step === 6 || step === 7) {
       axios
         .get(BASE_URL + "answer", {
           params: { roomId: room.id },
@@ -191,6 +193,14 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
+      {step === 7 && isCorrect !== undefined && (
+        <Result
+          theme={theme}
+          answer={answer}
+          isCorrect={isCorrect}
+          setStep={setStep}
+        />
+      )}
     </>
   );
 };

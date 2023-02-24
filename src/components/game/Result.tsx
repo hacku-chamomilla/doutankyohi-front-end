@@ -76,9 +76,9 @@ export const Result = ({ theme, answer, isCorrect, setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={4} />
-          {theme && <CustomTitleText title="お題" text={theme} />}
+          <CustomTitleText title="お題" text={theme} />
           <VSpacer size={4} />
-          {answer && <CustomTitleText title="解答" text={answer} />}
+          <CustomTitleText title="解答" text={answer} />
           <VSpacer size={12} />
           {isCorrect ? (
             <Text fontSize="3xl">正解！おめでとう！</Text>
