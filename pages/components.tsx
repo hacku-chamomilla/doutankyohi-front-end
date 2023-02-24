@@ -465,7 +465,12 @@ const Component: NextPage = () => {
           <Heading size="lg">game/VoteResult</Heading>
           <Card variant="filled">
             <CardBody>
-              <VoteResult name={"Player1"} wolf={"Player2"} result={1} />
+              <VoteResult
+                name={"Player1"}
+                wolf={"Player2"}
+                result={1}
+                setStep={setStep}
+              />
               <Checkbox
                 onChange={() => {
                   setIswolf(!iswolf);
