@@ -29,11 +29,21 @@ export const VoteResult = ({ name, wolf, banish, peace }: Props) => {
               <VSpacer size={20} />
               {peace ? (
                 <>
-                  <Text fontSize={20}>人狼は存在しなかった！</Text>
+                  <HStack>
+                    <Text fontSize={20} color="red">
+                      人狼
+                    </Text>
+                    <Text fontSize={20}>は存在しなかった！</Text>
+                  </HStack>
                 </>
               ) : (
                 <>
-                  <Text fontSize={20}>人狼は{wolf}だった！</Text>
+                  <HStack>
+                    <Text fontSize={20} color="red">
+                      人狼
+                    </Text>
+                    <Text fontSize={20}>は{wolf}だった！</Text>
+                  </HStack>
                 </>
               )}
             </>
@@ -43,11 +53,21 @@ export const VoteResult = ({ name, wolf, banish, peace }: Props) => {
               <VSpacer size={20} />
               {peace ? (
                 <>
-                  <Text fontSize={20}>人狼は存在しなかった！</Text>
+                  <HStack>
+                    <Text fontSize={20} color="red">
+                      人狼
+                    </Text>
+                    <Text fontSize={20}>は存在しなかった！</Text>
+                  </HStack>
                 </>
               ) : (
                 <>
-                  <Text fontSize={20}>人狼は{wolf}だった！</Text>
+                  <HStack>
+                    <Text fontSize={20} color="red">
+                      人狼
+                    </Text>
+                    <Text fontSize={20}>は{wolf}だった！</Text>
+                  </HStack>
                 </>
               )}
             </>

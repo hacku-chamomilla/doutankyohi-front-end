@@ -51,7 +51,12 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
       <Center>
         <VStack align="hint">
           <HStack>
-            <Text fontSize={24}>ゲッサーが入力しています</Text>
+            <Text fontSize={24} color="orange">
+              ゲッサー
+            </Text>
+            <Text fontSize={24} color="black">
+              が入力しています
+            </Text>
             <Button isLoading colorScheme="gray"></Button>
           </HStack>
           <VSpacer size={4} />

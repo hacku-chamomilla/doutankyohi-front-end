@@ -54,9 +54,10 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
               alt="deco10"
               boxSize="60px"
             ></Image>
-            <Text fontSize="xl">
-              ゲッサーが入力した答えが正解か判定しよう！
+            <Text fontSize={24} color="orange">
+              ゲッサー
             </Text>
+            <Text fontSize={24}>が入力した答えが正解か判定しよう！</Text>
             <Image
               src="https://bit.ly/3KzsIpd"
               alt="deco10"
