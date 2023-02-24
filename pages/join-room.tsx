@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
@@ -27,6 +27,7 @@ const JoinRoom: NextPage = () => {
   const [avatarIndex, setAvatarIndex] = useState(0);
   const [roomIdVal, setRoomIdVal] = useState<boolean>(true);
   const [isNNNull, setIsNNNull] = useState<boolean>(false);
+  const [wolfMode, setWolfMode] = useState<boolean>();
 
   const NNValidation = () => {
     if (nickname === "") {
@@ -65,6 +66,7 @@ const JoinRoom: NextPage = () => {
 
   const addPlayer = () => {
     const url = BASE_URL + "add-player";
+    const modeUrl = BASE_URL + "is-mode-wolf";
 
     axios
       .post(url, {
@@ -87,13 +89,29 @@ const JoinRoom: NextPage = () => {
           setPlayer(newPlayerId);
           setOwner(newOwner);
 
-          router.push("/wait");
+          axios
+            .get(modeUrl, {
+              params: { roomId: inputRoomId },
+            })
+            .then((res) => {
+              setWolfMode(res.data);
+            })
+            .catch((err) => {
+              HandleError(router, err);
+            });
         }
-      })
-      .catch((err) => {
-        HandleError(router, err);
       });
   };
+
+  useEffect(() => {
+    if (wolfMode === true) {
+      router.push("/wolf-wait");
+    }
+    if (wolfMode == false) {
+      router.push("/wait");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wolfMode]);
 
   return (
     <>
