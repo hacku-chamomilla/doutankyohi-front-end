@@ -8,13 +8,13 @@ import { VSpacer } from "@/components/common/Spacer";
 
 import { BASE_URL } from "@/data/data";
 
-import { Wolf } from "@/types/choice";
+import { Vote } from "@/types/type";
 
 import { ChoiceWolfList } from "../../ChoiceWolfList";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
-  wolfList: Wolf[];
+  wolfList: Vote[];
 };
 
 export const ChoiceWolf = ({ setStep, wolfList }: Props) => {

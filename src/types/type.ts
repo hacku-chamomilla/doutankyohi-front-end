@@ -4,3 +4,10 @@ export type Hint = {
   hint: string;
   isDelete: boolean;
 };
+
+export type Vote = {
+  nickname: string;
+  playerid: string;
+  particIcon: number;
+  text: string;
+};

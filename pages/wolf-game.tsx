@@ -13,7 +13,6 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
-import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
@@ -24,8 +23,7 @@ import { BASE_URL } from "@/data/data";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
-import { Wolf } from "@/types/choice";
-import { Hint } from "@/types/type";
+import { Hint, Vote } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
 
@@ -43,7 +41,7 @@ const WolfGame: NextPage = () => {
   const [deletedHintList, setDeletedHintList] = useState<Hint[]>();
   const [camp, setCamp] = useState<boolean>(false); // 人狼と村人を表示する画面をみたか, true=見た
   const [catchCamp, setCatchCamp] = useState<boolean>(); // 自分が人狼 or 村人か true=人狼, false=村人
-  const [voteList, setVoteList] = useState<Wolf[]>();
+  const [voteList, setVoteList] = useState<Vote[]>();
 
   useEffect(() => {
     const url = BASE_URL + "get-role-wolf";
