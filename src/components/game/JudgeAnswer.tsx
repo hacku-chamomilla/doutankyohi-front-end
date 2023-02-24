@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
@@ -48,7 +48,21 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={4} />
-          <Text fontSize="xl">ゲッサーが入力した答えが正解か判定しよう！</Text>
+          <HStack>
+            <Image
+              src="https://bit.ly/3KzsIpd"
+              alt="deco10"
+              boxSize="60px"
+            ></Image>
+            <Text fontSize="xl">
+              ゲッサーが入力した答えが正解か判定しよう！
+            </Text>
+            <Image
+              src="https://bit.ly/3KzsIpd"
+              alt="deco10"
+              boxSize="60px"
+            ></Image>
+          </HStack>
           <VSpacer size={12} />
           {theme && <CustomTitleText title="お題" text={theme} />}
           <VSpacer size={4} />

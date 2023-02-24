@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 import { DeleteHintList } from "@/components/DeleteHintList";
@@ -58,7 +58,11 @@ export const SelectDuplicateHint = ({ hintList, setStep }: Props) => {
       <Center>
         <VStack>
           <VSpacer size={8} />
-          <Text fontSize="xl">被ったヒントを消してください！</Text>
+          <HStack>
+            <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+            <Text fontSize="xl">被ったヒントを消してください！</Text>
+            <Image src="https://bit.ly/3ZbrlSt" alt="deco4" boxSize="40px" />
+          </HStack>
           <VSpacer size={8} />
           <DeleteHintList hintList={hintList} />
           <VSpacer size={8} />
