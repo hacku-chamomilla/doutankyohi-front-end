@@ -1,10 +1,9 @@
 import React from "react";
 
-import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { PointList } from "./PointList";
 import { VSpacer } from "../common/Spacer";
-import { MemberList } from "../MemberList";
 
 export const Score = () => {
   const examplePointList = [
@@ -16,13 +15,10 @@ export const Score = () => {
   ];
   return (
     <>
-      <VSpacer size={8} />
-
       <Center>
         <VStack>
           <VStack>
             <Text fontSize={24}>現在のポイント</Text>
-            <VSpacer size={16} />
             <PointList memberPointList={examplePointList} />
           </VStack>
           <VSpacer size={16} />
