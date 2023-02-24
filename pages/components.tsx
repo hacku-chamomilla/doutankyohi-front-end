@@ -36,6 +36,7 @@ import { Result } from "@/components/game/Result";
 import { Score } from "@/components/game/Score";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
+import { VoteResult } from "@/components/game/VoteResult";
 import { Wait } from "@/components/game/Wait";
 import { BanishPerson } from "@/components/game/wolf/BanishPerson";
 import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
@@ -52,7 +53,8 @@ const Component: NextPage = () => {
   const theme = "theme";
   const answer = "answer";
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
+  const [iswolf, setIswolf] = useState<boolean>(false);
+  const [ispeace, setIsPeace] = useState<boolean>(false);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -436,6 +438,43 @@ const Component: NextPage = () => {
                 title={"参加者リスト"}
                 memberNameList={exampleNameList}
               />
+            </CardBody>
+          </Card>
+
+          {/* game/InputTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputTheme setStep={setStep} />
+            </CardBody>
+          </Card>
+
+          {/* game/VoteResult */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/VoteResult</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <VoteResult
+                name={"Player1"}
+                wolf={"Player2"}
+                banish={iswolf}
+                peace={ispeace}
+              />
+              <Checkbox
+                onChange={() => {
+                  setIswolf(!iswolf);
+                }}
+              >
+                追放者: true
+              </Checkbox>
+              <Checkbox
+                onChange={() => {
+                  setIsPeace(!ispeace);
+                }}
+              >
+                平和村: true
+              </Checkbox>
             </CardBody>
           </Card>
 
