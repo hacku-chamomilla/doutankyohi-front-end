@@ -11,15 +11,47 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
-import { BASE_URL } from "@/data/data";
+import {
+  BASE_URL,
+  INTERVAL,
+  IS_AUTO_REQUEST,
+  MAX_AUTO_HTTP_REQUEST,
+} from "@/data/data";
 
-import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 
 type Player = {
   nickname: string;
   particIcon: number;
+};
+
+let count = 0;
+let lastTime = Date.now();
+const AutoHTTPRequest = (Fun: () => void) => {
+  {
+    try {
+      const nowTime = Date.now();
+      if (count === 0 || lastTime + INTERVAL - 100 < nowTime) {
+        Fun();
+
+        lastTime = nowTime;
+        count += 1;
+
+        if (MAX_AUTO_HTTP_REQUEST < count) {
+          throw count;
+        }
+
+        setTimeout(() => {
+          AutoHTTPRequest(Fun);
+        }, INTERVAL);
+      }
+    } catch (count) {
+      // eslint-disable-next-line no-console
+      console.log(`Leave AutoHTTPRequest Loop`);
+    }
+  }
 };
 
 const Wait: NextPage = () => {
@@ -64,6 +96,9 @@ const Wait: NextPage = () => {
   const handleUpdate = () => {
     judgeIsGameStart();
     updateParticList();
+    console.log("####################");
+    console.log("#####  REQUEST  ####");
+    console.log("####################");
   };
 
   const handleGameStart = () => {
@@ -82,7 +117,13 @@ const Wait: NextPage = () => {
   };
 
   useEffect(() => {
-    handleUpdate();
+    if (IS_AUTO_REQUEST) {
+      // 最初に1回 AutoHTTPRequest 関数を実行すれば、その後は再帰する
+      AutoHTTPRequest(handleUpdate);
+    } else {
+      handleUpdate();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -96,7 +137,7 @@ const Wait: NextPage = () => {
       <Center>
         <VStack>
           <VSpacer size={20} />
-          <Button onClick={handleUpdate}>更新</Button>
+          {!IS_AUTO_REQUEST && <Button onClick={handleUpdate}>更新</Button>}
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
           {playerList && (
