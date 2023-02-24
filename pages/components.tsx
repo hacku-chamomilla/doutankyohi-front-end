@@ -224,6 +224,7 @@ const Component: NextPage = () => {
                 avatarIndex={avatarIndex}
                 setNickname={setNickname}
                 setAvatarIndex={setAvatarIndex}
+                isNNNull={true}
               />
             </CardBody>
             <Text>名前:{nickname}</Text>
