@@ -4,7 +4,14 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 
-import { Button, Center, Image, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Checkbox,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 
 import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
@@ -98,7 +105,12 @@ const CreateRoom: NextPage = () => {
             setNickname={setNickname}
             setAvatarIndex={setAvatarIndex}
           />
-          <VSpacer size={24} />
+          <VSpacer size={8} />
+          <Checkbox colorScheme="green" size="lg">
+            <Text fontSize={24}>人狼モード</Text>
+          </Checkbox>
+
+          <VSpacer size={8} />
           <Button
             colorScheme="orange"
             color={"white"}
