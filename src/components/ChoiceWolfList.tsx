@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import {
   Avatar,
   Card,
   CardBody,
-  Center,
   HStack,
   Radio,
   RadioGroup,
@@ -18,16 +17,23 @@ import { Wolf } from "@/types/choice";
 
 type Props = {
   wolfList: Wolf[];
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
-export const ChoiceWolfList = ({ wolfList }: Props) => {
+export const ChoiceWolfList = ({ wolfList, setValue }: Props) => {
   return (
     <>
       <RadioGroup>
         <Stack>
           {wolfList.map((list, i) => {
             return (
-              <Radio value={list.playerId} key={i}>
+              <Radio
+                value={list.playerId}
+                key={i}
+                onClick={() => {
+                  setValue(list.playerId);
+                }}
+              >
                 <Card>
                   <CardBody minW={80} boxShadow="2xl">
                     <HStack>
