@@ -4,7 +4,8 @@ import { Avatar, HStack, Text, UnorderedList } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
-import { avatarList } from "@/data/AvatarList";
+import { avatarList } from "@/data/data";
+
 type Props = {
   title: string;
   memberNameList: {

@@ -9,7 +9,7 @@ import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
 import { Wait } from "@/components/game/Wait";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 

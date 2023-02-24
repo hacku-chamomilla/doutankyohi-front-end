@@ -42,7 +42,7 @@ import { BanishPerson } from "@/components/game/wolf/BanishPerson";
 import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
 import { MemberList } from "@/components/MemberList";
 
-import { avatarList } from "@/data/AvatarList";
+import { avatarList } from "@/data/data";
 
 const Component: NextPage = () => {
   const [text, setText] = useState("");
@@ -353,7 +353,12 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Result</Heading>
           <Card variant="filled">
             <CardBody>
-              <Result theme={theme} answer={answer} isCorrect={isCorrect} />
+              <Result
+                theme={theme}
+                answer={answer}
+                isCorrect={isCorrect}
+                setStep={setStep}
+              />
               <Checkbox
                 onChange={() => {
                   setIsCorrect(!isCorrect);

@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
 import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { FetchStep } from "@/hooks/useFetchStep";
+import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 import { CustomTitleText } from "../common/CustomTitleText";
 import { VSpacer } from "../common/Spacer";
@@ -18,13 +20,13 @@ type Props = {
   theme: string;
   answer: string;
   isCorrect: boolean;
+  setStep: Dispatch<SetStateAction<number>>;
 };
 
-export const Result = ({ theme, answer, isCorrect }: Props) => {
+export const Result = ({ theme, answer, isCorrect, setStep }: Props) => {
   const router = useRouter();
   const owner = useRecoilValue(RecoilOwner);
   const room = useRecoilValue(RecoilRoom);
-
   const Initialize = () => {
     axios
       .post(BASE_URL + "initialize", {
@@ -41,7 +43,7 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
   };
 
   // NOTE: 遷移を含むため共通化できない
-  const FetchStep = () => {
+  const handleNext = () => {
     axios
       .get(BASE_URL + "step", {
         params: { roomId: room.id },
@@ -55,6 +57,19 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
         HandleError(router, err);
       });
   };
+
+  useEffect(() => {
+    if (IS_AUTO_REQUEST) {
+      AutoHttpRequest(
+        () => {
+          FetchStep(setStep, router, room.id);
+        },
+        0,
+        Date.now()
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -75,8 +90,12 @@ export const Result = ({ theme, answer, isCorrect }: Props) => {
             <Button colorScheme="red" minW={64} minH={12} onClick={Initialize}>
               次へ
             </Button>
+          ) : IS_AUTO_REQUEST ? (
+            <Button colorScheme="red" minW={64} minH={12} isDisabled={true}>
+              待機中
+            </Button>
           ) : (
-            <Button colorScheme="red" minW={64} minH={12} onClick={FetchStep}>
+            <Button colorScheme="red" minW={64} minH={12} onClick={handleNext}>
               更新
             </Button>
           )}

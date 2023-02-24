@@ -17,7 +17,7 @@ import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
@@ -52,6 +52,9 @@ const Game: NextPage = () => {
   }, [player.id, router]);
 
   useEffect(() => {
+    if (step === 0) {
+      router.push("/wait");
+    }
     if (step === 3 || step === 6) {
       axios
         .get(BASE_URL + "theme", {
@@ -114,9 +117,6 @@ const Game: NextPage = () => {
         });
     }
   }, [room.id, router, step]);
-
-  // eslint-disable-next-line no-console
-  console.log(`role:${role} step:${step}`); // TODO : デバッグ用のログ
 
   return (
     <>
@@ -186,7 +186,12 @@ const Game: NextPage = () => {
       {/* Step 7 */}
       {/* --------------- */}
       {step === 7 && isCorrect !== undefined && (
-        <Result theme={theme} answer={answer} isCorrect={isCorrect} />
+        <Result
+          theme={theme}
+          answer={answer}
+          isCorrect={isCorrect}
+          setStep={setStep}
+        />
       )}
     </>
   );

@@ -2,7 +2,7 @@ import axios from "axios";
 import { NextRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { HandleError } from "@/hooks/useError";
 
