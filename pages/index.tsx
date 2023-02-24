@@ -264,6 +264,7 @@ const Home: NextPage = () => {
             as="i"
             colorScheme="red"
             color="white"
+            _hover={{ cursor: "pointer" }}
             onClick={() => {
               router.push("/start-game");
             }}
