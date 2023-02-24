@@ -122,61 +122,6 @@ const Component: NextPage = () => {
             Components Mock Storybook
           </Heading>
 
-          {/* DeleteHintList */}
-          <VSpacer size={8} />
-          <Heading size="lg">DeleteHintList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <DeleteHintList hintList={exampleHintList} />
-              <VSpacer size={8} />
-              <Button
-                colorScheme="blue"
-                onClick={() => {
-                  // eslint-disable-next-line no-console
-                  console.log(exampleHintList);
-                }}
-              >
-                チェックされているものをコンソールで確認
-              </Button>
-            </CardBody>
-          </Card>
-
-          {/* MemberList */}
-          <VSpacer size={8} />
-          <Heading size="lg">MemberList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <MemberList
-                title={"参加者リスト"}
-                memberNameList={exampleNameList}
-              />
-            </CardBody>
-          </Card>
-
-          {/* common/AreYou */}
-          <VSpacer size={8} />
-          <Heading size="lg">common/AreYou</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <YouAre
-                title="あなたは人狼です！"
-                text="正解しないように妨害をしよう！"
-                areYou={true}
-              />
-            </CardBody>
-          </Card>
-          <VSpacer size={8} />
-          <Heading size="lg">common/AreYou</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <YouAre
-                title="あなたは村人です！"
-                text="協力して正解に導こう！"
-                areYou={false}
-              />
-            </CardBody>
-          </Card>
-
           {/* ChoiceWolfList */}
           <VSpacer size={8} />
           <Heading size="lg">ChoiceWolfList</Heading>
