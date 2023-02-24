@@ -16,6 +16,7 @@ import { JudgeAnswer } from "@/components/game/JudgeAnswer";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
+import { BanishPerson } from "@/components/game/wolf/BanishPerson";
 import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
 import { ThemeResult } from "@/components/game/wolf/ThemeResult";
 
@@ -26,6 +27,12 @@ import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 import { Hint, Vote } from "@/types/type";
 
 import { HandleError } from "@/hooks/useError";
+
+type ChoseWolf = {
+  id: string;
+  name: string;
+  vote: number;
+};
 
 // TODO: pages/game と共通化できるとこを共通化する
 const WolfGame: NextPage = () => {
@@ -42,6 +49,8 @@ const WolfGame: NextPage = () => {
   const [camp, setCamp] = useState<boolean>(false); // 人狼と村人を表示する画面をみたか, true=見た
   const [catchCamp, setCatchCamp] = useState<boolean>(); // 自分が人狼 or 村人か true=人狼, false=村人
   const [voteList, setVoteList] = useState<Vote[]>();
+  const [choseWolf, setChoseWolf] = useState<ChoseWolf>();
+  const [wolfResult, setWolfResult] = useState<number>(0);
 
   useEffect(() => {
     const url = BASE_URL + "get-role-wolf";
@@ -127,6 +136,18 @@ const WolfGame: NextPage = () => {
         })
         .then((res) => {
           setVoteList(res.data);
+        })
+        .catch((err) => {
+          HandleError(router, err);
+        });
+    }
+    if (step === 9) {
+      axios
+        .get(BASE_URL + "vanish-wolf", {
+          params: { roomId: room.id },
+        })
+        .then((res) => {
+          setChoseWolf(res.data);
         })
         .catch((err) => {
           HandleError(router, err);
@@ -224,6 +245,17 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {step === 8 && voteList && (
         <ChoiceWolf wolfList={voteList} setStep={setStep} />
+      )}
+
+      {/* --------------- */}
+      {/* Step 9 */}
+      {/* --------------- */}
+      {step === 9 && choseWolf && (
+        <BanishPerson
+          choseWolf={choseWolf}
+          setWolfResult={setWolfResult}
+          setStep={setStep}
+        />
       )}
     </>
   );
