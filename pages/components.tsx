@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextPage } from "next";
 import React, { useState } from "react";
 
@@ -46,6 +47,7 @@ const Component: NextPage = () => {
   const [text, setText] = useState("");
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [step, setStep] = useState<number>(0);
   const theme = "theme";
   const answer = "answer";

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
