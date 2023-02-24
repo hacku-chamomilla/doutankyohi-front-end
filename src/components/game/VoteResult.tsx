@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -16,7 +16,12 @@ export const VoteResult = ({ name, wolf, banish, peace }: Props) => {
     <>
       <Center>
         <VStack>
-          <Text fontSize={36}>投票結果</Text>
+          <HStack>
+            <Image src="https://bit.ly/3ECjZz4" alt="deco13" boxSize="50px" />
+            <Text fontSize={36}>投票結果</Text>
+            <Image src="https://bit.ly/3ECjZz4" alt="deco13" boxSize="50px" />
+          </HStack>
+
           <VSpacer size={8} />
           {banish ? (
             <>

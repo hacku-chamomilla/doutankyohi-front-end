@@ -4,6 +4,7 @@ import {
   Avatar,
   Card,
   CardBody,
+  Center,
   HStack,
   Radio,
   RadioGroup,
@@ -28,7 +29,7 @@ export const ChoiceWolfList = ({ wolfList }: Props) => {
             return (
               <Radio value={list.playerId} key={i}>
                 <Card>
-                  <CardBody>
+                  <CardBody minW={80} boxShadow="2xl">
                     <HStack>
                       <Avatar size="xs" src={avatarList[list.avatarIndex]} />
                       <Text>{list.playerName}:</Text>
