@@ -55,7 +55,7 @@ const Game: NextPage = () => {
     if (step === 0) {
       router.push("/wait");
     }
-    if (step === 3 || step === 6) {
+    if (step === 3 || step === 6 || step === 7) {
       axios
         .get(BASE_URL + "theme", {
           params: { roomId: room.id },
@@ -92,7 +92,7 @@ const Game: NextPage = () => {
           HandleError(router, err);
         });
     }
-    if (step === 6) {
+    if (step === 6 || step === 7) {
       axios
         .get(BASE_URL + "answer", {
           params: { roomId: room.id },
