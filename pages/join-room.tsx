@@ -6,7 +6,6 @@ import { useSetRecoilState } from "recoil";
 
 import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
 
-import { CustomInput } from "@/components/common/CustomInput";
 import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
@@ -49,18 +48,20 @@ const JoinRoom: NextPage = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          if (res.data === false) {
+          if (!res.data) {
             setRoomIdVal(false);
-            return false;
           } else {
-            addPlayer();
+            if (nickname !== "") {
+              addPlayer();
+            } else {
+              setRoomIdVal(true);
+            }
           }
         }
       })
       .catch((err) => {
         HandleError(router, err);
       });
-    return false;
   };
 
   const addPlayer = () => {
