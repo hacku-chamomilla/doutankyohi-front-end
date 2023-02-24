@@ -2,7 +2,15 @@ import { useRouter } from "next/router";
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Button, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Checkbox,
+  HStack,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -38,11 +46,15 @@ export const Wait = ({ text, setStep }: Props) => {
   return (
     <Center>
       <VStack>
-        <HStack>
-          <Text>{text}</Text>
-          <Button isLoading colorScheme="gray"></Button>
-        </HStack>
-        <VSpacer size={20} />
+        <VStack>
+          <Image src="https://bit.ly/3kmqtLm" alt="deco9"></Image>
+          <HStack>
+            <Text fontSize={24}>{text}</Text>
+            <Button isLoading colorScheme="gray"></Button>
+          </HStack>
+        </VStack>
+        <VSpacer size={4} />
+        <Text fontSize={16}></Text>
         {!IS_AUTO_REQUEST && (
           <Button
             onClick={() => {
@@ -52,6 +64,12 @@ export const Wait = ({ text, setStep }: Props) => {
             更新
           </Button>
         )}
+        <VSpacer size={12} />
+        <VStack>
+          <Image src="https://bit.ly/41pLNAc" alt="gif"></Image>
+        </VStack>
+
+        <VSpacer size={12} />
       </VStack>
     </Center>
   );
