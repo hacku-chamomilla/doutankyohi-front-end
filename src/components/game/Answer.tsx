@@ -19,7 +19,7 @@ import { VSpacer } from "@/components/common/Spacer";
 
 import { BASE_URL } from "@/data/data";
 
-import { RecoilRoom } from "@/store/Recoil";
+import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
@@ -36,6 +36,7 @@ type Props = {
 export const Answer = ({ setStep, hintList }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
+  const player = useRecoilValue(RecoilPlayer);
   const [answer, setAnswer] = useState("");
   const [answerVal, setAnswerVal] = useState<boolean>(true);
 
@@ -43,6 +44,7 @@ export const Answer = ({ setStep, hintList }: Props) => {
     const url = BASE_URL + "update-answer";
     axios
       .post(url, {
+        playerId: player.id,
         roomId: room.id,
         answer: answer,
       })
