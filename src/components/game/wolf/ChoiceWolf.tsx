@@ -70,6 +70,9 @@ export const ChoiceWolf = ({ setStep, wolfList }: Props) => {
               ※人狼がいない場合(平和村)を予想する場合は自分に投票※
             </Text>
             <VSpacer size={4} />
+            <Text fontSize={12}>
+              ※平和村と思うのならば、自分に票を入れてください※
+            </Text>
             <ChoiceWolfList wolfList={wolfList} setValue={setValue} />
             <VSpacer size={12} />
             <Button
