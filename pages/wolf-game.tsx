@@ -13,12 +13,11 @@ import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
-import { Result } from "@/components/game/Result";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
 import { Wait } from "@/components/game/Wait";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilPlayer, RecoilRoom } from "@/store/Recoil";
 
@@ -192,9 +191,6 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {/* Step 7 */}
       {/* --------------- */}
-      {step === 7 && isCorrect !== undefined && (
-        <Result theme={theme} answer={answer} isCorrect={isCorrect} />
-      )}
     </>
   );
 };
