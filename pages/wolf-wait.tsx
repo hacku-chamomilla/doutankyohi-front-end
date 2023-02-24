@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import router from "next/router";
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
@@ -8,6 +9,8 @@ import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { PointList } from "@/components/game/PointList";
+
+import { RecoilRoom } from "@/store/Recoil";
 
 const WolfWait: NextPage = () => {
   const examplePointList = [
@@ -17,6 +20,10 @@ const WolfWait: NextPage = () => {
     { nickname: "ふかめも", particIcon: 3, point: 2 },
     { nickname: "KJ", particIcon: 4, point: 3 },
   ];
+  const room = useRecoilValue(RecoilRoom);
+
+  // eslint-disable-next-line no-console
+  console.log(`roomId: ${room.id}`); // TODO:デバック用のログ
 
   const handleGameStart = () => {
     router.push("/wolf-game");

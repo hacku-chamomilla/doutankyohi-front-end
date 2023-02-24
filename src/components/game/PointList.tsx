@@ -21,18 +21,16 @@ export const PointList = ({ memberPointList }: Props) => {
         <UnorderedList>
           {memberPointList.map((memberName, i) => {
             return (
-              <>
+              <HStack key={i}>
                 <HStack>
-                  <HStack key={i}>
-                    <Avatar key={i} src={avatarList[memberName.particIcon]} />
-                    <Text fontSize={24}>{memberName.nickname}</Text>
-                  </HStack>
-
-                  <Text fontSize={24} display="flex" justifyContent="flex-end">
-                    ：{memberName.point}pt
-                  </Text>
+                  <Avatar key={i} src={avatarList[memberName.particIcon]} />
+                  <Text fontSize={24}>{memberName.nickname}</Text>
                 </HStack>
-              </>
+
+                <Text fontSize={24} display="flex" justifyContent="flex-end">
+                  ：{memberName.point}pt
+                </Text>
+              </HStack>
             );
           })}
         </UnorderedList>

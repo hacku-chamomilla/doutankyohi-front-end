@@ -55,6 +55,7 @@ const Component: NextPage = () => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [iswolf, setIswolf] = useState<boolean>(false);
   const [ispeace, setIsPeace] = useState<boolean>(false);
+  const [wolf, setWolf] = useState<boolean>(false);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
@@ -226,22 +227,14 @@ const Component: NextPage = () => {
           <Heading size="lg">common/YouAre</Heading>
           <Card variant="filled">
             <CardBody>
-              <YouAre
-                title="あなたは人狼です！"
-                text="正解しないように妨害をしよう！"
-                areYou={true}
-              />
+              <YouAre youAre={wolf} setYouAre={setWolf} />
             </CardBody>
           </Card>
           <VSpacer size={8} />
           <Heading size="lg">common/YouAre</Heading>
           <Card variant="filled">
             <CardBody>
-              <YouAre
-                title="あなたは村人です！"
-                text="協力して正解に導こう！"
-                areYou={false}
-              />
+              <YouAre youAre={wolf} setYouAre={setWolf} />
             </CardBody>
           </Card>
 
