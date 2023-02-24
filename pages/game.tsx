@@ -115,9 +115,6 @@ const Game: NextPage = () => {
     }
   }, [room.id, router, step]);
 
-  // eslint-disable-next-line no-console
-  console.log(`role:${role} step:${step}`); // TODO : デバッグ用のログ
-
   return (
     <>
       {/* --------------- */}

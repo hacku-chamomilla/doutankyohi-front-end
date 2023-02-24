@@ -25,12 +25,8 @@ type Player = {
 const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const room = useRecoilValue(RecoilRoom);
-  const player = useRecoilValue(RecoilPlayer);
   const owner = useRecoilValue(RecoilOwner);
   const router = useRouter();
-
-  // eslint-disable-next-line no-console
-  console.log(`roomId: ${room.id} playerId:${player.id}`); // TODO:デバック用のログ
 
   const updateParticList = () => {
     axios
