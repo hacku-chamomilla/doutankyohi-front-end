@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Center, Text, VStack } from "@chakra-ui/react";
+import { Button, Center, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
@@ -21,6 +21,8 @@ export const YouAre = ({ title, text, areYou }: Props) => {
                 {title}
               </Text>
               <VSpacer size={8} />
+              <Image src="https://bit.ly/3Zjpfj1" alt="wolf" />
+              <VSpacer size={8} />
               <Text fontSize={28} color={"red"}>
                 {text}
               </Text>
@@ -31,12 +33,14 @@ export const YouAre = ({ title, text, areYou }: Props) => {
                 {title}
               </Text>
               <VSpacer size={8} />
+              <Image src="https://bit.ly/3IylGyK" alt="vilager" />
+              <VSpacer size={8} />
               <Text fontSize={28} color={"blue"}>
                 {text}
               </Text>
             </>
           )}
-          <VSpacer size={24} />
+          <VSpacer size={12} />
           <Button colorScheme="pink" size="lg" minW={48}>
             Are you Ready?
           </Button>
