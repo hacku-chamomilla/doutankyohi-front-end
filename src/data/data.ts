@@ -11,6 +11,6 @@ export const BASE_URL = "http://localhost:1323/";
 
 export const INTERVAL = 10000;
 
-export const IS_AUTO_REQUEST = true;
+export const IS_AUTO_REQUEST = false;
 
 export const MAX_AUTO_HTTP_REQUEST = 20;
