@@ -84,7 +84,6 @@ const Wait: NextPage = () => {
 
   useEffect(() => {
     if (IS_AUTO_REQUEST) {
-      // 最初に1回 AutoHTTPRequest 関数を実行すれば、その後は再帰する
       AutoHttpRequest(handleUpdate, 0, Date.now());
     } else {
       handleUpdate();
