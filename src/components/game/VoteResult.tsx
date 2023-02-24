@@ -94,9 +94,10 @@ export const VoteResult = ({ name, wolf, result, setStep }: Props) => {
             <>
               <Text fontSize={20}>追放者:{name}</Text>
               <VSpacer size={20} />
-              <Text fontSize={20}>
-                しかし、この村にはまだ人狼がいる。{"\n"}人狼の正体は {wolf}
-                だった！
+              <Text fontSize={20} whiteSpace="pre-line">
+                {
+                  "しかし、この村にはまだ人狼がいる。\n人狼の正体は${wolf}だった！"
+                }
               </Text>
             </>
           )}
