@@ -53,14 +53,14 @@ export const DiscussJudgeAns = ({ theme, answer, setStep }: Props) => {
           )}
           <VSpacer size={12} />
           <HStack>
-            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="50px" />
-            <Text fontSize={24} color="orange">
+            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="30px" />
+            <Text fontSize={12} color="orange">
               ゲッサー
             </Text>
-            <Text fontSize={24} color="black">
+            <Text fontSize={12} color="black">
               の答えが正解か話し合おう!
             </Text>
-            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="50px" />
+            <Image src="https://bit.ly/3xOfFsI" alt="deco8" boxSize="30px" />
           </HStack>
           <VSpacer size={12} />
           <CustomTitleText title={"お題"} text={theme} />

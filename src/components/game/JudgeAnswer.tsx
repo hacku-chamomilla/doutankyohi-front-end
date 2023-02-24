@@ -49,20 +49,10 @@ export const JudgeAnswer = ({ theme, answer, setStep }: Props) => {
         <VStack>
           <VSpacer size={4} />
           <HStack>
-            <Image
-              src="https://bit.ly/3KzsIpd"
-              alt="deco10"
-              boxSize="60px"
-            ></Image>
-            <Text fontSize={24} color="orange">
+            <Text fontSize={12} color="orange">
               ゲッサー
             </Text>
-            <Text fontSize={24}>が入力した答えが正解か判定しよう！</Text>
-            <Image
-              src="https://bit.ly/3KzsIpd"
-              alt="deco10"
-              boxSize="60px"
-            ></Image>
+            <Text fontSize={12}>が入力した答えが正解か判定しよう！</Text>
           </HStack>
           <VSpacer size={12} />
           {theme && <CustomTitleText title="お題" text={theme} />}
