@@ -284,7 +284,12 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Result</Heading>
           <Card variant="filled">
             <CardBody>
-              <Result theme={theme} answer={answer} isCorrect={isCorrect} />
+              <Result
+                theme={theme}
+                answer={answer}
+                isCorrect={isCorrect}
+                setStep={setStep}
+              />
               <Checkbox
                 onChange={() => {
                   setIsCorrect(!isCorrect);
