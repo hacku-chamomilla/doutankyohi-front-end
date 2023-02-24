@@ -26,19 +26,17 @@ export const ChoiceWolfList = ({ wolfList }: Props) => {
         <Stack>
           {wolfList.map((list, i) => {
             return (
-              <div key={i}>
-                <Radio value={list.playerId}>
-                  <Card>
-                    <CardBody>
-                      <HStack>
-                        <Avatar size="xs" src={avatarList[list.avatarIndex]} />
-                        <Text>{list.playerName}:</Text>
-                        <Text>{list.hint}</Text>
-                      </HStack>
-                    </CardBody>
-                  </Card>
-                </Radio>
-              </div>
+              <Radio value={list.playerId} key={i}>
+                <Card>
+                  <CardBody>
+                    <HStack>
+                      <Avatar size="xs" src={avatarList[list.avatarIndex]} />
+                      <Text>{list.playerName}:</Text>
+                      <Text>{list.hint}</Text>
+                    </HStack>
+                  </CardBody>
+                </Card>
+              </Radio>
             );
           })}
         </Stack>

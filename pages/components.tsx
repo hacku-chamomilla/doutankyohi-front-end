@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NextPage } from "next";
 import React, { useState } from "react";
 
@@ -24,18 +25,21 @@ import { YouAre } from "@/components/common/YouAre";
 import { DeleteHintList } from "@/components/DeleteHintList";
 import { Answer } from "@/components/game/Answer";
 import { AnswerWait } from "@/components/game/AnswerWait";
-import { BanishPerson } from "@/components/game/BanishPerson";
-import { ChoiceWolf } from "@/components/game/ChoiceWolf";
 import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
 import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
 import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
 import { InputHint } from "@/components/game/InputHint";
 import { InputTheme } from "@/components/game/InputTheme";
 import { JudgeAnswer } from "@/components/game/JudgeAnswer";
+import { PointList } from "@/components/game/PointList";
 import { Result } from "@/components/game/Result";
+import { Score } from "@/components/game/Score";
 import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
 import { ThinkingTheme } from "@/components/game/ThinkingTheme";
+import { VoteResult } from "@/components/game/VoteResult";
 import { Wait } from "@/components/game/Wait";
+import { BanishPerson } from "@/components/game/wolf/BanishPerson";
+import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
 import { MemberList } from "@/components/MemberList";
 
 import { avatarList } from "@/data/data";
@@ -49,13 +53,22 @@ const Component: NextPage = () => {
   const theme = "theme";
   const answer = "answer";
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-
+  const [iswolf, setIswolf] = useState<boolean>(false);
+  const [ispeace, setIsPeace] = useState<boolean>(false);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
     { nickname: "ふかみん", particIcon: 1 },
     { nickname: "ふかむー", particIcon: 2 },
     { nickname: "ふかめも", particIcon: 3 },
     { nickname: "KJ", particIcon: 4 },
+  ];
+
+  const examplePointList = [
+    { nickname: "ふかむーる", particIcon: 0, point: 3 },
+    { nickname: "ふかみん", particIcon: 1, point: 5 },
+    { nickname: "ふかむー", particIcon: 2, point: 0 },
+    { nickname: "ふかめも", particIcon: 3, point: 2 },
+    { nickname: "KJ", particIcon: 4, point: 3 },
   ];
   const exampleWolfHintList = [
     {
@@ -131,6 +144,7 @@ const Component: NextPage = () => {
                 placeholder={"ぎゃんぶる"}
                 text={text}
                 setText={setText}
+                validation={false}
               />
               <p>{text}</p>
             </CardBody>
@@ -159,6 +173,7 @@ const Component: NextPage = () => {
                 avatarIndex={avatarIndex}
                 setNickname={setNickname}
                 setAvatarIndex={setAvatarIndex}
+                isNNNull={true}
               />
             </CardBody>
             <Text>名前:{nickname}</Text>
@@ -206,6 +221,49 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* common/YouAre */}
+          <VSpacer size={8} />
+          <Heading size="lg">common/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは人狼です！"
+                text="正解しないように妨害をしよう！"
+                areYou={true}
+              />
+            </CardBody>
+          </Card>
+          <VSpacer size={8} />
+          <Heading size="lg">common/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre
+                title="あなたは村人です！"
+                text="協力して正解に導こう！"
+                areYou={false}
+              />
+            </CardBody>
+          </Card>
+
+          {/* DeleteHintList */}
+          <VSpacer size={8} />
+          <Heading size="lg">DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
+            </CardBody>
+          </Card>
+
           {/* game/Answer */}
           <VSpacer size={8} />
           <Heading size="lg">game/Answer</Heading>
@@ -226,15 +284,6 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/DiscussJudgeAns */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/DiscussJudgeAns</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
-            </CardBody>
-          </Card>
-
           {/* game/DeleteHintOtherMasterUI */}
           <VSpacer size={8} />
           <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
@@ -245,6 +294,15 @@ const Component: NextPage = () => {
                 setStep={setStep}
               />
               <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
+          {/* game/DiscussJudgeAns */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/DiscussJudgeAns</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
             </CardBody>
           </Card>
 
@@ -266,6 +324,15 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
+          {/* game/InputTheme */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/InputTheme</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <InputTheme setStep={setStep} />
+            </CardBody>
+          </Card>
+
           {/* game/JudgeAnswer */}
           <VSpacer size={8} />
           <Heading size="lg">game/JudgeAnswer</Heading>
@@ -276,6 +343,15 @@ const Component: NextPage = () => {
                 answer={"answer"}
                 setStep={setStep}
               />
+            </CardBody>
+          </Card>
+
+          {/* game/PointList */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/PointList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <PointList memberPointList={examplePointList} />
             </CardBody>
           </Card>
 
@@ -297,6 +373,15 @@ const Component: NextPage = () => {
               >
                 isCorrect = true
               </Checkbox>
+            </CardBody>
+          </Card>
+
+          {/* game/Score */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/Score</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Score />
             </CardBody>
           </Card>
 
@@ -331,43 +416,9 @@ const Component: NextPage = () => {
           </Card>
           <VSpacer size={12} />
 
-          {/* common/YouAre */}
+          {/* game/wolf/BanishPerson*/}
           <VSpacer size={8} />
-          <Heading size="lg">common/YouAre</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <YouAre
-                title="あなたは人狼です！"
-                text="正解しないように妨害をしよう！"
-                areYou={true}
-              />
-            </CardBody>
-          </Card>
-          <VSpacer size={8} />
-          <Heading size="lg">common/YouAre</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <YouAre
-                title="あなたは村人です！"
-                text="協力して正解に導こう！"
-                areYou={false}
-              />
-            </CardBody>
-          </Card>
-
-          {/* game/ChoiceWolf*/}
-          <VSpacer size={8} />
-          <Heading size="lg">game/ChoiceWolf</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <ChoiceWolf wolfList={exampleWolfHintList} />
-              <p>{text}</p>
-            </CardBody>
-          </Card>
-
-          {/* game/BanishPerson*/}
-          <VSpacer size={8} />
-          <Heading size="lg">game/BanishPerson</Heading>
+          <Heading size="lg">game/wolf/BanishPerson</Heading>
           <Card variant="filled">
             <CardBody>
               <BanishPerson player="KJ" vote={6} />
@@ -375,22 +426,13 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* DeleteHintList */}
+          {/* game/wolf/ChoiceWolf*/}
           <VSpacer size={8} />
-          <Heading size="lg">DeleteHintList</Heading>
+          <Heading size="lg">game/wolf/ChoiceWolf</Heading>
           <Card variant="filled">
             <CardBody>
-              <DeleteHintList hintList={exampleHintList} />
-              <VSpacer size={8} />
-              <Button
-                colorScheme="blue"
-                onClick={() => {
-                  // eslint-disable-next-line no-console
-                  console.log(exampleHintList);
-                }}
-              >
-                チェックされているものをコンソールで確認
-              </Button>
+              <ChoiceWolf wolfList={exampleWolfHintList} />
+              <p>{text}</p>
             </CardBody>
           </Card>
 
@@ -412,6 +454,34 @@ const Component: NextPage = () => {
           <Card variant="filled">
             <CardBody>
               <InputTheme setStep={setStep} />
+            </CardBody>
+          </Card>
+
+          {/* game/VoteResult */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/VoteResult</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <VoteResult
+                name={"Player1"}
+                wolf={"Player2"}
+                banish={iswolf}
+                peace={ispeace}
+              />
+              <Checkbox
+                onChange={() => {
+                  setIswolf(!iswolf);
+                }}
+              >
+                追放者: true
+              </Checkbox>
+              <Checkbox
+                onChange={() => {
+                  setIsPeace(!ispeace);
+                }}
+              >
+                平和村: true
+              </Checkbox>
             </CardBody>
           </Card>
 
