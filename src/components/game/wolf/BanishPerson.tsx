@@ -9,7 +9,7 @@ import { VSpacer } from "@/components/common/Spacer";
 
 import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
-import { RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
@@ -24,6 +24,7 @@ type Props = {
 
 export const BanishPerson = ({ choseWolf, setWolfResult, setStep }: Props) => {
   const router = useRouter();
+  const owner = useRecoilValue(RecoilOwner);
   const room = useRecoilValue(RecoilRoom);
 
   const handleClick = () => {
