@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import router from "next/router";
 import React from "react";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
@@ -16,6 +17,10 @@ const WolfWait: NextPage = () => {
     { nickname: "ふかめも", particIcon: 3, point: 2 },
     { nickname: "KJ", particIcon: 4, point: 3 },
   ];
+
+  const handleGameStart = () => {
+    router.push("/wolf-game");
+  };
   return (
     <>
       <PageBackIcon pass={"/start-game"} />
@@ -28,7 +33,12 @@ const WolfWait: NextPage = () => {
           <Text fontSize={24}>メンバー：現在のポイント</Text>
           <PointList memberPointList={examplePointList} />
           <VSpacer size={4} />
-          <Button h={"60px"} w={"270px"} colorScheme="blue">
+          <Button
+            h={"60px"}
+            w={"270px"}
+            colorScheme="blue"
+            onClick={handleGameStart}
+          >
             ゲーム開始
           </Button>
         </VStack>
