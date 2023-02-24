@@ -117,6 +117,7 @@ const Component: NextPage = () => {
     { playerId: "44444", hint: "トランプ", avatarIndex: 3, isDelete: false },
     { playerId: "55555", hint: "ストレート", avatarIndex: 4, isDelete: false },
   ];
+  const exampleVoteList = { nickname: "AAA", id: "123", vote: 1 };
 
   return (
     <>
@@ -379,7 +380,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/Score</Heading>
           <Card variant="filled">
             <CardBody>
-              <Score />
+              <Score playerList={examplePointList} setStep={setStep} />
             </CardBody>
           </Card>
 
@@ -419,7 +420,11 @@ const Component: NextPage = () => {
           <Heading size="lg">game/wolf/BanishPerson</Heading>
           <Card variant="filled">
             <CardBody>
-              <BanishPerson player="KJ" vote={6} />
+              <BanishPerson
+                choseWolf={exampleVoteList}
+                setWolfResult={setStep}
+                setStep={setStep}
+              />
               <p>{text}</p>
             </CardBody>
           </Card>
@@ -463,8 +468,8 @@ const Component: NextPage = () => {
               <VoteResult
                 name={"Player1"}
                 wolf={"Player2"}
-                banish={iswolf}
-                peace={ispeace}
+                result={1}
+                setStep={setStep}
               />
               <Checkbox
                 onChange={() => {

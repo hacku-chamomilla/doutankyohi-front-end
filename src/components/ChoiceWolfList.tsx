@@ -30,7 +30,7 @@ export const ChoiceWolfList = ({ wolfList, setValue }: Props) => {
               <Radio
                 value={list.playerid}
                 key={i}
-                onClick={() => {
+                onChange={() => {
                   setValue(list.playerid);
                 }}
               >

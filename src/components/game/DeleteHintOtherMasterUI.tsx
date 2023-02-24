@@ -70,16 +70,14 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
       <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
           return (
-            <>
-              <Card key={i}>
-                <CardBody boxShadow={"lg"}>
-                  <HStack>
-                    <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
-                    <Text>{hint.hint}</Text>
-                  </HStack>
-                </CardBody>
-              </Card>
-            </>
+            <Card key={i}>
+              <CardBody boxShadow={"lg"}>
+                <HStack>
+                  <Avatar size="xs" src={avatarList[hint.avatarIndex]} />
+                  <Text>{hint.hint}</Text>
+                </HStack>
+              </CardBody>
+            </Card>
           );
         })}
       </VStack>
