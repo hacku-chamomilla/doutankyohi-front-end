@@ -37,7 +37,7 @@ const CreateRoom: NextPage = () => {
     const url = BASE_URL + "create-room";
     axios
       .post(url, {
-        password: "",
+        wolfMode: wolfMode,
       })
       .then((res) => {
         if (res.status === 200) {
