@@ -1,14 +1,17 @@
 import { useRouter } from "next/router";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { IS_AUTO_REQUEST } from "@/data/data";
+
 import { RecoilRoom } from "@/store/Recoil";
 
 import { FetchStep } from "@/hooks/useFetchStep";
+import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
@@ -17,9 +20,19 @@ type Props = {
 export const ThinkingTheme = ({ setStep }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
-  const handleUpdate = () => {
-    FetchStep(setStep, router, room.id);
-  };
+
+  useEffect(() => {
+    if (IS_AUTO_REQUEST) {
+      AutoHttpRequest(
+        () => {
+          FetchStep(setStep, router, room.id);
+        },
+        0,
+        Date.now()
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -35,7 +48,15 @@ export const ThinkingTheme = ({ setStep }: Props) => {
             お題の決め方を相談してください！
           </Text>
           <VSpacer size={12} />
-          <Button onClick={handleUpdate}>更新</Button>
+          {!IS_AUTO_REQUEST && (
+            <Button
+              onClick={() => {
+                FetchStep(setStep, router, room.id);
+              }}
+            >
+              更新
+            </Button>
+          )}
         </VStack>
       </Center>
     </>

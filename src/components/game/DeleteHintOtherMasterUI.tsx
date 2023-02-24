@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 import {
@@ -16,13 +16,14 @@ import {
 
 import { VSpacer } from "@/components/common/Spacer";
 
-import { avatarList } from "@/data/data";
+import { avatarList, IS_AUTO_REQUEST } from "@/data/data";
 
 import { RecoilRoom } from "@/store/Recoil";
 
 import { Hint } from "@/types/type";
 
 import { FetchStep } from "@/hooks/useFetchStep";
+import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 type Props = {
   hintList: Hint[];
@@ -32,6 +33,20 @@ type Props = {
 export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
+
+  useEffect(() => {
+    if (IS_AUTO_REQUEST) {
+      AutoHttpRequest(
+        () => {
+          FetchStep(setStep, router, room.id);
+        },
+        0,
+        Date.now()
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Center>
@@ -42,13 +57,15 @@ export const DeleteHintOtherMasterUI = ({ hintList, setStep }: Props) => {
         </HStack>
       </Center>
       <VSpacer size={12} />
-      <Button
-        onClick={() => {
-          FetchStep(setStep, router, room.id);
-        }}
-      >
-        更新
-      </Button>
+      {!IS_AUTO_REQUEST && (
+        <Button
+          onClick={() => {
+            FetchStep(setStep, router, room.id);
+          }}
+        >
+          更新
+        </Button>
+      )}
       <VSpacer size={12} />
       <VStack spacing={4} align="stretch">
         {hintList.map((hint, i) => {
