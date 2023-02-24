@@ -424,7 +424,7 @@ const Component: NextPage = () => {
           <Heading size="lg">game/wolf/ChoiceWolf</Heading>
           <Card variant="filled">
             <CardBody>
-              <ChoiceWolf wolfList={exampleWolfHintList} />
+              <ChoiceWolf wolfList={exampleWolfHintList} setStep={setStep} />
               <p>{text}</p>
             </CardBody>
           </Card>
