@@ -32,6 +32,7 @@ const CreateRoom: NextPage = () => {
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
   const [isNNNull, setIsNNNull] = useState<boolean>(false);
+  const [wolfMode, setWolfMode] = useState(false);
 
   const handleCreateRoom = () => {
     const url = BASE_URL + "create-room";
@@ -73,7 +74,11 @@ const CreateRoom: NextPage = () => {
           setPlayer(newPlayerId);
           setOwner(newOwner);
 
-          router.push("/wait");
+          if (wolfMode === true) {
+            router.push("/wolf-wait");
+          } else {
+            router.push("/wait");
+          }
         }
       })
       .catch((err) => {
@@ -109,7 +114,13 @@ const CreateRoom: NextPage = () => {
             isNNNull={isNNNull}
           />
           <VSpacer size={8} />
-          <Checkbox colorScheme="green" size="lg">
+          <Checkbox
+            colorScheme="green"
+            size="lg"
+            onChange={() => {
+              setWolfMode(!wolfMode);
+            }}
+          >
             <Text fontSize={24}>人狼モード</Text>
           </Checkbox>
 
