@@ -33,7 +33,7 @@ import { VoteResult } from "../src/components/game/VoteResult";
 
 type ChoseWolf = {
   id: string;
-  name: string;
+  nickname: string;
   vote: number;
 };
 
@@ -293,7 +293,7 @@ const WolfGame: NextPage = () => {
       {/* --------------- */}
       {step === 10 && choseWolf && (
         <VoteResult
-          name={choseWolf.name}
+          name={choseWolf.nickname}
           wolf={trustWolfName}
           result={wolfResult}
           setStep={setStep}

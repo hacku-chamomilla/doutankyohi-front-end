@@ -17,7 +17,7 @@ import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 // TODO: export したほうが良い！？
 type Props = {
-  choseWolf: { id: string; name: string; vote: number };
+  choseWolf: { id: string; nickname: string; vote: number };
   setWolfResult: Dispatch<SetStateAction<number>>;
   setStep: Dispatch<SetStateAction<number>>;
 };
@@ -29,7 +29,7 @@ export const BanishPerson = ({ choseWolf, setWolfResult, setStep }: Props) => {
 
   const handleClick = () => {
     axios
-      .post(BASE_URL + "vanish-wolf", {
+      .post(BASE_URL + "judgement-wolf", {
         playerId: choseWolf.id,
         roomId: room.id,
       })
@@ -62,7 +62,7 @@ export const BanishPerson = ({ choseWolf, setWolfResult, setStep }: Props) => {
         <VStack>
           <HStack>
             <Image src="https://bit.ly/3m4STtV" alt="deco12" boxSize="50px" />
-            <Text fontSize={40}>追放者:{choseWolf.name}</Text>
+            <Text fontSize={40}>追放者:{choseWolf.nickname}</Text>
           </HStack>
           <VSpacer size={12} />
           <Text fontSize={24}>投票数:{choseWolf.vote}</Text>
