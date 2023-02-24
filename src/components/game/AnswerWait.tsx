@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 import {
@@ -14,11 +14,14 @@ import {
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { IS_AUTO_REQUEST } from "@/data/data";
+
 import { RecoilRoom } from "@/store/Recoil";
 
 import { Hint } from "@/types/type";
 
 import { FetchStep } from "@/hooks/useFetchStep";
+import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 type Props = {
   setStep: Dispatch<SetStateAction<number>>;
@@ -28,6 +31,19 @@ type Props = {
 export const AnswerWait = ({ setStep, hintList }: Props) => {
   const router = useRouter();
   const room = useRecoilValue(RecoilRoom);
+
+  useEffect(() => {
+    if (IS_AUTO_REQUEST) {
+      AutoHttpRequest(
+        () => {
+          FetchStep(setStep, router, room.id);
+        },
+        0,
+        Date.now()
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -40,14 +56,16 @@ export const AnswerWait = ({ setStep, hintList }: Props) => {
           </HStack>
           <VSpacer size={4} />
 
-          <Button
-            fontSize={20}
-            textColor={"white"}
-            colorScheme={"blue"}
-            onClick={() => FetchStep(setStep, router, room.id)}
-          >
-            更新
-          </Button>
+          {!IS_AUTO_REQUEST && (
+            <Button
+              fontSize={20}
+              textColor={"white"}
+              colorScheme={"blue"}
+              onClick={() => FetchStep(setStep, router, room.id)}
+            >
+              更新
+            </Button>
+          )}
           <VSpacer size={12} />
           {hintList.map((hint, i) => {
             return (

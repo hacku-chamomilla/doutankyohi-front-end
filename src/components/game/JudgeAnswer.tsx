@@ -8,7 +8,7 @@ import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL } from "@/data/data";
 
 import { RecoilRoom } from "@/store/Recoil";
 

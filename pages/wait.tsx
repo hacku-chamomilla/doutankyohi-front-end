@@ -11,11 +11,12 @@ import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
 import { MemberList } from "@/components/MemberList";
 
-import { BASE_URL } from "@/data/BaseUrl";
+import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
-import { RecoilOwner, RecoilPlayer, RecoilRoom } from "@/store/Recoil";
+import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
+import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
 type Player = {
   nickname: string;
@@ -25,12 +26,8 @@ type Player = {
 const Wait: NextPage = () => {
   const [playerList, setPlayerList] = useState<Player[]>();
   const room = useRecoilValue(RecoilRoom);
-  const player = useRecoilValue(RecoilPlayer);
   const owner = useRecoilValue(RecoilOwner);
   const router = useRouter();
-
-  // eslint-disable-next-line no-console
-  console.log(`roomId: ${room.id} playerId:${player.id}`); // TODO:デバック用のログ
 
   const updateParticList = () => {
     axios
@@ -86,7 +83,12 @@ const Wait: NextPage = () => {
   };
 
   useEffect(() => {
-    handleUpdate();
+    if (IS_AUTO_REQUEST) {
+      AutoHttpRequest(handleUpdate, 0, Date.now());
+    } else {
+      handleUpdate();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,7 +102,7 @@ const Wait: NextPage = () => {
       <Center>
         <VStack>
           <VSpacer size={20} />
-          <Button onClick={handleUpdate}>更新</Button>
+          {!IS_AUTO_REQUEST && <Button onClick={handleUpdate}>更新</Button>}
           <CustomTitleText title="ルームID" text={room.id}></CustomTitleText>
           <VSpacer size={20} />
           {playerList && (

@@ -4,7 +4,7 @@ import { Avatar, Center, HStack, Text, UnorderedList } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
-import { avatarList } from "@/data/AvatarList";
+import { avatarList } from "@/data/data";
 type Props = {
   memberPointList: {
     nickname: string;
@@ -21,18 +21,16 @@ export const PointList = ({ memberPointList }: Props) => {
         <UnorderedList>
           {memberPointList.map((memberName, i) => {
             return (
-              <>
+              <HStack key={i}>
                 <HStack>
-                  <HStack key={i}>
-                    <Avatar key={i} src={avatarList[memberName.particIcon]} />
-                    <Text fontSize={24}>{memberName.nickname}</Text>
-                  </HStack>
-
-                  <Text fontSize={24} display="flex" justifyContent="flex-end">
-                    ：{memberName.point}pt
-                  </Text>
+                  <Avatar key={i} src={avatarList[memberName.particIcon]} />
+                  <Text fontSize={24}>{memberName.nickname}</Text>
                 </HStack>
-              </>
+
+                <Text fontSize={24} display="flex" justifyContent="flex-end">
+                  ：{memberName.point}pt
+                </Text>
+              </HStack>
             );
           })}
         </UnorderedList>
