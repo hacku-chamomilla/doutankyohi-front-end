@@ -203,10 +203,10 @@ const Home: NextPage = () => {
                           </h2>
                           <AccordionPanel pb={4}>
                             <p>
-                              正解/不正解の判定が行われた後に、ゲッサーが人狼をみつけるフェイズがある。
+                              正解/不正解の判定が行われた後に、が人狼をみつけるフェイズがある。
                             </p>
                             <p>
-                              他のヒントホルダーとの話し合いを行い、人狼だと思うヒントホルダーを選択する。
+                              プレイヤー間で話し合いを行い、人狼だと思うヒントホルダーを各々選択する。
                             </p>
                           </AccordionPanel>
                         </AccordionItem>
@@ -214,7 +214,23 @@ const Home: NextPage = () => {
                           <h2>
                             <AccordionButton>
                               <Box as="span" flex="1" textAlign="left">
-                                4.得点
+                                4.投票結果
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </h2>
+                          <AccordionPanel pb={4}>
+                            <p>
+                              投票された数が最も多いプレイヤーが人狼だった場合村に、
+                              異なっていた場合人狼にポイントが加算される。
+                            </p>
+                          </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                          <h2>
+                            <AccordionButton>
+                              <Box as="span" flex="1" textAlign="left">
+                                5.得点
                               </Box>
                               <AccordionIcon />
                             </AccordionButton>
@@ -261,7 +277,6 @@ const Home: NextPage = () => {
             rightIcon={<StarIcon />}
             h={"60px"}
             w={"270px"}
-            as="i"
             colorScheme="red"
             color="white"
             onClick={() => {
