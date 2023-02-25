@@ -7,10 +7,11 @@ export const avatarList = [
   "https://bit.ly/41j3GAD",
 ];
 
-export const BASE_URL = "http://localhost:1323/";
+export const BASE_URL = "https://fiber-production-30cf.up.railway.app/";
+// export const BASE_URL = "http://localhost:1323/";
 
-export const INTERVAL = 10000;
+export const INTERVAL = 5000;
 
-export const IS_AUTO_REQUEST = false;
+export const IS_AUTO_REQUEST = true;
 
-export const MAX_AUTO_HTTP_REQUEST = 20;
+export const MAX_AUTO_HTTP_REQUEST = 40;
