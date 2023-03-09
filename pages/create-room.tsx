@@ -13,9 +13,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { NNAndIcon } from "@/components/game/coop/parts/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
+import { NNAndIcon } from "@/components/game/coop/parts/NNAndIcon";
 
 import { avatarList, BASE_URL } from "@/data/data";
 
