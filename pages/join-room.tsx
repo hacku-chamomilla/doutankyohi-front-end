@@ -6,9 +6,9 @@ import { useSetRecoilState } from "recoil";
 
 import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
 
-import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
+import { NNAndIcon } from "@/components/game/coop/parts/NNAndIcon";
 
 import { avatarList, BASE_URL } from "@/data/data";
 
