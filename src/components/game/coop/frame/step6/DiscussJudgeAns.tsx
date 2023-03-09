@@ -11,8 +11,8 @@ import { RecoilRoom } from "@/store/Recoil";
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
-import { CustomTitleText } from "../common/CustomTitleText";
-import { VSpacer } from "../common/Spacer";
+import { CustomTitleText } from "../../../../common/CustomTitleText";
+import { VSpacer } from "../../../../common/Spacer";
 
 type Props = {
   theme: string;

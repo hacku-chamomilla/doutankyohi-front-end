@@ -7,7 +7,7 @@ import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { CustomInput } from "@/components/common/CustomInput";
 import { VSpacer } from "@/components/common/Spacer";
-import { Wait } from "@/components/game/Wait";
+import { Wait } from "@/components/game/coop/frame/Wait";
 
 import { BASE_URL } from "@/data/data";
 

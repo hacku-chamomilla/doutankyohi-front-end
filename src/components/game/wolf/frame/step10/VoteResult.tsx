@@ -13,7 +13,7 @@ import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
-import { BASE_URL, IS_AUTO_REQUEST } from "../../data/data";
+import { BASE_URL, IS_AUTO_REQUEST } from "../../../../../data/data";
 
 type Props = {
   name: string;

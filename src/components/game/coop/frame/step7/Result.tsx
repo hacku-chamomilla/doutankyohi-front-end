@@ -5,9 +5,6 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
-import { VSpacer } from "@/components/common/Spacer";
-import { PointList } from "@/components/game/PointList";
-
 import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
 import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
@@ -16,16 +13,20 @@ import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
 
+import { CustomTitleText } from "../../../../common/CustomTitleText";
+import { VSpacer } from "../../../../common/Spacer";
+
 type Props = {
-  playerList: { nickname: string; particIcon: number; point: number }[];
+  theme: string;
+  answer: string;
+  isCorrect: boolean;
   setStep: Dispatch<SetStateAction<number>>;
 };
 
-export const Score = ({ playerList, setStep }: Props) => {
+export const Result = ({ theme, answer, isCorrect, setStep }: Props) => {
   const router = useRouter();
   const owner = useRecoilValue(RecoilOwner);
   const room = useRecoilValue(RecoilRoom);
-
   const Initialize = () => {
     axios
       .post(BASE_URL + "initialize", {
@@ -33,7 +34,7 @@ export const Score = ({ playerList, setStep }: Props) => {
       })
       .then((res) => {
         if (res.status === 200) {
-          router.push("/wolf-wait");
+          router.push("/wait");
         }
       })
       .catch((err) => {
@@ -48,8 +49,8 @@ export const Score = ({ playerList, setStep }: Props) => {
         params: { roomId: room.id },
       })
       .then((res) => {
-        if (res.data != 11) {
-          router.push("/wolf-wait");
+        if (res.data != 7) {
+          router.push("/wait");
         }
       })
       .catch((err) => {
@@ -74,47 +75,32 @@ export const Score = ({ playerList, setStep }: Props) => {
     <>
       <Center>
         <VStack>
-          <VStack>
-            <Text fontSize={24}>現在のポイント</Text>
-            <PointList memberPointList={playerList} />
-          </VStack>
-          <VSpacer size={16} />
-
+          <VSpacer size={4} />
+          <CustomTitleText title="お題" text={theme} />
+          <VSpacer size={4} />
+          <CustomTitleText title="解答" text={answer} />
+          <VSpacer size={12} />
+          {isCorrect ? (
+            <Text fontSize="3xl">正解！おめでとう！</Text>
+          ) : (
+            <Text fontSize="3xl">残念！公開処刑！</Text>
+          )}
+          <VSpacer size={12} />
           {owner.isOwner ? (
-            <Button
-              minW={60}
-              minH={12}
-              colorScheme="red"
-              color="white"
-              onClick={Initialize}
-            >
+            <Button colorScheme="red" minW={64} minH={12} onClick={Initialize}>
               次へ
             </Button>
           ) : IS_AUTO_REQUEST ? (
-            <Button
-              minW={60}
-              minH={12}
-              colorScheme="red"
-              color="white"
-              isDisabled={true}
-            >
+            <Button colorScheme="red" minW={64} minH={12} isDisabled={true}>
               待機中
             </Button>
           ) : (
-            <Button
-              minW={60}
-              minH={12}
-              colorScheme="red"
-              color="white"
-              onClick={handleNext}
-            >
+            <Button colorScheme="red" minW={64} minH={12} onClick={handleNext}>
               更新
             </Button>
           )}
         </VStack>
       </Center>
-
-      <VSpacer size={20} />
     </>
   );
 };
