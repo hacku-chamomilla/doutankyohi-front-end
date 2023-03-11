@@ -7,13 +7,13 @@ import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
+
 import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 
 import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
-
-import { BASE_URL, IS_AUTO_REQUEST } from "../../../../../data/data";
 
 type Props = {
   name: string;
