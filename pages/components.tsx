@@ -19,28 +19,28 @@ import { CustomInput } from "@/components/common/CustomInput";
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
-import { HowToDecideTheme } from "@/components/game/coop/frame/step1/HowToDecideTheme";
-import { ThinkingTheme } from "@/components/game/coop/frame/step1/ThinkingTheme";
-import { InputTheme } from "@/components/game/coop/frame/step2/InputTheme";
-import { InputHint } from "@/components/game/coop/frame/step3/InputHint";
-import { DeleteHintOtherMasterUI } from "@/components/game/coop/frame/step4/DeleteHintOtherMasterUI";
-import { SelectDuplicateHint } from "@/components/game/coop/frame/step4/SelectDuplicateHint";
-import { Answer } from "@/components/game/coop/frame/step5/Answer";
-import { AnswerWait } from "@/components/game/coop/frame/step5/AnswerWait";
-import { DiscussJudgeAns } from "@/components/game/coop/frame/step6/DiscussJudgeAns";
-import { JudgeAnswer } from "@/components/game/coop/frame/step6/JudgeAnswer";
-import { Result } from "@/components/game/coop/frame/step7/Result";
-import { Wait } from "@/components/game/coop/frame/Wait";
-import { DeleteHintList } from "@/components/game/coop/parts/DeleteHintList";
-import { MemberList } from "@/components/game/coop/parts/MemberList";
-import { NNAndIcon } from "@/components/game/coop/parts/NNAndIcon";
-import { YouAre } from "@/components/game/wolf/frame/step1/YouAre";
-import { VoteResult } from "@/components/game/wolf/frame/step10/VoteResult";
-import { Score } from "@/components/game/wolf/frame/step11/Score";
-import { ChoiceWolf } from "@/components/game/wolf/frame/step8/ChoiceWolf";
-import { BanishPerson } from "@/components/game/wolf/frame/step9/BanishPerson";
-import { ChoiceWolfList } from "@/components/game/wolf/parts/ChoiceWolfList";
-import { PointList } from "@/components/game/wolf/parts/PointList";
+import { DeleteHintList } from "@/components/coop/DeleteHintList";
+import { HowToDecideTheme } from "@/components/coop/frame/step1/HowToDecideTheme";
+import { ThinkingTheme } from "@/components/coop/frame/step1/ThinkingTheme";
+import { InputTheme } from "@/components/coop/frame/step2/InputTheme";
+import { InputHint } from "@/components/coop/frame/step3/InputHint";
+import { DeleteHintOtherMasterUI } from "@/components/coop/frame/step4/DeleteHintOtherMasterUI";
+import { SelectDuplicateHint } from "@/components/coop/frame/step4/SelectDuplicateHint";
+import { Answer } from "@/components/coop/frame/step5/Answer";
+import { AnswerWait } from "@/components/coop/frame/step5/AnswerWait";
+import { DiscussJudgeAns } from "@/components/coop/frame/step6/DiscussJudgeAns";
+import { JudgeAnswer } from "@/components/coop/frame/step6/JudgeAnswer";
+import { Result } from "@/components/coop/frame/step7/Result";
+import { Wait } from "@/components/coop/frame/Wait";
+import { MemberList } from "@/components/coop/MemberList";
+import { NNAndIcon } from "@/components/coop/NNAndIcon";
+import { ChoiceWolfList } from "@/components/wolf/ChoiceWolfList";
+import { YouAre } from "@/components/wolf/frame/step1/YouAre";
+import { VoteResult } from "@/components/wolf/frame/step10/VoteResult";
+import { Score } from "@/components/wolf/frame/step11/Score";
+import { ChoiceWolf } from "@/components/wolf/frame/step8/ChoiceWolf";
+import { BanishPerson } from "@/components/wolf/frame/step9/BanishPerson";
+import { PointList } from "@/components/wolf/PointList";
 
 import { avatarList } from "@/data/data";
 
@@ -194,47 +194,45 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step1/HowToDecideTheme */}
+          {/* coop/frame/step1/HowToDecideTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step1/HowToDecideTheme</Heading>
+          <Heading size="lg">coop/frame/step1/HowToDecideTheme</Heading>
           <Card variant="filled">
             <CardBody>
               <HowToDecideTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step1/ThinkingTheme */}
+          {/* coop/frame/step1/ThinkingTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step1/ThinkingTheme</Heading>
+          <Heading size="lg">coop/frame/step1/ThinkingTheme</Heading>
           <Card variant="filled">
             <CardBody>
               <ThinkingTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step2/InputTheme */}
+          {/* coop/frame/step2/InputTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step2/InputTheme</Heading>
+          <Heading size="lg">coop/frame/step2/InputTheme</Heading>
           <Card variant="filled">
             <CardBody>
               <InputTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step3/InputHint */}
+          {/* coop/frame/step3/InputHint */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step3/InputHint</Heading>
+          <Heading size="lg">coop/frame/step3/InputHint</Heading>
           <Card variant="filled">
             <CardBody>
               <InputHint theme="小三元" setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step4/DeleteHintOtherMasterUI */}
+          {/* coop/frame/step4/DeleteHintOtherMasterUI */}
           <VSpacer size={8} />
-          <Heading size="lg">
-            game/coop/frame/step4/DeleteHintOtherMasterUI
-          </Heading>
+          <Heading size="lg">coop/frame/step4/DeleteHintOtherMasterUI</Heading>
           <Card variant="filled">
             <CardBody>
               <DeleteHintOtherMasterUI
@@ -245,9 +243,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step4/SelectDuplicateHint */}
+          {/* coop/frame/step4/SelectDuplicateHint */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step4/SelectDuplicateHint</Heading>
+          <Heading size="lg">coop/frame/step4/SelectDuplicateHint</Heading>
           <Card variant="filled">
             <CardBody>
               <SelectDuplicateHint
@@ -257,9 +255,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step5/Answer */}
+          {/* coop/frame/step5/Answer */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step5/Answer</Heading>
+          <Heading size="lg">coop/frame/step5/Answer</Heading>
           <Card variant="filled">
             <CardBody>
               <Answer hintList={exampleHintList} setStep={setStep} />
@@ -267,9 +265,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step5/AnswerWait */}
+          {/* coop/frame/step5/AnswerWait */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step5/AnswerWait</Heading>
+          <Heading size="lg">coop/frame/step5/AnswerWait</Heading>
           <Card variant="filled">
             <CardBody>
               <AnswerWait hintList={exampleHintList} setStep={setStep} />
@@ -277,18 +275,18 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step6/DiscussJudgeAns */}
+          {/* coop/frame/step6/DiscussJudgeAns */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step6/DiscussJudgeAns</Heading>
+          <Heading size="lg">coop/frame/step6/DiscussJudgeAns</Heading>
           <Card variant="filled">
             <CardBody>
               <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step6/JudgeAnswer */}
+          {/* coop/frame/step6/JudgeAnswer */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step6/JudgeAnswer</Heading>
+          <Heading size="lg">coop/frame/step6/JudgeAnswer</Heading>
           <Card variant="filled">
             <CardBody>
               <JudgeAnswer
@@ -299,9 +297,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/step7/Result */}
+          {/* coop/frame/step7/Result */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/step7/Result</Heading>
+          <Heading size="lg">coop/frame/step7/Result</Heading>
           <Card variant="filled">
             <CardBody>
               <Result
@@ -320,9 +318,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/frame/Wait */}
+          {/* coop/frame/Wait */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/frame/Wait</Heading>
+          <Heading size="lg">coop/frame/Wait</Heading>
           <Card variant="filled">
             <CardBody>
               <Wait text={"適当なタイトル"} setStep={setStep} />
@@ -330,9 +328,9 @@ const Component: NextPage = () => {
           </Card>
           <VSpacer size={12} />
 
-          {/* game/coop/parts/DeleteHintList */}
+          {/* coop/DeleteHintList */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/parts/DeleteHintList</Heading>
+          <Heading size="lg">coop/parts/DeleteHintList</Heading>
           <Card variant="filled">
             <CardBody>
               <DeleteHintList hintList={exampleHintList} />
@@ -349,9 +347,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/parts/MemberList */}
+          {/* coop/MemberList */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/parts/MemberList</Heading>
+          <Heading size="lg">coop/MemberList</Heading>
           <Card variant="filled">
             <CardBody>
               <MemberList
@@ -361,9 +359,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/coop/parts/NNAndIcon */}
+          {/* coop/NNAndIcon */}
           <VSpacer size={8} />
-          <Heading size="lg">game/coop/parts/NNAndIcon</Heading>
+          <Heading size="lg">coop/NNAndIcon</Heading>
           <Card variant="filled">
             <CardBody>
               <NNAndIcon
@@ -382,9 +380,9 @@ const Component: NextPage = () => {
             <Text>Index:{avatarIndex}</Text>
           </Card>
 
-          {/* game/wolf/frame/step1/YouAre */}
+          {/* wolf/frame/step1/YouAre */}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/frame/step1/YouAre</Heading>
+          <Heading size="lg">wolf/frame/step1/YouAre</Heading>
           <Card variant="filled">
             <CardBody>
               <YouAre youAre={wolf} setYouAre={setWolf} />
@@ -398,9 +396,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/frame/step8/ChoiceWolf*/}
+          {/* wolf/frame/step8/ChoiceWolf*/}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/frame/step8/ChoiceWolf</Heading>
+          <Heading size="lg">wolf/frame/step8/ChoiceWolf</Heading>
           <Card variant="filled">
             <CardBody>
               <ChoiceWolf wolfList={exampleWolfHintList} setStep={setStep} />
@@ -408,9 +406,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/frame/step9/BanishPerson*/}
+          {/* wolf/frame/step9/BanishPerson*/}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/frame/step9/BanishPerson</Heading>
+          <Heading size="lg">wolf/frame/step9/BanishPerson</Heading>
           <Card variant="filled">
             <CardBody>
               <BanishPerson
@@ -422,9 +420,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/frame/step10/VoteResult */}
+          {/* wolf/frame/step10/VoteResult */}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/frame/step10/VoteResult</Heading>
+          <Heading size="lg">wolf/frame/step10/VoteResult</Heading>
           <Card variant="filled">
             <CardBody>
               <VoteResult
@@ -450,7 +448,7 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/frame/step11/Score */}
+          {/* wolf/frame/step11/Score */}
           <VSpacer size={8} />
           <Heading size="lg">game/wolf/frame/step11/Score</Heading>
           <Card variant="filled">
@@ -459,9 +457,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/parts/ChoiceWolfList */}
+          {/* wolf/ChoiceWolfList */}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/parts/ChoiceWolfList</Heading>
+          <Heading size="lg">wolf/ChoiceWolfList</Heading>
           <Card variant="filled">
             <CardBody>
               <ChoiceWolfList
@@ -473,7 +471,7 @@ const Component: NextPage = () => {
 
           <VSpacer size={12} />
 
-          {/* game/wolf/parts/PointList */}
+          {/* wolf/asPointList */}
           <VSpacer size={8} />
           <Heading size="lg">game/wolf/parts/PointList</Heading>
           <Card variant="filled">

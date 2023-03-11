@@ -8,7 +8,7 @@ import { Button, Center, Image, Input, Text, VStack } from "@chakra-ui/react";
 
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { NNAndIcon } from "@/components/game/coop/parts/NNAndIcon";
+import { NNAndIcon } from "@/components/coop/NNAndIcon";
 
 import { avatarList, BASE_URL } from "@/data/data";
 
