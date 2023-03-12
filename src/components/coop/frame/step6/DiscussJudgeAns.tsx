@@ -4,15 +4,15 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
+import { CustomTitleText } from "@/components/common/CustomTitleText";
+import { VSpacer } from "@/components/common/Spacer";
+
 import { IS_AUTO_REQUEST } from "@/data/data";
 
 import { RecoilRoom } from "@/store/Recoil";
 
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
-
-import { CustomTitleText } from "../common/CustomTitleText";
-import { VSpacer } from "../common/Spacer";
 
 type Props = {
   theme: string;

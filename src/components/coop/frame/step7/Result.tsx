@@ -5,6 +5,9 @@ import { useRecoilValue } from "recoil";
 
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
+import { CustomTitleText } from "@/components/common/CustomTitleText";
+import { VSpacer } from "@/components/common/Spacer";
+
 import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
 import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
@@ -12,9 +15,6 @@ import { RecoilOwner, RecoilRoom } from "@/store/Recoil";
 import { HandleError } from "@/hooks/useError";
 import { FetchStep } from "@/hooks/useFetchStep";
 import { AutoHttpRequest } from "@/hooks/useHttpRequest";
-
-import { CustomTitleText } from "../common/CustomTitleText";
-import { VSpacer } from "../common/Spacer";
 
 type Props = {
   theme: string;

@@ -15,32 +15,32 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { ChoiceWolfList } from "@/components/ChoiceWolfList";
 import { CustomInput } from "@/components/common/CustomInput";
 import { CustomTitleText } from "@/components/common/CustomTitleText";
-import { NNAndIcon } from "@/components/common/NNAndIcon";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { HSpacer, VSpacer } from "@/components/common/Spacer";
-import { YouAre } from "@/components/common/YouAre";
-import { DeleteHintList } from "@/components/DeleteHintList";
-import { Answer } from "@/components/game/Answer";
-import { AnswerWait } from "@/components/game/AnswerWait";
-import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
-import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
-import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
-import { InputHint } from "@/components/game/InputHint";
-import { InputTheme } from "@/components/game/InputTheme";
-import { JudgeAnswer } from "@/components/game/JudgeAnswer";
-import { PointList } from "@/components/game/PointList";
-import { Result } from "@/components/game/Result";
-import { Score } from "@/components/game/Score";
-import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
-import { ThinkingTheme } from "@/components/game/ThinkingTheme";
-import { VoteResult } from "@/components/game/VoteResult";
-import { Wait } from "@/components/game/Wait";
-import { BanishPerson } from "@/components/game/wolf/BanishPerson";
-import { ChoiceWolf } from "@/components/game/wolf/ChoiceWolf";
-import { MemberList } from "@/components/MemberList";
+import { DeleteHintList } from "@/components/coop/DeleteHintList";
+import { HowToDecideTheme } from "@/components/coop/frame/step1/HowToDecideTheme";
+import { ThinkingTheme } from "@/components/coop/frame/step1/ThinkingTheme";
+import { InputTheme } from "@/components/coop/frame/step2/InputTheme";
+import { InputHint } from "@/components/coop/frame/step3/InputHint";
+import { DeleteHintOtherMasterUI } from "@/components/coop/frame/step4/DeleteHintOtherMasterUI";
+import { SelectDuplicateHint } from "@/components/coop/frame/step4/SelectDuplicateHint";
+import { Answer } from "@/components/coop/frame/step5/Answer";
+import { AnswerWait } from "@/components/coop/frame/step5/AnswerWait";
+import { DiscussJudgeAns } from "@/components/coop/frame/step6/DiscussJudgeAns";
+import { JudgeAnswer } from "@/components/coop/frame/step6/JudgeAnswer";
+import { Result } from "@/components/coop/frame/step7/Result";
+import { Wait } from "@/components/coop/frame/Wait";
+import { MemberList } from "@/components/coop/MemberList";
+import { NNAndIcon } from "@/components/coop/NNAndIcon";
+import { ChoiceWolfList } from "@/components/wolf/ChoiceWolfList";
+import { YouAre } from "@/components/wolf/frame/step1/YouAre";
+import { VoteResult } from "@/components/wolf/frame/step10/VoteResult";
+import { Score } from "@/components/wolf/frame/step11/Score";
+import { ChoiceWolf } from "@/components/wolf/frame/step8/ChoiceWolf";
+import { BanishPerson } from "@/components/wolf/frame/step9/BanishPerson";
+import { PointList } from "@/components/wolf/PointList";
 
 import { avatarList } from "@/data/data";
 
@@ -55,8 +55,8 @@ const Component: NextPage = () => {
   const theme = "theme";
   const answer = "answer";
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
-  const [iswolf, setIswolf] = useState<boolean>(false);
-  const [ispeace, setIsPeace] = useState<boolean>(false);
+  const [isWolf, setIsWolf] = useState<boolean>(false);
+  const [isPeace, setIsPeace] = useState<boolean>(false);
   const [wolf, setWolf] = useState<boolean>(false);
   const exampleNameList = [
     { nickname: "ふかむーる", particIcon: 0 },
@@ -128,19 +128,6 @@ const Component: NextPage = () => {
             Components Mock Storybook
           </Heading>
 
-          {/* ChoiceWolfList */}
-          <VSpacer size={8} />
-          <Heading size="lg">ChoiceWolfList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <ChoiceWolfList
-                wolfList={exampleWolfHintList}
-                setValue={setText}
-              />
-              <p>{text}</p>
-            </CardBody>
-          </Card>
-
           {/* common/CustomInput */}
           <VSpacer size={8} />
           <Heading size="lg">common/CustomInput</Heading>
@@ -164,27 +151,6 @@ const Component: NextPage = () => {
             <CardBody>
               <CustomTitleText title="お題" text="ポーカー" />
             </CardBody>
-          </Card>
-
-          {/* common/NNAndIcon */}
-          <VSpacer size={8} />
-          <Heading size="lg">common/NNAndIcon</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <NNAndIcon
-                title={"ニックネーム"}
-                subtitle={"アイコン選択"}
-                nickname={nickname}
-                placeholder={"ふかまる"}
-                avatarList={avatarList}
-                avatarIndex={avatarIndex}
-                setNickname={setNickname}
-                setAvatarIndex={setAvatarIndex}
-                isNNNull={true}
-              />
-            </CardBody>
-            <Text>名前:{nickname}</Text>
-            <Text>Index:{avatarIndex}</Text>
           </Card>
 
           {/* common/PageBackIcon */}
@@ -228,64 +194,45 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* common/YouAre */}
+          {/* coop/frame/step1/HowToDecideTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">common/YouAre</Heading>
+          <Heading size="lg">coop/frame/step1/HowToDecideTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <YouAre youAre={wolf} setYouAre={setWolf} />
-            </CardBody>
-          </Card>
-          <VSpacer size={8} />
-          <Heading size="lg">common/YouAre</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <YouAre youAre={wolf} setYouAre={setWolf} />
+              <HowToDecideTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* DeleteHintList */}
+          {/* coop/frame/step1/ThinkingTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">DeleteHintList</Heading>
+          <Heading size="lg">coop/frame/step1/ThinkingTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <DeleteHintList hintList={exampleHintList} />
-              <VSpacer size={8} />
-              <Button
-                colorScheme="blue"
-                onClick={() => {
-                  // eslint-disable-next-line no-console
-                  console.log(exampleHintList);
-                }}
-              >
-                チェックされているものをコンソールで確認
-              </Button>
+              <ThinkingTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/Answer */}
+          {/* coop/frame/step2/InputTheme */}
           <VSpacer size={8} />
-          <Heading size="lg">game/Answer</Heading>
+          <Heading size="lg">coop/frame/step2/InputTheme</Heading>
           <Card variant="filled">
             <CardBody>
-              <Answer hintList={exampleHintList} setStep={setStep} />
-              <VSpacer size={8} />
+              <InputTheme setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/AnswerWait */}
+          {/* coop/frame/step3/InputHint */}
           <VSpacer size={8} />
-          <Heading size="lg">game/AnswerWait</Heading>
+          <Heading size="lg">coop/frame/step3/InputHint</Heading>
           <Card variant="filled">
             <CardBody>
-              <AnswerWait hintList={exampleHintList} setStep={setStep} />
-              <VSpacer size={8} />
+              <InputHint theme="小三元" setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/DeleteHintOtherMasterUI */}
+          {/* coop/frame/step4/DeleteHintOtherMasterUI */}
           <VSpacer size={8} />
-          <Heading size="lg">game/DeleteHintOtherMasterUI</Heading>
+          <Heading size="lg">coop/frame/step4/DeleteHintOtherMasterUI</Heading>
           <Card variant="filled">
             <CardBody>
               <DeleteHintOtherMasterUI
@@ -296,45 +243,50 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/DiscussJudgeAns */}
+          {/* coop/frame/step4/SelectDuplicateHint */}
           <VSpacer size={8} />
-          <Heading size="lg">game/DiscussJudgeAns</Heading>
+          <Heading size="lg">coop/frame/step4/SelectDuplicateHint</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <SelectDuplicateHint
+                hintList={exampleHintList}
+                setStep={setStep}
+              />
+            </CardBody>
+          </Card>
+
+          {/* coop/frame/step5/Answer */}
+          <VSpacer size={8} />
+          <Heading size="lg">coop/frame/step5/Answer</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Answer hintList={exampleHintList} setStep={setStep} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
+          {/* coop/frame/step5/AnswerWait */}
+          <VSpacer size={8} />
+          <Heading size="lg">coop/frame/step5/AnswerWait</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <AnswerWait hintList={exampleHintList} setStep={setStep} />
+              <VSpacer size={8} />
+            </CardBody>
+          </Card>
+
+          {/* coop/frame/step6/DiscussJudgeAns */}
+          <VSpacer size={8} />
+          <Heading size="lg">coop/frame/step6/DiscussJudgeAns</Heading>
           <Card variant="filled">
             <CardBody>
               <DiscussJudgeAns theme={text} answer={text} setStep={setStep} />
             </CardBody>
           </Card>
 
-          {/* game/HowToDecideTheme */}
+          {/* coop/frame/step6/JudgeAnswer */}
           <VSpacer size={8} />
-          <Heading size="lg">game/HowToDecideTheme</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <HowToDecideTheme setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/InputHint */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/InputHint</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <InputHint theme="小三元" setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/InputTheme */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/InputTheme</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <InputTheme setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/JudgeAnswer */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/JudgeAnswer</Heading>
+          <Heading size="lg">coop/frame/step6/JudgeAnswer</Heading>
           <Card variant="filled">
             <CardBody>
               <JudgeAnswer
@@ -345,18 +297,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/PointList */}
+          {/* coop/frame/step7/Result */}
           <VSpacer size={8} />
-          <Heading size="lg">game/PointList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <PointList memberPointList={examplePointList} />
-            </CardBody>
-          </Card>
-
-          {/* game/Result */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/Result</Heading>
+          <Heading size="lg">coop/frame/step7/Result</Heading>
           <Card variant="filled">
             <CardBody>
               <Result
@@ -375,39 +318,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/Score */}
+          {/* coop/frame/Wait */}
           <VSpacer size={8} />
-          <Heading size="lg">game/Score</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <Score playerList={examplePointList} setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/SelectDuplicateHint */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/SelectDuplicateHint</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <SelectDuplicateHint
-                hintList={exampleHintList}
-                setStep={setStep}
-              />
-            </CardBody>
-          </Card>
-
-          {/* game/ThinkingTheme */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/ThinkingTheme</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <ThinkingTheme setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/Wait */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/Wait</Heading>
+          <Heading size="lg">coop/frame/Wait</Heading>
           <Card variant="filled">
             <CardBody>
               <Wait text={"適当なタイトル"} setStep={setStep} />
@@ -415,9 +328,87 @@ const Component: NextPage = () => {
           </Card>
           <VSpacer size={12} />
 
-          {/* game/wolf/BanishPerson*/}
+          {/* coop/DeleteHintList */}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/BanishPerson</Heading>
+          <Heading size="lg">coop/parts/DeleteHintList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <DeleteHintList hintList={exampleHintList} />
+              <VSpacer size={8} />
+              <Button
+                colorScheme="blue"
+                onClick={() => {
+                  // eslint-disable-next-line no-console
+                  console.log(exampleHintList);
+                }}
+              >
+                チェックされているものをコンソールで確認
+              </Button>
+            </CardBody>
+          </Card>
+
+          {/* coop/MemberList */}
+          <VSpacer size={8} />
+          <Heading size="lg">coop/MemberList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <MemberList
+                title={"参加者リスト"}
+                memberNameList={exampleNameList}
+              />
+            </CardBody>
+          </Card>
+
+          {/* coop/NNAndIcon */}
+          <VSpacer size={8} />
+          <Heading size="lg">coop/NNAndIcon</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <NNAndIcon
+                title={"ニックネーム"}
+                subtitle={"アイコン選択"}
+                nickname={nickname}
+                placeholder={"ふかまる"}
+                avatarList={avatarList}
+                avatarIndex={avatarIndex}
+                setNickname={setNickname}
+                setAvatarIndex={setAvatarIndex}
+                isNNNull={true}
+              />
+            </CardBody>
+            <Text>名前:{nickname}</Text>
+            <Text>Index:{avatarIndex}</Text>
+          </Card>
+
+          {/* wolf/frame/step1/YouAre */}
+          <VSpacer size={8} />
+          <Heading size="lg">wolf/frame/step1/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre youAre={wolf} setYouAre={setWolf} />
+            </CardBody>
+          </Card>
+          <VSpacer size={8} />
+          <Heading size="lg">common/YouAre</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <YouAre youAre={wolf} setYouAre={setWolf} />
+            </CardBody>
+          </Card>
+
+          {/* wolf/frame/step8/ChoiceWolf*/}
+          <VSpacer size={8} />
+          <Heading size="lg">wolf/frame/step8/ChoiceWolf</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ChoiceWolf wolfList={exampleWolfHintList} setStep={setStep} />
+              <p>{text}</p>
+            </CardBody>
+          </Card>
+
+          {/* wolf/frame/step9/BanishPerson*/}
+          <VSpacer size={8} />
+          <Heading size="lg">wolf/frame/step9/BanishPerson</Heading>
           <Card variant="filled">
             <CardBody>
               <BanishPerson
@@ -429,40 +420,9 @@ const Component: NextPage = () => {
             </CardBody>
           </Card>
 
-          {/* game/wolf/ChoiceWolf*/}
+          {/* wolf/frame/step10/VoteResult */}
           <VSpacer size={8} />
-          <Heading size="lg">game/wolf/ChoiceWolf</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <ChoiceWolf wolfList={exampleWolfHintList} setStep={setStep} />
-              <p>{text}</p>
-            </CardBody>
-          </Card>
-
-          {/* MemberList */}
-          <VSpacer size={8} />
-          <Heading size="lg">MemberList</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <MemberList
-                title={"参加者リスト"}
-                memberNameList={exampleNameList}
-              />
-            </CardBody>
-          </Card>
-
-          {/* game/InputTheme */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/InputTheme</Heading>
-          <Card variant="filled">
-            <CardBody>
-              <InputTheme setStep={setStep} />
-            </CardBody>
-          </Card>
-
-          {/* game/VoteResult */}
-          <VSpacer size={8} />
-          <Heading size="lg">game/VoteResult</Heading>
+          <Heading size="lg">wolf/frame/step10/VoteResult</Heading>
           <Card variant="filled">
             <CardBody>
               <VoteResult
@@ -473,18 +433,50 @@ const Component: NextPage = () => {
               />
               <Checkbox
                 onChange={() => {
-                  setIswolf(!iswolf);
+                  setIsWolf(!isWolf);
                 }}
               >
                 追放者: true
               </Checkbox>
               <Checkbox
                 onChange={() => {
-                  setIsPeace(!ispeace);
+                  setIsPeace(!isPeace);
                 }}
               >
                 平和村: true
               </Checkbox>
+            </CardBody>
+          </Card>
+
+          {/* wolf/frame/step11/Score */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/wolf/frame/step11/Score</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <Score playerList={examplePointList} setStep={setStep} />
+            </CardBody>
+          </Card>
+
+          {/* wolf/ChoiceWolfList */}
+          <VSpacer size={8} />
+          <Heading size="lg">wolf/ChoiceWolfList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <ChoiceWolfList
+                wolfList={exampleWolfHintList}
+                setValue={setText}
+              />
+            </CardBody>
+          </Card>
+
+          <VSpacer size={12} />
+
+          {/* wolf/asPointList */}
+          <VSpacer size={8} />
+          <Heading size="lg">game/wolf/parts/PointList</Heading>
+          <Card variant="filled">
+            <CardBody>
+              <PointList memberPointList={examplePointList} />
             </CardBody>
           </Card>
 

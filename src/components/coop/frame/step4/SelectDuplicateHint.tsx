@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import { Button, Center, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
-import { DeleteHintList } from "@/components/DeleteHintList";
+import { DeleteHintList } from "@/components/coop/DeleteHintList";
 
 import { BASE_URL } from "@/data/data";
 

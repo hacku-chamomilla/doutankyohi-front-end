@@ -9,7 +9,7 @@ import { Button, Center, VStack } from "@chakra-ui/react";
 import { CustomTitleText } from "@/components/common/CustomTitleText";
 import { PageBackIcon } from "@/components/common/PageBackIcon";
 import { VSpacer } from "@/components/common/Spacer";
-import { MemberList } from "@/components/MemberList";
+import { MemberList } from "@/components/coop/MemberList";
 
 import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 

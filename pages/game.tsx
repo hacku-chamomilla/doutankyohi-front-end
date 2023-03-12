@@ -4,18 +4,18 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-import { Answer } from "@/components/game/Answer";
-import { AnswerWait } from "@/components/game/AnswerWait";
-import { DeleteHintOtherMasterUI } from "@/components/game/DeleteHintOtherMasterUI";
-import { DiscussJudgeAns } from "@/components/game/DiscussJudgeAns";
-import { HowToDecideTheme } from "@/components/game/HowToDecideTheme";
-import { InputHint } from "@/components/game/InputHint";
-import { InputTheme } from "@/components/game/InputTheme";
-import { JudgeAnswer } from "@/components/game/JudgeAnswer";
-import { Result } from "@/components/game/Result";
-import { SelectDuplicateHint } from "@/components/game/SelectDuplicateHint";
-import { ThinkingTheme } from "@/components/game/ThinkingTheme";
-import { Wait } from "@/components/game/Wait";
+import { HowToDecideTheme } from "@/components/coop/frame/step1/HowToDecideTheme";
+import { ThinkingTheme } from "@/components/coop/frame/step1/ThinkingTheme";
+import { InputTheme } from "@/components/coop/frame/step2/InputTheme";
+import { InputHint } from "@/components/coop/frame/step3/InputHint";
+import { DeleteHintOtherMasterUI } from "@/components/coop/frame/step4/DeleteHintOtherMasterUI";
+import { SelectDuplicateHint } from "@/components/coop/frame/step4/SelectDuplicateHint";
+import { Answer } from "@/components/coop/frame/step5/Answer";
+import { AnswerWait } from "@/components/coop/frame/step5/AnswerWait";
+import { DiscussJudgeAns } from "@/components/coop/frame/step6/DiscussJudgeAns";
+import { JudgeAnswer } from "@/components/coop/frame/step6/JudgeAnswer";
+import { Result } from "@/components/coop/frame/step7/Result";
+import { Wait } from "@/components/coop/frame/Wait";
 
 import { BASE_URL } from "@/data/data";
 

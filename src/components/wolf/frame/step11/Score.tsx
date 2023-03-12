@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
-import { PointList } from "@/components/game/PointList";
+import { PointList } from "@/components/wolf/PointList";
 
 import { BASE_URL, IS_AUTO_REQUEST } from "@/data/data";
 
