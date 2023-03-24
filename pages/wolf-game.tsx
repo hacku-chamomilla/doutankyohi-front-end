@@ -62,7 +62,7 @@ const WolfGame: NextPage = () => {
     const url = BASE_URL + "get-role-wolf";
     axios
       .get(url, {
-        params: { playerId: player.id },
+        params: { playerId: player.id, roomId: room.id },
       })
       .then((res) => {
         setRole(res.data["role"]);
@@ -71,7 +71,7 @@ const WolfGame: NextPage = () => {
       .catch((err) => {
         HandleError(router, err);
       });
-  }, [player.id, router]);
+  }, [player.id, room.id, router]);
 
   useEffect(() => {
     if (step === 3 || step === 6 || step === 7) {
