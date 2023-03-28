@@ -41,7 +41,7 @@ const Game: NextPage = () => {
     const url = BASE_URL + "get-role";
     axios
       .get(url, {
-        params: { playerId: player.id },
+        params: { playerId: player.id, roomId: room.id },
       })
       .then((res) => {
         setRole(res.data);
@@ -49,7 +49,7 @@ const Game: NextPage = () => {
       .catch((err) => {
         HandleError(router, err);
       });
-  }, [player.id, router]);
+  }, [player.id, room.id, router]);
 
   useEffect(() => {
     if (step === 0) {
