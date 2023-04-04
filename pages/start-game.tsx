@@ -42,7 +42,7 @@ const StartGame: NextPage = () => {
             }}
           >
             ルームに参加
-          </Button>{" "}
+          </Button>
         </VStack>
       </Center>
     </>
