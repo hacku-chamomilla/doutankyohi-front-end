@@ -160,6 +160,14 @@ const Home: NextPage = () => {
                   </TabPanel>
                   <TabPanel>
                     <ModalBody>
+                      {process.env.NODE_ENV !== "development" && (
+                        <>
+                          <Text color="tomato">
+                            ※ 人狼モードは現在開発中のため、遊ぶことはできません
+                          </Text>
+                          <VSpacer size={4} />
+                        </>
+                      )}
                       <Accordion defaultIndex={[0]}>
                         <AccordionItem>
                           <h2>
