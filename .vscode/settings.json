@@ -3,5 +3,7 @@
     "source.fixAll.eslint": true
   },
   "files.eol": "\n",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": ["partic"]
 }
