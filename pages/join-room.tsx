@@ -28,6 +28,7 @@ const JoinRoom: NextPage = () => {
   const [roomIdVal, setRoomIdVal] = useState<boolean>(true);
   const [isNNNull, setIsNNNull] = useState<boolean>(false);
   const [wolfMode, setWolfMode] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const NNValidation = () => {
     if (nickname === "") {
@@ -55,6 +56,7 @@ const JoinRoom: NextPage = () => {
               addPlayer();
             } else {
               setRoomIdVal(true);
+              setIsLoading(false);
             }
           }
         }
@@ -164,10 +166,14 @@ const JoinRoom: NextPage = () => {
             colorScheme="purple"
             minW={64}
             minH={12}
+            isLoading={isLoading}
+            loadingText="ルームに参加"
             onClick={() => {
+              setIsLoading(true);
               NNValidation();
               if (inputRoomId === "") {
                 setRoomIdVal(false);
+                setIsLoading(false);
               } else {
                 isRoomExit();
               }
