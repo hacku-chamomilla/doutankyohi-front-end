@@ -32,6 +32,7 @@ const CreateRoom: NextPage = () => {
   const [avatarIndex, setAvatarIndex] = useState(0);
   const [isNNNull, setIsNNNull] = useState<boolean>(false);
   const [wolfMode, setWolfMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCreateRoom = () => {
     const url = BASE_URL + "create-room";
@@ -129,9 +130,13 @@ const CreateRoom: NextPage = () => {
             color={"white"}
             minW={64}
             minH={12}
+            isLoading={isLoading}
+            loadingText="ルームを作成"
             onClick={() => {
+              setIsLoading(true);
               if (nickname === "") {
                 setIsNNNull(true);
+                setIsLoading(false);
               } else {
                 handleCreateRoom();
               }
