@@ -113,15 +113,19 @@ const CreateRoom: NextPage = () => {
             isNNNull={isNNNull}
           />
           <VSpacer size={8} />
-          <Checkbox
-            colorScheme="green"
-            size="lg"
-            onChange={() => {
-              setWolfMode(!wolfMode);
-            }}
-          >
-            <Text fontSize={24}>人狼モード</Text>
-          </Checkbox>
+
+          {/* NOTE: 人狼モードではいくつか致命的なバグが見つかっているが対処できていないため、一時的に本番環境には含めない */}
+          {process.env.NODE_ENV === "development" && (
+            <Checkbox
+              colorScheme="green"
+              size="lg"
+              onChange={() => {
+                setWolfMode(!wolfMode);
+              }}
+            >
+              <Text fontSize={24}>人狼モード</Text>
+            </Checkbox>
+          )}
 
           <VSpacer size={8} />
           <Button
