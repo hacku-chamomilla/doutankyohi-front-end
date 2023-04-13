@@ -1,19 +1,41 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Alert,
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Button,
+  Center,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 
 import { VSpacer } from "@/components/common/Spacer";
 
+import { BASE_URL } from "@/data/data";
+
 const HttpError: NextPage = () => {
   const router = useRouter();
+  const toast = useToast();
+
+  useEffect(() => {
+    toast({
+      title: "エラーが起きました",
+      position: "top",
+      description: "ボタンを押してホームに戻ってください",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+    });
+  }, []);
+
+  const returnHome = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <VSpacer size={12} />
@@ -35,6 +57,20 @@ const HttpError: NextPage = () => {
           <Text>Error Message: {router.query.message}</Text>
         </AlertDescription>
       </Alert>
+      <VSpacer size={12} />
+      <Center>
+        <Button
+          minW={20}
+          minH={16}
+          outlineColor={"black"}
+          colorScheme={"white"}
+          textColor={"black"}
+          fontSize="lg"
+          onClick={returnHome}
+        >
+          Back to Home
+        </Button>
+      </Center>
     </>
   );
 };
