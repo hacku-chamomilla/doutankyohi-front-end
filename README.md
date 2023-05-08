@@ -28,6 +28,6 @@ https://doutankyohi.vercel.app/
   <img src="https://cdn.svgporn.com/logos/typescript-icon.svg" width="15%">
   <img src="https://cdn.svgporn.com/logos/react.svg" width="15%">
   <img src="https://cdn.svgporn.com/logos/nextjs-icon.svg" width="15%">
-  <img src="https://cdn.svgporn.com/logos/vercel-icon.svg" width="15%">
+  <img src="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png" width="15%">
   <img src="https://pbs.twimg.com/profile_images/1244925541448286208/rzylUjaf_400x400.jpg" width="15%">
 </div>
